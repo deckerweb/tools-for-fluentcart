@@ -1,0 +1,303 @@
+msgid ""
+msgstr "Project-Id-Version: Tools for FluentCart 0.9.0\nLanguage: de_DE\nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/class-rules.php
+#, php-format
+msgid "%1$s allows no more than %2$s units."
+msgstr "%1$s kann mit höchstens %2$s Stück bestellt werden."
+
+#: includes/class-rules.php
+#, php-format
+msgid "%1$s requires at least %2$s units."
+msgstr "%1$s muss mit mindestens %2$s Stück bestellt werden."
+
+#: includes/class-rules.php
+msgid "A minimum quantity cannot exceed its maximum quantity."
+msgstr "Eine Mindestmenge darf die zugehörige Höchstmenge nicht überschreiten."
+
+#: includes/class-rules.php
+#, php-format
+msgid "Add %1$s more units to reach the minimum quantity of %2$s."
+msgstr "Noch %1$s Stück bis zur Mindestmenge von %2$s."
+
+#: includes/class-rules.php
+#, php-format
+msgid "Add products worth %s more to reach the minimum order value."
+msgstr "Noch %s Warenwert bis zum Mindestbestellwert."
+
+#: includes/class-admin.php
+msgid "Allow one product with quantity one"
+msgstr "Genau ein Produkt mit Menge 1 zulassen"
+
+#: includes/class-integration.php
+msgid "Before ordering"
+msgstr "Vor der Bestellung"
+
+#: includes/class-admin.php
+msgid "Cart Rules"
+msgstr "Warenkorb-Regeln"
+
+#: includes/history.php
+msgid "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps."
+msgstr "Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten."
+
+#: includes/class-admin.php
+msgid "Changelog"
+msgstr "Änderungsverlauf"
+
+#: includes/class-rules.php
+#, php-format
+msgid "Choose a quantity in multiples of %2$s for %1$s."
+msgstr "Für %1$s ist eine Menge in Vielfachen von %2$s erforderlich."
+
+#: includes/class-admin.php
+msgid "Close"
+msgstr "Schließen"
+
+#: includes/updater-translations.php
+msgid "Could not access the update filesystem."
+msgstr "Auf das Dateisystem für das Update konnte nicht zugegriffen werden."
+
+#: includes/updater-translations.php
+msgid "Could not create the update download file."
+msgstr "Die Download-Datei für das Update konnte nicht erstellt werden."
+
+#: includes/updater-translations.php
+msgid "Could not prepare the GitHub release package."
+msgstr "Das GitHub-Release-Paket konnte nicht vorbereitet werden."
+
+#: includes/class-admin.php
+msgid "Custom rules"
+msgstr "Eigene Regeln"
+
+#: includes/class-admin.php
+msgid "Data and compatibility"
+msgstr "Daten und Kompatibilität"
+
+#: includes/class-integration.php
+msgid "Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart."
+msgstr "Deaktiviere das bisherige FluentCart Cart Rules und die älteren Ein-Artikel-Add-ons, bevor du Tools for FluentCart verwendest."
+
+#: includes/class-admin.php
+msgid "Delete this website’s Cart Rules settings when uninstalling"
+msgstr "Cart-Rules-Einstellungen dieser Website bei der Deinstallation löschen"
+
+#: includes/class-admin.php
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: includes/class-admin.php
+msgid "Enable cart rules"
+msgstr "Warenkorb-Regeln aktivieren"
+
+#: includes/class-settings.php
+msgid "Enter a nonnegative order value with no more than two decimal places."
+msgstr "Der Bestellwert muss mindestens 0 betragen und darf höchstens zwei Nachkommastellen haben."
+
+#: includes/class-settings.php
+msgid "Enter whole quantities between 0 and 100000. The quantity step must be at least 1."
+msgstr "Mengen müssen ganze Zahlen zwischen 0 und 100000 sein. Der Mengenschritt muss mindestens 1 betragen."
+
+#: includes/class-admin.php
+msgid "Fine-tune your store."
+msgstr "Dein Shop. Fein abgestimmt."
+
+#: includes/class-admin.php
+msgid "Fixed:"
+msgstr "Behoben:"
+
+#: includes/updater-translations.php
+msgid "GitHub release does not contain the plugin main file."
+msgstr "Das GitHub-Release enthält die Plugin-Hauptdatei nicht."
+
+#: includes/class-admin.php
+msgid "Improved:"
+msgstr "Verbessert:"
+
+#: includes/class-admin.php
+msgid "In this mode, a new product replaces the previous one and quantity controls are hidden. Existing open carts are reduced to the last item on their next visit. The other quantity and value rules are cleared when saving."
+msgstr "In diesem Modus ersetzt ein neues Produkt das bisherige. Die Mengenauswahl wird ausgeblendet. Bestehende offene Warenkörbe werden beim nächsten Besuch auf die letzte Position reduziert. Andere Mengen- und Wertregeln werden beim Speichern zurückgesetzt."
+
+#: includes/updater-translations.php
+msgid "Invalid GitHub repository URL."
+msgstr "Ungültige GitHub-Repository-URL."
+
+#: includes/updater-translations.php
+msgid "Invalid authentication provider."
+msgstr "Ungültiger Authentifizierungsanbieter."
+
+#: includes/class-integration.php
+#, php-format
+msgid "Maximum cart quantity: %s."
+msgstr "Höchstmenge im Warenkorb: %s."
+
+#: includes/class-integration.php
+#, php-format
+msgid "Maximum per product: %s."
+msgstr "Höchstmenge je Produkt: %s."
+
+#: includes/class-admin.php
+msgid "Maximum total units"
+msgstr "Maximale Gesamtstückzahl"
+
+#: includes/class-admin.php
+msgid "Maximum units per product"
+msgstr "Maximale Stückzahl je Produkt"
+
+#: includes/class-integration.php
+#, php-format
+msgid "Minimum cart quantity: %s."
+msgstr "Mindestmenge im Warenkorb: %s."
+
+#: includes/class-admin.php
+msgid "Minimum merchandise value"
+msgstr "Mindestwarenwert"
+
+#: includes/class-integration.php
+#, php-format
+msgid "Minimum merchandise value: %s."
+msgstr "Mindestwarenwert: %s."
+
+#: includes/class-admin.php
+msgid "Minimum order value"
+msgstr "Mindestbestellwert"
+
+#: includes/class-integration.php
+#, php-format
+msgid "Minimum per product: %s."
+msgstr "Mindestmenge je Produkt: %s."
+
+#: includes/class-admin.php
+msgid "Minimum quantity"
+msgstr "Mindestmenge"
+
+#: includes/class-admin.php
+msgid "Minimum total units"
+msgstr "Mindestgesamtstückzahl"
+
+#: includes/class-admin.php
+msgid "Minimum units per product"
+msgstr "Mindeststückzahl je Produkt"
+
+#: includes/class-admin.php
+msgid "Misc:"
+msgstr "Sonstiges:"
+
+#: includes/class-admin.php
+msgid "New:"
+msgstr "Neu:"
+
+#: includes/class-admin.php
+msgid "Off by default. Uninstalling in a network checks this choice separately for each website. FluentCart orders, products and carts are never deleted."
+msgstr "Standardmäßig ausgeschaltet. Bei der Deinstallation im Netzwerk gilt die Auswahl für jede Website einzeln. FluentCart-Bestellungen, Produkte und Warenkörbe werden niemals gelöscht."
+
+#: includes/class-admin.php
+msgid "One item only"
+msgstr "Genau ein Artikel"
+
+#: includes/class-rules.php
+msgid "Only one product with quantity one can be ordered."
+msgstr "Es kann genau ein Produkt mit Menge 1 bestellt werden."
+
+#: includes/class-update.php
+msgid "Order rules for your FluentCart shop."
+msgstr "Bestellregeln für deinen FluentCart-Shop."
+
+#: includes/class-admin.php
+msgid "Order value uses the shop currency and merchandise amounts after discounts, excluding shipping and fees. Tax treatment follows FluentCart product pricing. Customers may build their cart freely; checkout explains and blocks unmet rules."
+msgstr "Der Bestellwert gilt in der Shop-Währung und berücksichtigt den Warenwert nach Rabatten, ohne Versandkosten und Gebühren. Die Steuerbehandlung richtet sich nach den Produktpreisen in FluentCart. Kunden können ihren Warenkorb frei zusammenstellen. Nicht erfüllte Regeln werden beim Checkout erklärt und verhindern den Bestellabschluss."
+
+#: includes/class-rules.php
+msgid "Please check the quantities in your cart."
+msgstr "Bitte prüfe die Mengen in deinem Warenkorb."
+
+#: includes/class-integration.php
+msgid "Please refresh your cart and try again."
+msgstr "Bitte lade deinen Warenkorb neu und versuche es erneut."
+
+#: includes/class-admin.php
+msgid "Plugin website"
+msgstr "Plugin-Website"
+
+#: includes/updater-translations.php
+msgid "Private mode must be boolean."
+msgstr "Der Wert für den privaten Modus muss wahr oder falsch sein."
+
+#: includes/class-admin.php
+msgid "Product variations count separately. A bundle counts as one cart row. Locked payment carts are preserved and checked at checkout. Test subscriptions, bundles and order bumps with your chosen rules before live use."
+msgstr "Produktvarianten zählen einzeln. Ein Bundle zählt als eine Warenkorbposition. Gesperrte Zahlungswarenkörbe bleiben erhalten und werden beim Checkout geprüft. Teste Abos, Bundles und Zusatzangebote mit den gewählten Regeln vor dem Live-Einsatz."
+
+#: includes/class-admin.php
+msgid "Quantity and value"
+msgstr "Menge und Warenwert"
+
+#: includes/class-admin.php
+msgid "Quantity limits"
+msgstr "Höchstmengen"
+
+#: includes/class-admin.php
+msgid "Quantity step per product"
+msgstr "Mengenschritt je Produkt"
+
+#: includes/class-integration.php
+#, php-format
+msgid "Quantity step per product: %s."
+msgstr "Mengenschritt je Produkt: %s."
+
+#: includes/class-admin.php
+msgid "Quantity steps"
+msgstr "Mengenschritte"
+
+#: includes/class-admin.php
+msgid "Rules start disabled. Configure them here, then enable them for this website. Other websites keep their own settings."
+msgstr "Die Regeln sind zunächst ausgeschaltet. Richte sie hier ein und aktiviere sie anschließend für diese Website. Andere Websites behalten ihre eigenen Einstellungen."
+
+#: includes/updater-translations.php
+msgid "See the release on GitHub."
+msgstr "Release auf GitHub ansehen."
+
+#: includes/class-admin.php
+msgid "Selecting a preset fills the rule fields. Review the values before saving. You can combine rules in custom mode."
+msgstr "Ein Preset füllt die Regelfelder aus. Prüfe die Werte vor dem Speichern. Im Modus „Eigene Regeln“ kannst du Regeln kombinieren."
+
+#: includes/class-admin.php
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/class-admin.php
+msgid "Start with a preset"
+msgstr "Mit einem Preset starten"
+
+#: includes/updater-translations.php
+msgid "The plugin must be installed in a stable slug directory."
+msgstr "Das Plugin muss in einem Ordner mit seinem festen Plugin-Slug installiert sein."
+
+#: includes/updater-translations.php
+msgid "The private update could not be authorized. Check the repository credentials and refresh updates."
+msgstr "Das private Update konnte nicht autorisiert werden. Bitte prüfe die Repository-Zugangsdaten und suche erneut nach Updates."
+
+#: includes/updater-translations.php
+msgid "The private update download failed. Check credentials and try again."
+msgstr "Der Download des privaten Updates ist fehlgeschlagen. Bitte prüfe die Zugangsdaten und versuche es erneut."
+
+#: includes/class-rules.php
+msgid "The quantity step leaves no purchasable quantity within the configured limits."
+msgstr "Mit diesem Mengenschritt ist innerhalb der gewählten Grenzen keine bestellbare Menge möglich."
+
+#: includes/class-update.php
+msgid "The update package does not match this plugin or the offered compatible version."
+msgstr "Das Update-Paket passt nicht zu diesem Plugin oder zur angebotenen kompatiblen Version."
+
+#: includes/class-integration.php
+msgid "Tools for FluentCart is inactive. This build supports FluentCart 1.7.x; activate a supported version before enabling rules."
+msgstr "Tools for FluentCart ist inaktiv. Diese Version unterstützt FluentCart 1.7.x. Für die Verwendung der Regeln muss eine unterstützte Version aktiviert sein."
+
+#: includes/class-rules.php
+#, php-format
+msgid "Your cart may contain no more than %s units."
+msgstr "Dein Warenkorb darf höchstens %s Stück enthalten."
+
+#: includes/class-admin.php
+msgid "Zero disables a limit. A quantity step of 1 allows any whole quantity; a step of 6 allows 6, 12, 18 and so on for each product variation."
+msgstr "0 schaltet eine Grenze aus. Ein Mengenschritt von 1 erlaubt jede ganze Menge. Bei einem Schritt von 6 sind je Produktvariante 6, 12, 18 usw. möglich."
+

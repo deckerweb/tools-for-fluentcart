@@ -1,0 +1,148 @@
+{
+  "en": {
+    "about": "Practical tools for your FluentCart shop. The Cart Rules module provides single-item carts, minimum quantities and merchandise value, maximum quantities, and quantity steps.",
+    "glance": [
+      "Cart Rules is the first module in the Tools series.",
+      "Five presets with adjustable values.",
+      "Combine total and per-product quantity rules in custom mode.",
+      "Single-item mode replaces the previous product and hides quantity controls.",
+      "Checkout validation uses server-side cart data.",
+      "Site-specific settings, including Multisite.",
+      "English source, German informal and formal translations."
+    ],
+    "install": "Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Activate FluentCart first. Open Settings → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation.",
+    "features": [
+      [
+        "One item only",
+        "Exactly one product variation with quantity one. A newly added item replaces the previous item. Existing editable carts are reduced to their last row when next loaded. Removing the item remains possible."
+      ],
+      [
+        "Minimum quantities",
+        "Choose a minimum total number of units and/or a minimum per product variation. Different products may contribute to the total minimum."
+      ],
+      [
+        "Minimum order value",
+        "Use the shop currency. Count merchandise after discounts, excluding shipping and fees. Tax inclusion follows FluentCart product pricing. A free product does not satisfy a positive minimum value."
+      ],
+      [
+        "Quantity limits",
+        "Limit total units and/or units per product variation. Customers can adjust their cart freely; invalid carts cannot be ordered."
+      ],
+      [
+        "Quantity steps",
+        "Each selected product variation must have a quantity divisible by the configured step. A step of 6 accepts 6, 12 or 18, rather than 1, 7 or 13. Limits are checked together so contradictory settings cannot be saved."
+      ]
+    ],
+    "faq": [
+      [
+        "When are the rules enforced?",
+        "Single-item mode adjusts editable carts automatically. All other rules are checked at checkout. Rule guidance appears in the standard cart and checkout views."
+      ],
+      [
+        "Can I combine presets?",
+        "Presets fill the fields as a starting point. Use custom rules to combine limits. Single-item mode is exclusive and clears the other limits on save."
+      ],
+      [
+        "What counts as a product?",
+        "Each product variation counts separately. A bundle counts as one cart row; its components are not individually limited."
+      ],
+      [
+        "Does this limit orders per customer?",
+        "No. Rules apply to each cart, without customer history or account limits."
+      ],
+      [
+        "Does it work in Multisite?",
+        "Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled."
+      ],
+      [
+        "Which versions and integrations are supported?",
+        "This development build targets WordPress 7.1.2+, PHP 8.2+ and FluentCart 1.7.x. Other FluentCart minor versions leave the adapter inactive. Test subscriptions, order bumps, bundles, custom storefronts and other cart-changing add-ons before production use."
+      ],
+      [
+        "What happens on uninstall?",
+        "Settings are retained by default. Each website can opt to delete only its Cart Rules settings. Temporary updater and final-host Library caches are cleaned according to their scopes. FluentCart products, orders and carts are never deleted."
+      ]
+    ],
+    "data": "Stores one site option: tffc_cart_rules. No customer data, extra database tables, analytics or tracking. No Cart Rules background tasks. Shared Library settings and caches belong to their documented website/network scope. Deactivation retains settings. Automatic single-item replacements cannot be undone by deactivation.",
+    "external": "The embedded deckerweb Updater checks public GitHub releases in the WordPress update flow. Requests reveal the installation’s network address and ordinary HTTP metadata to GitHub; no credentials or customer cart contents are sent. The optional shared Library online catalog is initially off. Enabling it retrieves approved public metadata from raw.githubusercontent.com. Local styling and translations require no external assets.",
+    "hooks": "No custom public hooks or REST endpoints are introduced. This build uses FluentCart hooks and model events and the WordPress Settings API. The FluentCart adapter is deliberately limited to the audited 1.7.x interface.",
+    "security": "Report vulnerabilities privately through the plugin repository’s Security → Report a vulnerability workflow. Include plugin, FluentCart, WordPress and PHP versions, reproduction steps and impact, without passwords or customer data. Ordinary issues may be reported in Issues. Do not publish security details in public issues.",
+    "changelog": "New: Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.",
+    "author": "Developed by David Decker – DECKERWEB. Part of the Tools series. Cart Rules is the first module.",
+    "support": "Questions and ordinary bugs: repository Issues. Confidential reports: Security. Support: https://ko-fi.com/deckerweb, https://buymeacoffee.com/daveshine, https://paypal.me/deckerweb.",
+    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 0.7.0 and deckerweb Updater 2.1.0 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin."
+  },
+  "de": {
+    "about": "Praktische Werkzeuge für deinen FluentCart-Shop. Das Modul Cart Rules bietet Ein-Artikel-Warenkörbe, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritte.",
+    "glance": [
+      "Cart Rules ist das erste Modul der Tools-Serie.",
+      "Fünf Presets mit anpassbaren Werten.",
+      "Gesamtmengen und Mengen je Produkt im eigenen Modus kombinieren.",
+      "Ein-Artikel-Modus ersetzt das bisherige Produkt und blendet die Mengenauswahl aus.",
+      "Checkout-Prüfung anhand serverseitiger Warenkorbdaten.",
+      "Einstellungen je Website, auch in Multisite.",
+      "Englische Originaltexte, deutsche Du- und Sie-Übersetzungen."
+    ],
+    "install": "Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart zuerst aktivieren. Einstellungen → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet.",
+    "features": [
+      [
+        "Genau ein Artikel",
+        "Genau eine Produktvariante mit Menge 1. Ein neues Produkt ersetzt das bisherige. Vorhandene bearbeitbare Warenkörbe werden beim nächsten Laden auf ihre letzte Position reduziert. Entfernen bleibt möglich."
+      ],
+      [
+        "Mindestmengen",
+        "Eine Mindestgesamtstückzahl und/oder eine Mindestmenge je Produktvariante festlegen. Verschiedene Produkte können gemeinsam die Mindestgesamtmenge erreichen."
+      ],
+      [
+        "Mindestbestellwert",
+        "Es gilt die Shop-Währung. Gezählt wird der Warenwert nach Rabatten, ohne Versandkosten und Gebühren. Die Steuerbehandlung folgt den Produktpreisen in FluentCart. Ein Gratisprodukt erfüllt keinen positiven Mindestwert."
+      ],
+      [
+        "Höchstmengen",
+        "Die Gesamtstückzahl und/oder die Stückzahl je Produktvariante begrenzen. Kunden können ihren Warenkorb frei anpassen; ungültige Warenkörbe können nicht bestellt werden."
+      ],
+      [
+        "Mengenschritte",
+        "Jede ausgewählte Produktvariante muss eine durch den Mengenschritt teilbare Menge haben. Ein Schritt von 6 erlaubt 6, 12 oder 18, nicht 1, 7 oder 13. Grenzen werden gemeinsam geprüft, damit widersprüchliche Einstellungen nicht gespeichert werden können."
+      ]
+    ],
+    "faq": [
+      [
+        "Wann greifen die Regeln?",
+        "Der Ein-Artikel-Modus passt bearbeitbare Warenkörbe automatisch an. Alle anderen Regeln werden beim Checkout geprüft. Hinweise erscheinen in den Standardansichten von Warenkorb und Checkout."
+      ],
+      [
+        "Kann ich Presets kombinieren?",
+        "Presets füllen die Felder als Ausgangspunkt aus. Im Modus für eigene Regeln lassen sich Grenzen kombinieren. Der Ein-Artikel-Modus ist eigenständig und setzt andere Grenzen beim Speichern zurück."
+      ],
+      [
+        "Was zählt als Produkt?",
+        "Jede Produktvariante zählt einzeln. Ein Bundle zählt als eine Warenkorbposition; seine Bestandteile werden nicht einzeln begrenzt."
+      ],
+      [
+        "Begrenzt das Bestellungen pro Kunde?",
+        "Nein. Die Regeln gelten für jeden Warenkorb, ohne Kundenhistorie oder Kontolimits."
+      ],
+      [
+        "Funktioniert das in Multisite?",
+        "Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln."
+      ],
+      [
+        "Welche Versionen und Integrationen werden unterstützt?",
+        "Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen."
+      ],
+      [
+        "Was passiert bei der Deinstallation?",
+        "Einstellungen bleiben standardmäßig erhalten. Jede Website kann das Löschen ihrer Cart-Rules-Einstellungen erlauben. Temporäre Updater- und Library-Caches werden im jeweiligen Geltungsbereich bereinigt; Library-Daten erst beim letzten Host. FluentCart-Produkte, Bestellungen und Warenkörbe werden niemals gelöscht."
+      ]
+    ],
+    "data": "Gespeichert wird eine Website-Option: tffc_cart_rules. Keine Kundendaten, zusätzlichen Datenbanktabellen, Analyse oder Tracking. Keine Cart-Rules-Hintergrundaufgaben. Gemeinsame Library-Einstellungen und Caches haben ihren dokumentierten Website-/Netzwerk-Geltungsbereich. Deaktivierung erhält Einstellungen. Automatische Ein-Artikel-Ersetzungen werden durch Deaktivierung nicht rückgängig gemacht.",
+    "external": "Der eingebettete deckerweb Updater prüft öffentliche GitHub-Releases im WordPress-Updateablauf. GitHub erhält dabei die Netzwerkadresse der Installation und gewöhnliche HTTP-Metadaten; keine Zugangsdaten oder Kundenwarenkörbe. Der freiwillige gemeinsame Library-Onlinekatalog ist zunächst ausgeschaltet. Nach Aktivierung lädt er freigegebene öffentliche Metadaten von raw.githubusercontent.com. Gestaltung und Übersetzungen werden lokal ausgeliefert.",
+    "hooks": "Keine eigenen öffentlichen Hooks oder REST-Endpunkte. Diese Version nutzt FluentCart-Hooks und Modellereignisse sowie die WordPress Settings API. Die FluentCart-Anbindung ist bewusst auf die geprüfte 1.7.x-Schnittstelle begrenzt.",
+    "security": "Sicherheitslücken vertraulich über Security → Report a vulnerability im Plugin-Repository melden. Plugin-, FluentCart-, WordPress- und PHP-Versionen, Schritte zur Reproduktion und Auswirkungen angeben, ohne Passwörter oder Kundendaten. Normale Fehler gehören in Issues. Sicherheitsdetails nicht in öffentlichen Issues veröffentlichen.",
+    "changelog": "Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.",
+    "author": "Entwicklung und Herausgabe: David Decker – DECKERWEB. Teil der Tools-Serie. Cart Rules ist das erste Modul.",
+    "support": "Fragen und normale Fehler: Issues im Repository. Vertrauliche Meldungen: Security. Unterstützung: https://ko-fi.com/deckerweb, https://buymeacoffee.com/daveshine, https://paypal.me/deckerweb.",
+    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 0.7.0 und deckerweb Updater 2.1.0 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus."
+  }
+}

@@ -1,0 +1,9 @@
+theme: jekyll-theme-cayman
+title: Tools for FluentCart
+description: Fine-tune your store. / Dein Shop. Fein abgestimmt.
+exclude:
+  - includes
+  - modules
+  - development
+  - tests
+  - wiki
