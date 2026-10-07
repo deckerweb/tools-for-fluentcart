@@ -37,6 +37,10 @@ msgstr "Vor der Bestellung"
 msgid "Cart Rules"
 msgstr "Warenkorb-Regeln"
 
+#: includes/class-integration.php
+msgid "Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin."
+msgstr "Warenkorb-Regeln sind pausiert. Installieren und aktivieren Sie FluentCart 1.7.x, um das Modul zu verwenden. Tools for FluentCart bleibt im Admin verfügbar."
+
 #: includes/history.php
 msgid "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps."
 msgstr "Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten."
@@ -287,10 +291,6 @@ msgstr "Mit diesem Mengenschritt ist innerhalb der gewählten Grenzen keine best
 #: includes/class-update.php
 msgid "The update package does not match this plugin or the offered compatible version."
 msgstr "Das Update-Paket passt nicht zu diesem Plugin oder zur angebotenen kompatiblen Version."
-
-#: includes/class-integration.php
-msgid "Tools for FluentCart is inactive. This build supports FluentCart 1.7.x; activate a supported version before enabling rules."
-msgstr "Tools for FluentCart ist inaktiv. Diese Version unterstützt FluentCart 1.7.x. Für die Verwendung der Regeln muss eine unterstützte Version aktiviert sein."
 
 #: includes/class-rules.php
 #, php-format

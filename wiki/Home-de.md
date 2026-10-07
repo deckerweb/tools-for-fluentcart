@@ -1,6 +1,6 @@
 # Tools for FluentCart
 
-![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-de.png)
+![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-de.png?v=20261007-centered)
 
 **Dein Shop. Fein abgestimmt.**
 

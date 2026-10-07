@@ -10,7 +10,7 @@
       "Site-specific settings, including Multisite.",
       "English source, German informal and formal translations."
     ],
-    "install": "Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Activate FluentCart first. Open Settings → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation.",
+    "install": "Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location.",
     "features": [
       [
         "One item only",
@@ -56,7 +56,7 @@
       ],
       [
         "Which versions and integrations are supported?",
-        "This development build targets WordPress 7.1.2+, PHP 8.2+ and FluentCart 1.7.x. Other FluentCart minor versions leave the adapter inactive. Test subscriptions, order bumps, bundles, custom storefronts and other cart-changing add-ons before production use."
+        "This development build targets WordPress 7.1.2+, PHP 8.2+ and FluentCart 1.7.x. Other FluentCart minor versions leave the adapter inactive. Test subscriptions, order bumps, bundles, custom storefronts and other cart-changing add-ons before production use. Tools can be activated without FluentCart; the module stays paused until a supported version is active."
       ],
       [
         "What happens on uninstall?",
@@ -83,7 +83,7 @@
       "Einstellungen je Website, auch in Multisite.",
       "Englische Originaltexte, deutsche Du- und Sie-Übersetzungen."
     ],
-    "install": "Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart zuerst aktivieren. Einstellungen → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet.",
+    "install": "Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.",
     "features": [
       [
         "Genau ein Artikel",
@@ -129,7 +129,7 @@
       ],
       [
         "Welche Versionen und Integrationen werden unterstützt?",
-        "Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen."
+        "Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen. Tools kann ohne FluentCart aktiviert werden; das Modul bleibt bis zur Aktivierung einer unterstützten Version pausiert."
       ],
       [
         "Was passiert bei der Deinstallation?",

@@ -5,13 +5,39 @@ defined( 'ABSPATH' ) || exit;
 
 /** Renders one functional settings page with native WordPress save handling. */
 final class Admin {
+	/** @var string Registered settings-screen hook; differs between parent menus. */
+	private static string $screen = '';
+
+	/**
+	 * Select the actual registered shop menu, with a native settings fallback.
+	 *
+	 * @return string Existing FluentCart parent slug or the WordPress settings parent.
+	 */
+	private static function parent_slug(): string {
+		global $menu;
+		foreach ( (array) $menu as $item ) {
+			if ( 'fluent-cart' === ( $item[2] ?? '' ) ) { return 'fluent-cart'; }
+		}
+		return 'options-general.php';
+	}
+
+	/**
+	 * Resolve the accessible settings URL for the current website menu.
+	 *
+	 * @return string Absolute administration URL; no customer-facing redirect.
+	 */
+	public static function settings_url(): string {
+		$path = 'fluent-cart' === self::parent_slug() ? 'admin.php' : 'options-general.php';
+		return admin_url( $path . '?page=tools-for-fluentcart' );
+	}
+
 	/**
 	 * Add a site-scoped page; no separate network settings are introduced.
 	 *
 	 * @return void
 	 */
 	public static function menu(): void {
-		add_options_page( 'Tools for FluentCart', 'Tools for FluentCart', 'manage_options', 'tools-for-fluentcart', [ self::class, 'render' ] );
+		self::$screen = (string) add_submenu_page( self::parent_slug(), 'Tools for FluentCart', 'Tools for FluentCart', 'manage_options', 'tools-for-fluentcart', [ self::class, 'render' ] );
 	}
 
 	/**
@@ -22,7 +48,7 @@ final class Admin {
 	 */
 	public static function action_links( array $links ): array {
 		if ( is_network_admin() || ! current_user_can( 'manage_options' ) ) { return $links; }
-		return [ 'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=tools-for-fluentcart' ) ) . '">' . esc_html__( 'Settings', 'tools-for-fluentcart' ) . '</a>' ] + $links;
+		return [ 'settings' => '<a href="' . esc_url( self::settings_url() ) . '">' . esc_html__( 'Settings', 'tools-for-fluentcart' ) . '</a>' ] + $links;
 	}
 
 	/**
@@ -32,7 +58,7 @@ final class Admin {
 	 * @return void
 	 */
 	public static function assets( string $hook ): void {
-		if ( 'settings_page_tools-for-fluentcart' !== $hook ) { return; }
+		if ( '' === self::$screen || self::$screen !== $hook ) { return; }
 		wp_enqueue_style( 'tffc-admin', plugins_url( 'assets/admin.css', TFFC_FILE ), [], TFFC_VERSION );
 		wp_enqueue_script( 'tffc-admin', plugins_url( 'assets/admin.js', TFFC_FILE ), [], TFFC_VERSION, true );
 	}
@@ -47,7 +73,6 @@ final class Admin {
 		$s = Settings::get();
 		$presets = [ 'custom' => __( 'Custom rules', 'tools-for-fluentcart' ), 'single' => __( 'One item only', 'tools-for-fluentcart' ), 'minimum' => __( 'Minimum quantity', 'tools-for-fluentcart' ), 'value' => __( 'Minimum order value', 'tools-for-fluentcart' ), 'maximum' => __( 'Quantity limits', 'tools-for-fluentcart' ), 'steps' => __( 'Quantity steps', 'tools-for-fluentcart' ) ];
 		echo '<div class="wrap tffc-admin"><header class="tffc-header"><img class="tffc-mark" src="' . esc_url( plugins_url( 'assets/brand/icon.svg', TFFC_FILE ) ) . '" width="64" height="64" alt=""><div><h1>Tools for FluentCart</h1><p>' . esc_html__( 'Fine-tune your store.', 'tools-for-fluentcart' ) . '</p></div></header>';
-		if ( ! Integration::available() ) { Integration::notice(); }
 		echo '<form action="options.php" method="post" id="tffc-form">'; settings_fields( 'tffc' );
 		echo '<section class="tffc-card"><h2>' . esc_html__( 'Cart Rules', 'tools-for-fluentcart' ) . '</h2>';
 		self::checkbox( 'enabled', __( 'Enable cart rules', 'tools-for-fluentcart' ), $s['enabled'] );

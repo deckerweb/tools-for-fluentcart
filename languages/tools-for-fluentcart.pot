@@ -37,6 +37,10 @@ msgstr ""
 msgid "Cart Rules"
 msgstr ""
 
+#: includes/class-integration.php
+msgid "Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin."
+msgstr ""
+
 #: includes/history.php
 msgid "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps."
 msgstr ""
@@ -286,10 +290,6 @@ msgstr ""
 
 #: includes/class-update.php
 msgid "The update package does not match this plugin or the offered compatible version."
-msgstr ""
-
-#: includes/class-integration.php
-msgid "Tools for FluentCart is inactive. This build supports FluentCart 1.7.x; activate a supported version before enabling rules."
 msgstr ""
 
 #: includes/class-rules.php

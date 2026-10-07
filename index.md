@@ -6,7 +6,7 @@ layout: default
 
 ## English
 
-![Tools for FluentCart](assets-github/banner-github-en.png)
+![Tools for FluentCart](assets-github/banner-github-en.png?v=20261007-centered)
 
 **Fine-tune your store.**
 
@@ -18,7 +18,7 @@ Version 0.9.0 is being tested. No release has been published yet.
 
 ## Deutsch
 
-![Tools for FluentCart](assets-github/banner-github-de.png)
+![Tools for FluentCart](assets-github/banner-github-de.png?v=20261007-centered)
 
 **Dein Shop. Fein abgestimmt.**
 

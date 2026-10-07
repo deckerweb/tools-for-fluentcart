@@ -19,7 +19,6 @@
   "Enable cart rules": "Warenkorb-Regeln aktivieren",
   "Enter a nonnegative order value with no more than two decimal places.": "Der Bestellwert muss mindestens 0 betragen und darf höchstens zwei Nachkommastellen haben.",
   "Enter whole quantities between 0 and 100000. The quantity step must be at least 1.": "Mengen müssen ganze Zahlen zwischen 0 und 100000 sein. Der Mengenschritt muss mindestens 1 betragen.",
-  "Tools for FluentCart is inactive. This build supports FluentCart 1.7.x; activate a supported version before enabling rules.": "Tools for FluentCart ist inaktiv. Diese Version unterstützt FluentCart 1.7.x. Für die Verwendung der Regeln muss eine unterstützte Version aktiviert sein.",
   "GitHub release does not contain the plugin main file.": "Das GitHub-Release enthält die Plugin-Hauptdatei nicht.",
   "In this mode, a new product replaces the previous one and quantity controls are hidden. Existing open carts are reduced to the last item on their next visit. The other quantity and value rules are cleared when saving.": "In diesem Modus ersetzt ein neues Produkt das bisherige. Die Mengenauswahl wird ausgeblendet. Bestehende offene Warenkörbe werden beim nächsten Besuch auf die letzte Position reduziert. Andere Mengen- und Wertregeln werden beim Speichern zurückgesetzt.",
   "Invalid GitHub repository URL.": "Ungültige GitHub-Repository-URL.",
@@ -70,5 +69,6 @@
   "Cart Rules": "Warenkorb-Regeln",
   "Settings": "Einstellungen",
   "Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart.": "Deaktiviere das bisherige FluentCart Cart Rules und die älteren Ein-Artikel-Add-ons, bevor du Tools for FluentCart verwendest.",
-  "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.": "Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten."
+  "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.": "Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.",
+  "Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin.": "Warenkorb-Regeln sind pausiert. Installiere und aktiviere FluentCart 1.7.x, um das Modul zu verwenden. Tools for FluentCart bleibt im Admin verfügbar."
 }

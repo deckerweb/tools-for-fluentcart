@@ -14,7 +14,6 @@
  * Domain Path: /languages/
  * Update URI: https://github.com/deckerweb/tools-for-fluentcart
  * GitHub Plugin URI: https://github.com/deckerweb/tools-for-fluentcart
- * Requires Plugins: fluent-cart
  *
  * Copyright © 2026 David Decker – DECKERWEB.
  * SPDX-License-Identifier: GPL-2.0-or-later
@@ -30,7 +29,7 @@ require_once TFFC_DIR . 'includes/class-modules.php';
 require_once TFFC_DIR . 'includes/class-admin.php';
 require_once TFFC_DIR . 'includes/class-update.php';
 add_action( 'init', [ \Deckerweb\ToolsForFluentCart\Update::class, 'register' ], 5 );
-add_action( 'admin_menu', [ \Deckerweb\ToolsForFluentCart\Admin::class, 'menu' ] );
+add_action( 'admin_menu', [ \Deckerweb\ToolsForFluentCart\Admin::class, 'menu' ], 100 );
 add_action( 'admin_enqueue_scripts', [ \Deckerweb\ToolsForFluentCart\Admin::class, 'assets' ] );
 
 add_filter( 'plugin_action_links_' . plugin_basename( TFFC_FILE ), [ \Deckerweb\ToolsForFluentCart\Admin::class, 'action_links' ] );

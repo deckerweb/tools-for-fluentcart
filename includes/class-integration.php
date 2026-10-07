@@ -22,7 +22,8 @@ final class Integration {
 	public static function boot(): void {
 		// Integration is verified against 1.7.x. Unknown minor versions require a new adapter audit.
 		if ( ! defined( 'FLUENTCART_VERSION' ) || version_compare( FLUENTCART_VERSION, '1.7.0', '<' ) || version_compare( FLUENTCART_VERSION, '1.8.0', '>=' ) || ! class_exists( '\FluentCart\App\Models\Cart' ) ) {
-			add_action( 'admin_notices', [ self::class, 'notice' ] ); return;
+			add_action( 'admin_notices', [ self::class, 'notice' ] );
+			add_action( 'network_admin_notices', [ self::class, 'notice' ] ); return;
 		}
 		if ( class_exists( '\FCSIC_Single_Item_Cart', false ) || class_exists( '\Einbuchgratis_FluentCart', false ) ) {
 			add_action( 'admin_notices', [ self::class, 'legacy_notice' ] ); return;
@@ -54,7 +55,7 @@ final class Integration {
 	 * @return void
 	 */
 	public static function notice(): void {
-		if ( current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Tools for FluentCart is inactive. This build supports FluentCart 1.7.x; activate a supported version before enabling rules.', 'tools-for-fluentcart' ) . '</p></div>'; }
+		if ( current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
 	}
 
 	/**

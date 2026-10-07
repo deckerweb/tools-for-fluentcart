@@ -1,6 +1,6 @@
 # Dokumentation
 
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart zuerst aktivieren. Einstellungen → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet.
+Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.
 
 ## Genau ein Artikel
 

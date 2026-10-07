@@ -6,7 +6,7 @@ for lang,d in src.items():
  labels=['Kurzvorstellung','Auf einen Blick','Installation','Funktionen','FAQ','Änderungsverlauf','Projekt','Sicherheit und Unterstützung','Lizenz'] if de else ['About','At a Glance','Installation','Features','FAQ','Changelog','Project','Security and support','License']
  anchors=['about','glance','installation','features','faq','changelog','project','security','license']
  text='# Tools for FluentCart\n\n'+('[English]('+other+')' if de else '[Deutsch]('+other+')')+'\n\n'
- text+='![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-'+lang+'.png)\n\n'
+ text+='![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-'+lang+'.png?v=20261007-centered)\n\n'
  text+=f'<a id="about"></a>\n\n## {labels[0]}\n\n'+d['about']+'\n\n'
  text+='Version **0.9.0** · WordPress **7.1.2+** · PHP **8.2+** · FluentCart **1.7.x**\n\n'
  text+=('[Dokumentation](docs/DOCUMENTATION-de.md) · [FAQ](docs/FAQ-de.md)' if de else '[Documentation](docs/DOCUMENTATION.md) · [FAQ](docs/FAQ.md)')+'\n\n'
@@ -50,11 +50,11 @@ base='https://github.com/deckerweb/tools-for-fluentcart'
 page='---\nlayout: default\n---\n\n# Tools for FluentCart\n\n'
 for lang,d in src.items():
  de=lang=='de';slogan='Dein Shop. Fein abgestimmt.' if de else 'Fine-tune your store.'
- banner=f'https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-{lang}.png'
+ banner=f'https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-{lang}.png?v=20261007-centered'
  welcome='# Tools for FluentCart\n\n![Tools for FluentCart]('+banner+')\n\n**'+slogan+'**\n\n'+d['about']+'\n\n'+'\n'.join('- '+x for x in d['glance'])+'\n\n'
  welcome+=('[English](Home)\n\n[Readme](README-de) · [Dokumentation](Dokumentation) · [Fragen nach Themen](Fragen-nach-Themen) · [Änderungsverlauf](Aenderungsverlauf)' if de else '[Deutsch](Home-de)\n\n[Readme](README) · [Documentation](Documentation) · [FAQ by topic](FAQ-by-topic) · [Changelog](Changelog)')+'\n'
  (wiki/('Home-de.md' if de else 'Home.md')).write_text(welcome)
- page+=('## Deutsch' if de else '## English')+'\n\n![Tools for FluentCart](assets-github/banner-github-'+lang+'.png)\n\n**'+slogan+'**\n\n'+d['about']+'\n\n'
+ page+=('## Deutsch' if de else '## English')+'\n\n![Tools for FluentCart](assets-github/banner-github-'+lang+'.png?v=20261007-centered)\n\n**'+slogan+'**\n\n'+d['about']+'\n\n'
  page+=('Version 0.9.0 wird getestet. Noch kein Release veröffentlicht.' if de else 'Version 0.9.0 is being tested. No release has been published yet.')+'\n\n[Repository]('+base+') · ['+('Dokumentation' if de else 'Documentation')+']('+base+'/wiki/'+('Dokumentation' if de else 'Documentation')+')\n\n'
  # Group full FAQ by use case without changing the seven readme questions.
  full=('# Fragen nach Themen' if de else '# FAQ by topic')+'\n\n'+('[English](FAQ.md)' if de else '[Deutsch](FAQ-de.md)')+'\n\n'

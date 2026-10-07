@@ -2,7 +2,7 @@
 
 [English](README)
 
-![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-de.png)
+![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-de.png?v=20261007-centered)
 
 <a id="about"></a>
 
@@ -34,7 +34,7 @@ Version **0.9.0** · WordPress **7.1.2+** · PHP **8.2+** · FluentCart **1.7.x*
 
 ## Installation
 
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart zuerst aktivieren. Einstellungen → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet.
+Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.
 
 <a id="features"></a>
 
@@ -86,7 +86,7 @@ Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeins
 
 ### Welche Versionen und Integrationen werden unterstützt?
 
-Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen.
+Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen. Tools kann ohne FluentCart aktiviert werden; das Modul bleibt bis zur Aktivierung einer unterstützten Version pausiert.
 
 ### Was passiert bei der Deinstallation?
 

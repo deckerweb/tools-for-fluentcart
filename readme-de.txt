@@ -24,7 +24,7 @@ Der eingebettete deckerweb Updater prüft öffentliche GitHub-Releases im WordPr
 
 == Installation ==
 
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart zuerst aktivieren. Einstellungen → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet.
+Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.
 
 == Frequently Asked Questions ==
 
@@ -44,7 +44,7 @@ Nein. Die Regeln gelten für jeden Warenkorb, ohne Kundenhistorie oder Kontolimi
 Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln.
 
 = Welche Versionen und Integrationen werden unterstützt? =
-Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen.
+Diese Entwicklungsversion ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen. Tools kann ohne FluentCart aktiviert werden; das Modul bleibt bis zur Aktivierung einer unterstützten Version pausiert.
 
 = Was passiert bei der Deinstallation? =
 Einstellungen bleiben standardmäßig erhalten. Jede Website kann das Löschen ihrer Cart-Rules-Einstellungen erlauben. Temporäre Updater- und Library-Caches werden im jeweiligen Geltungsbereich bereinigt; Library-Daten erst beim letzten Host. FluentCart-Produkte, Bestellungen und Warenkörbe werden niemals gelöscht.
