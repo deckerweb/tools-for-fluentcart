@@ -12,9 +12,9 @@ layout: default
 
 Practical tools for your FluentCart shop. The Cart Rules module provides single-item carts, minimum quantities and merchandise value, maximum quantities, and quantity steps.
 
-Version 0.9.0 is being tested. No release has been published yet.
+Version 0.9.0 is available.
 
-[Repository](https://github.com/deckerweb/tools-for-fluentcart) · [Documentation](https://github.com/deckerweb/tools-for-fluentcart/wiki/Documentation)
+[Repository](https://github.com/deckerweb/tools-for-fluentcart) · [Documentation](https://github.com/deckerweb/tools-for-fluentcart/wiki/Documentation) · [Download 0.9.0](https://github.com/deckerweb/tools-for-fluentcart/releases/download/v0.9.0/tools-for-fluentcart-0.9.0.zip)
 
 ## Deutsch
 
@@ -24,9 +24,9 @@ Version 0.9.0 is being tested. No release has been published yet.
 
 Praktische Werkzeuge für deinen FluentCart-Shop. Das Modul Cart Rules bietet Ein-Artikel-Warenkörbe, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritte.
 
-Version 0.9.0 wird getestet. Noch kein Release veröffentlicht.
+Version 0.9.0 ist veröffentlicht.
 
-[Repository](https://github.com/deckerweb/tools-for-fluentcart) · [Dokumentation](https://github.com/deckerweb/tools-for-fluentcart/wiki/Dokumentation)
+[Repository](https://github.com/deckerweb/tools-for-fluentcart) · [Dokumentation](https://github.com/deckerweb/tools-for-fluentcart/wiki/Dokumentation) · [Download 0.9.0](https://github.com/deckerweb/tools-for-fluentcart/releases/download/v0.9.0/tools-for-fluentcart-0.9.0.zip)
 
 ## Support · Unterstützung
 

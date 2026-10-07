@@ -59,7 +59,7 @@ for lang,d in src.items():
  welcome+=('[English](Home)\n\n[Readme](README-de) · [Dokumentation](Dokumentation) · [Fragen nach Themen](Fragen-nach-Themen) · [Änderungsverlauf](Aenderungsverlauf)' if de else '[Deutsch](Home-de)\n\n[Readme](README) · [Documentation](Documentation) · [FAQ by topic](FAQ-by-topic) · [Changelog](Changelog)')+'\n'
  (wiki/('Home-de.md' if de else 'Home.md')).write_text(welcome)
  page+=('## Deutsch' if de else '## English')+'\n\n![Tools for FluentCart](assets-github/banner-github-'+lang+'.png?v=20261007-centered)\n\n**'+slogan+'**\n\n'+d['about']+'\n\n'
- page+=('Version 0.9.0 wird getestet. Noch kein Release veröffentlicht.' if de else 'Version 0.9.0 is being tested. No release has been published yet.')+'\n\n[Repository]('+base+') · ['+('Dokumentation' if de else 'Documentation')+']('+base+'/wiki/'+('Dokumentation' if de else 'Documentation')+')\n\n'
+ page+=('Version 0.9.0 ist veröffentlicht.' if de else 'Version 0.9.0 is available.')+'\n\n[Repository]('+base+') · ['+('Dokumentation' if de else 'Documentation')+']('+base+'/wiki/'+('Dokumentation' if de else 'Documentation')+') · [Download 0.9.0]('+base+'/releases/download/v0.9.0/tools-for-fluentcart-0.9.0.zip)\n\n'
  # Group full FAQ by use case without changing the seven readme questions.
  full=('# Fragen nach Themen' if de else '# FAQ by topic')+'\n\n'+('[English](FAQ.md)' if de else '[Deutsch](FAQ-de.md)')+'\n\n'
  for heading,indices in [('Einrichtung und Alltag' if de else 'Setup and everyday use',[0,1]),('Produkte und Grenzen' if de else 'Products and limits',[2,3]),('Verwaltung und Kompatibilität' if de else 'Administration and compatibility',[4,5,6])]:
