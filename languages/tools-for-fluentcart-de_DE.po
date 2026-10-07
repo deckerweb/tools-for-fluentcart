@@ -82,6 +82,10 @@ msgstr "Deaktiviere das bisherige FluentCart Cart Rules und die älteren Ein-Art
 msgid "Delete this website’s Cart Rules settings when uninstalling"
 msgstr "Cart-Rules-Einstellungen dieser Website bei der Deinstallation löschen"
 
+#: includes/history.php
+msgid "Development and test versions; not publicly released."
+msgstr "Entwicklungs- und Testversionen; nicht öffentlich veröffentlicht."
+
 #: includes/class-admin.php
 msgid "Documentation"
 msgstr "Dokumentation"

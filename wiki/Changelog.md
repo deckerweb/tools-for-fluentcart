@@ -1,5 +1,9 @@
 # Changelog
 
-## 0.9.0 · 2026-10-07
+### 0.9.0 · 2026-10-07
 
 - New: Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.
+
+### 0.1.0–0.8.0
+
+- **Misc:** Development and test versions; not publicly released.

@@ -82,6 +82,10 @@ msgstr ""
 msgid "Delete this website’s Cart Rules settings when uninstalling"
 msgstr ""
 
+#: includes/history.php
+msgid "Development and test versions; not publicly released."
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Documentation"
 msgstr ""

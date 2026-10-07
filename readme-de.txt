@@ -56,6 +56,9 @@ Vollständige Fragen nach Themen: docs/FAQ-de.md
 = 0.9.0 · 2026-10-07 =
 * Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.
 
+= 0.1.0–0.8.0 =
+* Sonstiges: Entwicklungs- und Testversionen; nicht öffentlich veröffentlicht.
+
 == License ==
 
 Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 0.7.0 und deckerweb Updater 2.1.0 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.

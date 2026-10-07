@@ -102,6 +102,10 @@ Settings are retained by default. Each website can opt to delete only its Cart R
 
 - **New:** Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.
 
+### 0.1.0–0.8.0
+
+- **Misc:** Development and test versions; not publicly released.
+
 <a id="project"></a>
 
 ## Project

@@ -70,7 +70,8 @@
     "changelog": "New: Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.",
     "author": "Developed by David Decker – DECKERWEB. Part of the Tools series. Cart Rules is the first module.",
     "support": "Questions and ordinary bugs: repository Issues. Confidential reports: Security. Support: https://ko-fi.com/deckerweb, https://buymeacoffee.com/daveshine, https://paypal.me/deckerweb.",
-    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 0.7.0 and deckerweb Updater 2.1.0 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin."
+    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 0.7.0 and deckerweb Updater 2.1.0 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin.",
+    "development_history": "Misc: Development and test versions; not publicly released."
   },
   "de": {
     "about": "Praktische Werkzeuge für deinen FluentCart-Shop. Das Modul Cart Rules bietet Ein-Artikel-Warenkörbe, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritte.",
@@ -143,6 +144,7 @@
     "changelog": "Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.",
     "author": "Entwicklung und Herausgabe: David Decker – DECKERWEB. Teil der Tools-Serie. Cart Rules ist das erste Modul.",
     "support": "Fragen und normale Fehler: Issues im Repository. Vertrauliche Meldungen: Security. Unterstützung: https://ko-fi.com/deckerweb, https://buymeacoffee.com/daveshine, https://paypal.me/deckerweb.",
-    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 0.7.0 und deckerweb Updater 2.1.0 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus."
+    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 0.7.0 und deckerweb Updater 2.1.0 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.",
+    "development_history": "Sonstiges: Entwicklungs- und Testversionen; nicht öffentlich veröffentlicht."
   }
 }

@@ -89,6 +89,8 @@ final class Admin {
 		$s = Settings::get();
 		$presets = [ 'custom' => __( 'Custom rules', 'tools-for-fluentcart' ), 'single' => __( 'One item only', 'tools-for-fluentcart' ), 'minimum' => __( 'Minimum quantity', 'tools-for-fluentcart' ), 'value' => __( 'Minimum order value', 'tools-for-fluentcart' ), 'maximum' => __( 'Quantity limits', 'tools-for-fluentcart' ), 'steps' => __( 'Quantity steps', 'tools-for-fluentcart' ) ];
 		echo '<div class="wrap tffc-admin"><header class="tffc-header"><img class="tffc-mark" src="' . esc_url( plugins_url( 'assets/brand/icon.svg', TFFC_FILE ) ) . '" width="64" height="64" alt=""><div><h1>Tools for FluentCart</h1><p>' . esc_html__( 'Fine-tune your store.', 'tools-for-fluentcart' ) . '</p></div></header>';
+		// WordPress moves standard notices after this marker, outside the complete header.
+		echo '<div id="tffc-notices" class="tffc-notices"><hr class="wp-header-end"></div>';
 		echo '<form action="options.php" method="post" id="tffc-form">'; settings_fields( 'tffc' );
 		echo '<section class="tffc-card"><h2>' . esc_html__( 'Cart Rules', 'tools-for-fluentcart' ) . '</h2>';
 		self::checkbox( 'enabled', __( 'Enable cart rules', 'tools-for-fluentcart' ), $s['enabled'] );
@@ -144,7 +146,11 @@ final class Admin {
 		$history = require TFFC_DIR . 'includes/history.php';
 		$categories = [ 'New' => __( 'New:', 'tools-for-fluentcart' ), 'Improved' => __( 'Improved:', 'tools-for-fluentcart' ), 'Fixed' => __( 'Fixed:', 'tools-for-fluentcart' ), 'Misc' => __( 'Misc:', 'tools-for-fluentcart' ) ];
 		foreach ( array_slice( $history, 0, 7 ) as $release ) {
-			echo '<section class="tffc-release"><header><h3>' . esc_html( $release['version'] ) . '</h3><time datetime="' . esc_attr( $release['date'] ) . '">' . esc_html( wp_date( get_option( 'date_format' ), strtotime( $release['date'] . ' 12:00:00 UTC' ) ) ) . '</time></header>';
+			echo '<section class="tffc-release"><header><h3>' . esc_html( $release['version'] ) . '</h3>';
+			if ( ! empty( $release['date'] ) ) {
+				echo '<time datetime="' . esc_attr( $release['date'] ) . '">' . esc_html( wp_date( get_option( 'date_format' ), strtotime( $release['date'] . ' 12:00:00 UTC' ) ) ) . '</time>';
+			}
+			echo '</header>';
 			foreach ( $categories as $category => $label ) {
 				$entries = $release['changes'][ $category ] ?? [];
 				if ( ! $entries ) { continue; }

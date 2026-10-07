@@ -56,6 +56,9 @@ Full FAQ by topic: docs/FAQ.md
 = 0.9.0 · 2026-10-07 =
 * New: Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.
 
+= 0.1.0–0.8.0 =
+* Misc: Development and test versions; not publicly released.
+
 == License ==
 
 Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 0.7.0 and deckerweb Updater 2.1.0 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin.
