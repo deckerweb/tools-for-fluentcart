@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#271032"/><stop offset="1" stop-color="#44204f"/></linearGradient></defs><rect width="1280" height="640" fill="url(#bg)"/><rect x="-100" y="-140" width="430" height="430" rx="85" transform="rotate(35 100 100)" fill="#643477" opacity=".2"/><rect x="1080" y="490" width="310" height="310" rx="72" transform="rotate(35 1200 600)" fill="#74418a" opacity=".2"/><g transform="translate(92 180) scale(1.05)"><g><path d="M0 22Q0 0 22 0H80Q102 0 102 22V70L70 102H22Q0 102 0 80Z" fill="#ff797b"/><path d="M116 22Q116 0 138 0H196Q218 0 218 22V80Q218 102 196 102H148L116 70Z" fill="#b09afa"/><path d="M0 138Q0 116 22 116H70L102 148V196Q102 218 80 218H22Q0 218 0 196Z" fill="#b09afa"/><path d="M116 148L148 116H196Q218 116 218 138V196Q218 218 196 218H138Q116 218 116 196Z" fill="#ff797b"/></g></g><g font-family="Arial,sans-serif"><text x="400" y="238" font-size="61" font-weight="700" fill="#fff">Tools for</text><text x="400" y="324" font-size="82" font-weight="700" fill="#ff797b">FluentCart</text><text x="400" y="400" font-size="35" fill="#ddd0ec">Dein Shop. Fein abgestimmt.</text><text x="400" y="540" font-size="23" letter-spacing="3" fill="#cbb6dc">deckerweb</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+<defs>
+ <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30133d"/><stop offset=".56" stop-color="#2c1038"/><stop offset="1" stop-color="#361441"/></linearGradient>
+ <linearGradient id="coral" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff8d87"/><stop offset=".55" stop-color="#ff7e79"/><stop offset="1" stop-color="#ff7779"/></linearGradient>
+ <linearGradient id="lavender" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b799f5"/><stop offset=".6" stop-color="#a78bee"/><stop offset="1" stop-color="#b498f5"/></linearGradient>
+ <clipPath id="panel"><rect width="1280" height="640" rx="27"/></clipPath>
+</defs>
+<g clip-path="url(#panel)">
+ <rect width="1280" height="640" fill="url(#background)"/>
+ <rect x="-119" y="-98" width="335" height="335" rx="55" transform="rotate(39 48 75)" fill="#623274" opacity=".34"/>
+ <rect x="1134" y="-120" width="277" height="277" rx="53" transform="rotate(39 1235 36)" fill="none" stroke="#9251c6" stroke-width="3" opacity=".88"/>
+ <rect x="-144" y="470" width="335" height="335" rx="53" transform="rotate(39 15 625)" fill="none" stroke="#794699" stroke-width="3" opacity=".83"/>
+ <rect x="1081" y="470" width="335" height="335" rx="53" transform="rotate(39 1230 625)" fill="#603473" opacity=".45"/>
+</g>
+<rect x=".5" y=".5" width="1279" height="639" rx="27" fill="none" stroke="#906099" stroke-opacity=".23"/>
+<g transform="translate(530.0 92) scale(1.0091743119266054)">
+ <path d="M0 22Q0 0 22 0H80Q102 0 102 22V70L70 102H22Q0 102 0 80Z" fill="url(#coral)"/>
+ <path d="M116 22Q116 0 138 0H196Q218 0 218 22V80Q218 102 196 102H148L116 70Z" fill="url(#lavender)"/>
+ <path d="M0 138Q0 116 22 116H70L102 148V196Q102 218 80 218H22Q0 218 0 196Z" fill="url(#lavender)"/>
+ <path d="M116 148L148 116H196Q218 116 218 138V196Q218 218 196 218H138Q116 218 116 196Z" fill="url(#coral)"/>
+</g>
+<g text-anchor="middle" font-family="Avenir Next,Avenir,Arial,sans-serif">
+ <text x="640.0" y="407" font-size="86" font-weight="700" fill="#faf7fc">Tools for <tspan fill="url(#coral)">FluentCart</tspan></text>
+ <text x="640.0" y="485" font-size="45" font-weight="400" fill="#c9b4d7">Dein Shop. Fein abgestimmt.</text>
+ <path d="M445.0 581h81 M754.0 581h81" stroke="#8b60a6" stroke-width="1.5"/>
+ <text x="640.0" y="590" font-size="25" letter-spacing="3.5" fill="#b49bc5">deckerweb</text>
+</g>
+</svg>
