@@ -8,8 +8,13 @@ admin_check(get_plugin_data(TFFC_FILE,false,false)['RequiresPlugins']==='','Nati
 admin_check(validate_plugin_requirements($key)===true,'Core activation requirements accept the host');
 $old_menu=$GLOBALS['menu']??[];$old_submenu=$GLOBALS['submenu']??[];
 $GLOBALS['admin_page_hooks']['fluent-cart']='fluentcart';
-$GLOBALS['menu']=[['FluentCart','manage_options','fluent-cart']];$GLOBALS['submenu']=[];
+$GLOBALS['menu']=[['FluentCart','manage_options','fluent-cart']];
+$native=['dashboard'=>['Dashboard','manage_options','admin.php?page=fluent-cart#/'],'orders'=>['Orders','manage_options','admin.php?page=fluent-cart#/orders'],'settings'=>['Settings','manage_options','admin.php?page=fluent-cart#/settings'],'logs'=>['Logs','manage_options','admin.php?page=fluent-cart#/logs']];
+$GLOBALS['submenu']=['fluent-cart'=>$native];
 Admin::menu();
+$ordered=$GLOBALS['submenu']['fluent-cart'];
+admin_check(end($ordered)[2]==='tools-for-fluentcart','Tools is last after FluentCart named submenu entries');
+$without=$ordered;unset($without['tffc_tools']);admin_check($without===$native,'FluentCart submenu order and named keys remain intact');
 admin_check(in_array('tools-for-fluentcart',array_column($GLOBALS['submenu']['fluent-cart']??[],2),true),'Registered settings page is under FluentCart');
 admin_check(str_contains(Admin::settings_url(),'/wp-admin/admin.php?page=tools-for-fluentcart'),'Settings URL uses the shop parent');
 $links=Admin::action_links(['deactivate'=>'Deactivate']);admin_check(str_contains($links['settings'],'admin.php?page=tools-for-fluentcart'),'Plugin action link uses shop settings');

@@ -32,12 +32,28 @@ final class Admin {
 	}
 
 	/**
-	 * Add a site-scoped page; no separate network settings are introduced.
+	 * Add a site-scoped page and append it after the native shop entries.
+	 * Preserve FluentCart submenu keys and order; no network settings are introduced.
 	 *
 	 * @return void
 	 */
 	public static function menu(): void {
-		self::$screen = (string) add_submenu_page( self::parent_slug(), 'Tools for FluentCart', 'Tools for FluentCart', 'manage_options', 'tools-for-fluentcart', [ self::class, 'render' ] );
+		global $submenu;
+		$parent = self::parent_slug();
+		$existing = $submenu[ $parent ] ?? null;
+		self::$screen = (string) add_submenu_page( $parent, 'Tools for FluentCart', 'Tools for FluentCart', 'manage_options', 'tools-for-fluentcart', [ self::class, 'render' ] );
+		if ( 'fluent-cart' === $parent && is_array( $existing ) && '' !== self::$screen ) {
+			// Core sorts numeric keys before FluentCart's named keys. Restore the
+			// existing order and keys, then append only this plugin's registered row.
+			foreach ( $submenu[ $parent ] as $item ) {
+				if ( 'tools-for-fluentcart' === ( $item[2] ?? '' ) ) {
+					unset( $existing['tffc_tools'] );
+					$existing['tffc_tools'] = $item;
+					$submenu[ $parent ] = $existing;
+					break;
+				}
+			}
+		}
 	}
 
 	/**

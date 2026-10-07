@@ -70,5 +70,5 @@
   "Settings": "Einstellungen",
   "Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart.": "Deaktiviere das bisherige FluentCart Cart Rules und die älteren Ein-Artikel-Add-ons, bevor du Tools for FluentCart verwendest.",
   "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.": "Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.",
-  "Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin.": "Warenkorb-Regeln sind pausiert. Installiere und aktiviere FluentCart 1.7.x, um das Modul zu verwenden. Tools for FluentCart bleibt im Admin verfügbar."
+  "Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin.": "Tools for FluentCart benötigt eine aktive FluentCart-Installation der Version 1.7.x. Bis dahin ist das Modul Warenkorb-Regeln pausiert; die Plugin-Einstellungen bleiben im Admin erreichbar."
 }

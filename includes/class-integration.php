@@ -55,7 +55,7 @@ final class Integration {
 	 * @return void
 	 */
 	public static function notice(): void {
-		if ( current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
+		if ( current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
 	}
 
 	/**

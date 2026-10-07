@@ -8,7 +8,7 @@ for p in root.rglob('*.php'):
 dictionary=json.loads((Path(__file__).resolve().parent/'translations.json').read_text())
 assert set(source)==set(dictionary),(set(source)-set(dictionary),set(dictionary)-set(source))
 formal={
-'Cart Rules is paused. Install and activate FluentCart 1.7.x to use this module. Tools for FluentCart remains available in the admin.':'Warenkorb-Regeln sind pausiert. Installieren und aktivieren Sie FluentCart 1.7.x, um das Modul zu verwenden. Tools for FluentCart bleibt im Admin verfügbar.',
+'Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin.':'Tools for FluentCart benötigt eine aktive FluentCart-Installation der Version 1.7.x. Bis dahin ist das Modul Warenkorb-Regeln pausiert; die Plugin-Einstellungen bleiben im Admin erreichbar.',
 
 'Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart.':'Deaktivieren Sie das bisherige FluentCart Cart Rules und die älteren Ein-Artikel-Add-ons, bevor Sie Tools for FluentCart verwenden.',
 'Order rules for your FluentCart shop.':'Bestellregeln für Ihren FluentCart-Shop.',
