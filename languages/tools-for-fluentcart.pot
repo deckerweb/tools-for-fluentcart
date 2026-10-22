@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Tools for FluentCart 0.9.0\nLanguage: \nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+msgstr "Project-Id-Version: Tools for FluentCart 0.9.1\nLanguage: \nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: includes/class-rules.php
 #, php-format
@@ -35,6 +35,10 @@ msgstr ""
 
 #: includes/class-admin.php
 msgid "Cart Rules"
+msgstr ""
+
+#: includes/class-settings.php
+msgid "Cart Rules settings cannot be changed while the module is paused. Saved rules have been preserved."
 msgstr ""
 
 #: includes/history.php
@@ -86,6 +90,10 @@ msgstr ""
 msgid "Development and test versions; not publicly released."
 msgstr ""
 
+#: includes/updater-translations.php
+msgid "Dismiss this notice"
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Documentation"
 msgstr ""
@@ -111,6 +119,10 @@ msgid "Fixed:"
 msgstr ""
 
 #: includes/updater-translations.php
+msgid "Git Updater is active. If a deckerweb installation or update fails, temporarily deactivate Git Updater and retry. Reactivate it afterwards if other plugins or themes need it. Only leave it disabled when those extensions have another reliable update provider."
+msgstr ""
+
+#: includes/updater-translations.php
 msgid "GitHub release does not contain the plugin main file."
 msgstr ""
 
@@ -128,6 +140,10 @@ msgstr ""
 
 #: includes/updater-translations.php
 msgid "Invalid authentication provider."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "Manage installed plugins"
 msgstr ""
 
 #: includes/class-integration.php
@@ -211,6 +227,10 @@ msgstr ""
 msgid "Order value uses the shop currency and merchandise amounts after discounts, excluding shipping and fees. Tax treatment follows FluentCart product pricing. Customers may build their cart freely; checkout explains and blocks unmet rules."
 msgstr ""
 
+#: includes/updater-translations.php
+msgid "Permission denied."
+msgstr ""
+
 #: includes/class-rules.php
 msgid "Please check the quantities in your cart."
 msgstr ""
@@ -229,6 +249,10 @@ msgstr ""
 
 #: includes/class-admin.php
 msgid "Product variations count separately. A bundle counts as one cart row. Locked payment carts are preserved and checked at checkout. Test subscriptions, bundles and order bumps with your chosen rules before live use."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "Public catalog callbacks require both providers and cannot be used in private mode."
 msgstr ""
 
 #: includes/class-admin.php
@@ -273,6 +297,14 @@ msgid "Start with a preset"
 msgstr ""
 
 #: includes/updater-translations.php
+msgid "The approved release changed. Refresh updates first."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The approved release could not be verified."
+msgstr ""
+
+#: includes/updater-translations.php
 msgid "The plugin must be installed in a stable slug directory."
 msgstr ""
 
@@ -294,6 +326,10 @@ msgstr ""
 
 #: includes/class-integration.php
 msgid "Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin."
+msgstr ""
+
+#: includes/history.php
+msgid "Updated shared Library and updater integration; protected paused rule settings and improved admin notices, save confirmations and changelog dialog reliability."
 msgstr ""
 
 #: includes/class-rules.php

@@ -3,3 +3,8 @@
 .tffc-improved{background:#e8f0fa;color:#224c79;border-color:#becfe3}.tffc-fixed{background:#fff5e5;color:#765013;border-color:#e5cfac}.tffc-misc{background:#f0edf7;color:#51436f;border-color:#cfc6df}
 
 .tffc-notices .wp-header-end{border:0;margin:0;padding:0;height:0}.tffc-notices>.notice,.tffc-notices>.updated,.tffc-notices>.error{margin:0 0 16px}
+
+#tffc-rule-fields { margin: 0; padding: 0; border: 0; min-width: 0; }
+
+#tffc-history[hidden], #tffc-history:not([open]) { display: none !important; }
+#tffc-history[open]:not([hidden]) { display: block !important; }

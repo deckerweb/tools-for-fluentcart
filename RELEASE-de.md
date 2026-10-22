@@ -1,7 +1,7 @@
-# Tools for FluentCart 0.9.0
+# Tools for FluentCart 0.9.1
 
-- **Neu:** Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritten.
+- **Verbessert:** Gemeinsame Library und Update-Anbindung aktualisiert; pausierte Regelfelder geschützt sowie Admin-Hinweise, Speicherbestätigungen und Änderungsverlauf-Dialog verbessert.
 
-Das Release-Asset `tools-for-fluentcart-0.9.0.zip` über WordPress installieren. **FluentCart → Tools for FluentCart** öffnen. Die Regeln sind zunächst ausgeschaltet und werden je Website eingerichtet.
+Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü. Während das Modul pausiert ist, bleiben gespeicherte Regeln sichtbar und sind schreibgeschützt; auch direkte Speicheranfragen können sie nicht ändern. Die unabhängige Einstellung zur Datenlöschung bleibt bedienbar.
 
-Voraussetzungen: WordPress ab 7.1.2 und PHP ab 8.2. Der Cart-Rules-Adapter unterstützt FluentCart 1.7.x und wurde mit 1.7.0 getestet. Ohne unterstütztes FluentCart bleibt das Modul pausiert; die Einstellungen sind dann unter den WordPress-Einstellungen erreichbar.
+**Bekannte Einschränkung im Mutter-Plugin:** Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.

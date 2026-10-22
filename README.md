@@ -10,7 +10,7 @@
 
 Practical tools for your FluentCart shop. The Cart Rules module provides single-item carts, minimum quantities and merchandise value, maximum quantities, and quantity steps.
 
-Version **0.9.0** · WordPress **7.1.2+** · PHP **8.2+** · FluentCart **1.7.x**
+Version **0.9.1** · WordPress **7.1.2+** · PHP **8.2+** · FluentCart **1.7.x**
 
 [Documentation](docs/DOCUMENTATION.md) · [FAQ](docs/FAQ.md)
 
@@ -34,7 +34,7 @@ Version **0.9.0** · WordPress **7.1.2+** · PHP **8.2+** · FluentCart **1.7.x*
 
 ## Installation
 
-Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location.
+Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location. While the module is paused, saved rules remain visible and read-only; direct save requests cannot change them. The independent uninstall preference remains available.
 
 <a id="features"></a>
 
@@ -82,7 +82,7 @@ No. Rules apply to each cart, without customer history or account limits.
 
 ### Does it work in Multisite?
 
-Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled.
+Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled. Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it.
 
 ### Which versions and integrations are supported?
 
@@ -97,6 +97,10 @@ Settings are retained by default. Each website can opt to delete only its Cart R
 <a id="changelog"></a>
 
 ## Changelog
+
+### 0.9.1 · 2026-10-22
+
+- **Improved:** Updated shared Library and updater integration; protected paused rule settings and improved admin notices, save confirmations and changelog dialog reliability.
 
 ### 0.9.0 · 2026-10-07
 
@@ -124,5 +128,5 @@ Questions and ordinary bugs: repository Issues. Confidential reports: Security. 
 
 ## License
 
-Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 0.7.0 and deckerweb Updater 2.1.0 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin.
+Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 1.1.0 and deckerweb Updater 2.2.1 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin.
 

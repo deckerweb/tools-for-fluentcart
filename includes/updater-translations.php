@@ -1,15 +1,16 @@
 <?php
 /**
- * Translate shared updater messages through the host textdomain.
+ * Resolve shared updater messages in the host textdomain.
  *
  * @package ToolsForFluentCart
+ * @copyright 2026 David Decker – DECKERWEB
+ * @license GPL-2.0-or-later
  */
 defined( 'ABSPATH' ) || exit;
 /**
- * Return a translated message without changing the shared engine.
- *
- * @param string $message Original engine message.
- * @return string Localized message, or unchanged unknown input.
+ * Resolve an updater source string in the host textdomain.
+ * @param string $message English updater message.
+ * @return string Translated host message, or original source text.
  */
 return static function ( string $message ): string {
     // Literal calls let the host's normal translation extractor collect every source string.
@@ -36,6 +37,20 @@ return static function ( string $message ): string {
             return __( 'Could not prepare the GitHub release package.', 'tools-for-fluentcart' );
         case 'See the release on GitHub.':
             return __( 'See the release on GitHub.', 'tools-for-fluentcart' );
+        case 'Git Updater is active. If a deckerweb installation or update fails, temporarily deactivate Git Updater and retry. Reactivate it afterwards if other plugins or themes need it. Only leave it disabled when those extensions have another reliable update provider.':
+            return __( 'Git Updater is active. If a deckerweb installation or update fails, temporarily deactivate Git Updater and retry. Reactivate it afterwards if other plugins or themes need it. Only leave it disabled when those extensions have another reliable update provider.', 'tools-for-fluentcart' );
+        case 'Manage installed plugins':
+            return __( 'Manage installed plugins', 'tools-for-fluentcart' );
+        case 'Dismiss this notice':
+            return __( 'Dismiss this notice', 'tools-for-fluentcart' );
+        case 'Permission denied.':
+            return __( 'Permission denied.', 'tools-for-fluentcart' );
+        case 'Public catalog callbacks require both providers and cannot be used in private mode.':
+            return __( 'Public catalog callbacks require both providers and cannot be used in private mode.', 'tools-for-fluentcart' );
+        case 'The approved release could not be verified.':
+            return __( 'The approved release could not be verified.', 'tools-for-fluentcart' );
+        case 'The approved release changed. Refresh updates first.':
+            return __( 'The approved release changed. Refresh updates first.', 'tools-for-fluentcart' );
         default:
             return $message;
     }

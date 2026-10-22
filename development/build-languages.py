@@ -22,9 +22,10 @@ formal={
 'The private update could not be authorized. Check the repository credentials and refresh updates.':'Das private Update konnte nicht autorisiert werden. Bitte prüfen Sie die Repository-Zugangsdaten und suchen Sie erneut nach Updates.',
 'The private update download failed. Check credentials and try again.':'Der Download des privaten Updates ist fehlgeschlagen. Bitte prüfen Sie die Zugangsdaten und versuchen Sie es erneut.'
 }
+formal.update(json.loads((Path(__file__).resolve().parent/'updater-formal.json').read_text()))
 def quote(s):return json.dumps(s,ensure_ascii=False)
 def makepo(lang,values):
- header=f'Project-Id-Version: Tools for FluentCart 0.9.0\nLanguage: {lang}\nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n'
+ header=f'Project-Id-Version: Tools for FluentCart 0.9.1\nLanguage: {lang}\nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n'
  text='msgid ""\nmsgstr '+quote(header)+'\n\n'
  for s in sorted(source):
   text+='#: '+ ' '.join(sorted(set(source[s])))+'\n'

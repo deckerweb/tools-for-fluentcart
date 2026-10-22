@@ -1,5 +1,9 @@
 # Änderungsverlauf
 
+### 0.9.1 · 2026-10-22
+
+- **Verbessert:** Gemeinsame Library und Update-Anbindung aktualisiert; pausierte Regelfelder geschützt sowie Admin-Hinweise, Speicherbestätigungen und Änderungsverlauf-Dialog verbessert.
+
 ### 0.9.0 · 2026-10-07
 
 - Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.

@@ -2,13 +2,13 @@
 Contributors: deckerweb
 Tags: fluentcart, cart, order, quantity
 Requires at least: 7.1.2
-Tested up to: 7.1.2
+Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Praktische Werkzeuge für deinen FluentCart-Shop. Das Modul Cart Rules bietet Ein-Artikel-Warenkörbe, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritte.
+Warenkorb-Regeln für FluentCart: einzelne Artikel, Mindestmengen und Bestellwerte, Mengenlimits und Mengenschritte.
 
 == Description ==
 
@@ -24,7 +24,7 @@ Der eingebettete deckerweb Updater prüft öffentliche GitHub-Releases im WordPr
 
 == Installation ==
 
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.
+Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü. Während das Modul pausiert ist, bleiben gespeicherte Regeln sichtbar und sind schreibgeschützt; auch direkte Speicheranfragen können sie nicht ändern. Die unabhängige Einstellung zur Datenlöschung bleibt bedienbar.
 
 == Frequently Asked Questions ==
 
@@ -41,7 +41,7 @@ Jede Produktvariante zählt einzeln. Ein Bundle zählt als eine Warenkorbpositio
 Nein. Die Regeln gelten für jeden Warenkorb, ohne Kundenhistorie oder Kontolimits.
 
 = Funktioniert das in Multisite? =
-Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln.
+Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln. Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.
 
 = Welche Versionen und Integrationen werden unterstützt? =
 Dieses Plugin ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen. Tools kann ohne FluentCart aktiviert werden; das Modul bleibt bis zur Aktivierung einer unterstützten Version pausiert.
@@ -53,6 +53,9 @@ Vollständige Fragen nach Themen: docs/FAQ-de.md
 
 == Changelog ==
 
+= 0.9.1 · 2026-10-22 =
+* Verbessert: Gemeinsame Library und Update-Anbindung aktualisiert; pausierte Regelfelder geschützt sowie Admin-Hinweise, Speicherbestätigungen und Änderungsverlauf-Dialog verbessert.
+
 = 0.9.0 · 2026-10-07 =
 * Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.
 
@@ -61,4 +64,4 @@ Vollständige Fragen nach Themen: docs/FAQ-de.md
 
 == License ==
 
-Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 0.7.0 und deckerweb Updater 2.1.0 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.
+Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 1.1.0 und deckerweb Updater 2.2.1 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.

@@ -1,6 +1,6 @@
 # Dokumentation
 
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.
+Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü. Während das Modul pausiert ist, bleiben gespeicherte Regeln sichtbar und sind schreibgeschützt; auch direkte Speicheranfragen können sie nicht ändern. Die unabhängige Einstellung zur Datenlöschung bleibt bedienbar.
 
 ## Genau ein Artikel
 
@@ -27,3 +27,7 @@ Keine eigenen öffentlichen Hooks oder REST-Endpunkte. Diese Version nutzt Fluen
 Gespeichert wird eine Website-Option: tffc_cart_rules. Keine Kundendaten, zusätzlichen Datenbanktabellen, Analyse oder Tracking. Keine Cart-Rules-Hintergrundaufgaben. Gemeinsame Library-Einstellungen und Caches haben ihren dokumentierten Website-/Netzwerk-Geltungsbereich. Deaktivierung erhält Einstellungen. Automatische Ein-Artikel-Ersetzungen werden durch Deaktivierung nicht rückgängig gemacht.
 
 Der eingebettete deckerweb Updater prüft öffentliche GitHub-Releases im WordPress-Updateablauf. GitHub erhält dabei die Netzwerkadresse der Installation und gewöhnliche HTTP-Metadaten; keine Zugangsdaten oder Kundenwarenkörbe. Der freiwillige gemeinsame Library-Onlinekatalog ist zunächst ausgeschaltet. Nach Aktivierung lädt er freigegebene öffentliche Metadaten von raw.githubusercontent.com. Gestaltung und Übersetzungen werden lokal ausgeliefert.
+
+## Bekannte Einschränkung im Mutter-Plugin
+
+Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.

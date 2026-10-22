@@ -1,6 +1,6 @@
 # Documentation
 
-Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location.
+Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location. While the module is paused, saved rules remain visible and read-only; direct save requests cannot change them. The independent uninstall preference remains available.
 
 ## One item only
 
@@ -27,3 +27,7 @@ No custom public hooks or REST endpoints are introduced. This build uses FluentC
 Stores one site option: tffc_cart_rules. No customer data, extra database tables, analytics or tracking. No Cart Rules background tasks. Shared Library settings and caches belong to their documented website/network scope. Deactivation retains settings. Automatic single-item replacements cannot be undone by deactivation.
 
 The embedded deckerweb Updater checks public GitHub releases in the WordPress update flow. Requests reveal the installation’s network address and ordinary HTTP metadata to GitHub; no credentials or customer cart contents are sent. The optional shared Library online catalog is initially off. Enabling it retrieves approved public metadata from raw.githubusercontent.com. Local styling and translations require no external assets.
+
+## Known upstream limitation
+
+Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it.

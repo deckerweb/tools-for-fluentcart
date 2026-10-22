@@ -24,8 +24,10 @@ for lang,d in src.items():
  (root/'docs'/('changelog'+suffix+'.txt')).write_text('== Changelog ==\n\n= 0.9.0 · 2026-10-07 =\n* '+d['changelog']+'\n\n= 0.1.0–0.8.0 =\n* '+d['development_history']+'\n')
  (root/'docs'/('FAQ'+suffix+'.md')).write_text(('# Fragen nach Themen' if de else '# FAQ by topic')+'\n\n'+('[English](FAQ.md)' if de else '[Deutsch](FAQ-de.md)')+'\n\n'+('\n\n'.join('## '+q+'\n\n'+a for q,a in d['faq'])))
  (root/'docs'/('DATA'+suffix+'.md')).write_text(('# Daten und Datenschutz' if de else '# Data and privacy')+'\n\n'+('[English](DATA.md)' if de else '[Deutsch](DATA-de.md)')+'\n\n'+d['data']+'\n\n'+d['external'])
- (root/('SECURITY'+suffix+'.md')).write_text(('# Sicherheitsmeldungen' if de else '# Security reporting')+'\n\n'+('[English](SECURITY.md)' if de else '[Deutsch](SECURITY-de.md)')+'\n\n'+d['security']+'\n\n'+('Gemeinsame Komponenten: Library 0.7.0; Updater 2.1.0.' if de else 'Shared components: Library 0.7.0; Updater 2.1.0.'))
+ (root/('SECURITY'+suffix+'.md')).write_text(('# Sicherheitsmeldungen' if de else '# Security reporting')+'\n\n'+('[English](SECURITY.md)' if de else '[Deutsch](SECURITY-de.md)')+'\n\n'+d['security']+'\n\n'+('Gemeinsame Komponenten: Library 1.1.0; Updater 2.2.1.' if de else 'Shared components: Library 1.1.0; Updater 2.2.1.'))
  doc=('# Dokumentation' if de else '# Documentation')+'\n\n'+d['install']+'\n\n'+ '\n\n'.join('## '+h+'\n\n'+t for h,t in d['features'])+'\n\n'+d['hooks']+'\n\n'+d['data']+'\n\n'+d['external']+'\n'
+ (root/'docs'/('DOCUMENTATION'+suffix+'.md')).write_text(doc)
+ doc += '\n## ' + ('Bekannte Einschränkung im Mutter-Plugin' if de else 'Known upstream limitation') + '\n\n' + d['multisite_note'] + '\n'
  (root/'docs'/('DOCUMENTATION'+suffix+'.md')).write_text(doc)
  (wiki/('Dokumentation.md' if de else 'Documentation.md')).write_text(doc)
  (wiki/('Fragen-nach-Themen.md' if de else 'FAQ-by-topic.md')).write_text((root/'docs'/('FAQ'+suffix+'.md')).read_text().replace('(FAQ.md)','(FAQ-by-topic)').replace('(FAQ-de.md)','(Fragen-nach-Themen)'))
@@ -59,7 +61,8 @@ for lang,d in src.items():
  welcome+=('[English](Home)\n\n[Readme](README-de) · [Dokumentation](Dokumentation) · [Fragen nach Themen](Fragen-nach-Themen) · [Änderungsverlauf](Aenderungsverlauf)' if de else '[Deutsch](Home-de)\n\n[Readme](README) · [Documentation](Documentation) · [FAQ by topic](FAQ-by-topic) · [Changelog](Changelog)')+'\n'
  (wiki/('Home-de.md' if de else 'Home.md')).write_text(welcome)
  page+=('## Deutsch' if de else '## English')+'\n\n![Tools for FluentCart](assets-github/banner-github-'+lang+'.png?v=20261007-centered)\n\n**'+slogan+'**\n\n'+d['about']+'\n\n'
- page+=('Version 0.9.0 ist veröffentlicht.' if de else 'Version 0.9.0 is available.')+'\n\n[Repository]('+base+') · ['+('Dokumentation' if de else 'Documentation')+']('+base+'/wiki/'+('Dokumentation' if de else 'Documentation')+') · [Download 0.9.0]('+base+'/releases/download/v0.9.0/tools-for-fluentcart-0.9.0.zip)\n\n'
+ page+=('Version 0.9.1 ist veröffentlicht.' if de else 'Version 0.9.1 is available.')+'\n\n[Repository]('+base+') · ['+('Dokumentation' if de else 'Documentation')+']('+base+'/wiki/'+('Dokumentation' if de else 'Documentation')+') · [Download 0.9.1]('+base+'/releases/download/v0.9.1/tools-for-fluentcart-0.9.1.zip)\n\n'
+ page+='\n'+d['multisite_note']+'\n\n'
  # Group full FAQ by use case without changing the seven readme questions.
  full=('# Fragen nach Themen' if de else '# FAQ by topic')+'\n\n'+('[English](FAQ.md)' if de else '[Deutsch](FAQ-de.md)')+'\n\n'
  for heading,indices in [('Einrichtung und Alltag' if de else 'Setup and everyday use',[0,1]),('Produkte und Grenzen' if de else 'Products and limits',[2,3]),('Verwaltung und Kompatibilität' if de else 'Administration and compatibility',[4,5,6])]:
@@ -71,3 +74,42 @@ for lang,d in src.items():
 page+='## Support · Unterstützung\n\n[Ko-fi](https://ko-fi.com/deckerweb) · [Buy Me a Coffee](https://buymeacoffee.com/daveshine) · [PayPal](https://paypal.me/deckerweb)\n'
 (root/'index.md').write_text(page)
 (wiki/'_Sidebar.md').write_text('**English**\n\n[Home](Home) · [Readme](README)\n\n- [Documentation](Documentation)\n- [FAQ by topic](FAQ-by-topic)\n- [Changelog](Changelog)\n\n**Deutsch**\n\n[Startseite](Home-de) · [Readme](README-de)\n\n- [Dokumentation](Dokumentation)\n- [Fragen nach Themen](Fragen-nach-Themen)\n- [Änderungsverlauf](Aenderungsverlauf)\n')
+
+# Maintenance overlay: preserve the public 0.9.0 and development history.
+maintenance = {
+ 'en': 'Updated shared Library and updater integration; protected paused rule settings and improved admin notices, save confirmations and changelog dialog reliability.',
+ 'de': 'Gemeinsame Library und Update-Anbindung aktualisiert; pausierte Regelfelder geschützt sowie Admin-Hinweise, Speicherbestätigungen und Änderungsverlauf-Dialog verbessert.'
+}
+for lang in ['en', 'de']:
+ suffix = '-de' if lang == 'de' else ''
+ prefix = 'Verbessert' if lang == 'de' else 'Improved'
+ paths = [root / ('README' + suffix + '.md'), root / ('readme' + suffix + '.txt'), root / 'docs' / ('changelog' + suffix + '.txt'), wiki / ('Aenderungsverlauf.md' if lang == 'de' else 'Changelog.md'), wiki / ('README' + suffix + '.md')]
+ for path in paths:
+  text = path.read_text().replace('Version **0.9.0**', 'Version **0.9.1**').replace('Stable tag: 0.9.0', 'Stable tag: 0.9.1').replace('Tested up to: 7.1.2', 'Tested up to: 7.1')
+  text = text.replace('### 0.9.0 · 2026-10-07', '### 0.9.1 · 2026-10-22\n\n- **' + prefix + ':** ' + maintenance[lang] + '\n\n### 0.9.0 · 2026-10-07')
+  text = text.replace('= 0.9.0 · 2026-10-07 =', '= 0.9.1 · 2026-10-22 =\n* ' + prefix + ': ' + maintenance[lang] + '\n\n= 0.9.0 · 2026-10-07 =')
+  if path.suffix == '.txt' and path.name.startswith('readme'):
+   text = text.replace(src[lang]['about'], ('Warenkorb-Regeln für FluentCart: einzelne Artikel, Mindestmengen und Bestellwerte, Mengenlimits und Mengenschritte.' if lang == 'de' else 'Cart Rules for FluentCart: single-item carts, minimum quantities and order values, quantity limits and steps.'), 1)
+  path.write_text(text)
+ release = '# Tools for FluentCart 0.9.1\n\n- **' + prefix + ':** ' + maintenance[lang] + '\n\n' + src[lang]['install'] + '\n'
+ release += '\n**' + ('Bekannte Einschränkung im Mutter-Plugin' if lang == 'de' else 'Known upstream limitation') + ':** ' + src[lang]['multisite_note'] + '\n'
+ (root / ('RELEASE-de.md' if lang == 'de' else 'RELEASE-en.md')).write_text(release)
+# Real release/download links on Pages retain the latest published version until publication.
+entry = maintenance['en'].replace("'", "\\'")
+history_path = root / 'includes/history.php'
+history_path.write_text(history_path.read_text().replace("return [", "return [ [ 'version' => '0.9.1', 'date' => '2026-10-22', 'changes' => [ 'Improved' => [ __( '" + entry + "', 'tools-for-fluentcart' ) ] ] ],", 1))
+
+def template(name, values):
+ text = (Path(__file__).parent / 'wiki-templates' / name).read_text()
+ import re
+ text = re.sub(r'<!--.*?-->\s*', '', text, flags=re.S)
+ for key, value in values.items(): text = text.replace('{{' + key + '}}', value)
+ assert '{{' not in text
+ return text
+base = 'https://github.com/deckerweb/tools-for-fluentcart'
+sidebar = template('_Sidebar.md', {
+ 'WIKI_HOME_EN': 'Home', 'GETTING_STARTED_EN': 'README#installation', 'USER_GUIDE_EN': 'Documentation', 'FAQ_EN': 'FAQ-by-topic', 'CHANGELOG_EN': 'Changelog', 'HELP_SECURITY_EN': base + '/blob/main/SECURITY.md',
+ 'WIKI_HOME_DE': 'Home-de', 'GETTING_STARTED_DE': 'README-de#installation', 'USER_GUIDE_DE': 'Dokumentation', 'FAQ_DE': 'Fragen-nach-Themen', 'CHANGELOG_DE': 'Aenderungsverlauf', 'HELP_SECURITY_DE': base + '/blob/main/SECURITY-de.md'
+}).replace('[Changelog](Aenderungsverlauf)', '[Änderungsverlauf](Aenderungsverlauf)')
+(wiki / '_Sidebar.md').write_text(sidebar)
+(wiki / '_Footer.md').write_text(template('_Footer.md', {'PLUGIN_NAME': 'Tools for FluentCart', 'WIKI_HOME': base + '/wiki', 'REPOSITORY': base, 'RELEASES': base + '/releases', 'ISSUES': base + '/issues', 'DISCUSSIONS': base + '/discussions', 'SECURITY_POLICY': base + '/security/policy', 'COPYRIGHT_YEARS': '2026'}))

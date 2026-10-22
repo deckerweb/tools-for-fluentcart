@@ -1,5 +1,11 @@
 <?php
-/** Site-scoped configuration and localization. @package ToolsForFluentCart */
+/**
+ * Site-scoped configuration and localization.
+ *
+ * @package ToolsForFluentCart
+ * @copyright 2026 David Decker – DECKERWEB
+ * @license GPL-2.0-or-later
+ */
 namespace Deckerweb\ToolsForFluentCart;
 defined( 'ABSPATH' ) || exit;
 
@@ -46,6 +52,24 @@ final class Settings {
 	public static function sanitize( $input ): array {
 		$old = self::get();
 		if ( ! current_user_can( 'manage_options' ) || ! is_array( $input ) ) { return $old; }
+		// Dependency checks precede the double-sanitization shortcut: a paused
+		// module must never accept rule changes, including forged form submissions.
+		if ( ! Integration::available() ) {
+			$rule_keys = array_diff( array_keys( Rules::defaults() ), [ 'delete_data' ] );
+			$changed_rules = false;
+			foreach ( $rule_keys as $key ) {
+				if ( array_key_exists( $key, $input ) && $input[ $key ] !== $old[ $key ] ) {
+					$changed_rules = true;
+					break;
+				}
+			}
+			if ( $changed_rules ) {
+				add_settings_error( self::OPTION, 'rules_paused', __( 'Cart Rules settings cannot be changed while the module is paused. Saved rules have been preserved.', 'tools-for-fluentcart' ), 'error' );
+			}
+			// Uninstall preferences do not depend on the shop integration.
+			$old['delete_data'] = isset( $input['delete_data'] ) && is_scalar( $input['delete_data'] ) && in_array( $input['delete_data'], [ true, 1, '1' ], true );
+			return $old;
+		}
 		if ( self::$last_output !== null && $input === self::$last_output ) { return $input; }
 		$new = Rules::defaults(); $errors = [];
 		foreach ( [ 'enabled', 'single', 'delete_data' ] as $key ) { $new[ $key ] = isset( $input[ $key ] ) && is_scalar( $input[ $key ] ) && '1' === (string) $input[ $key ]; }

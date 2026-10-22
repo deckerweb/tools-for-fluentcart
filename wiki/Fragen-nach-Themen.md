@@ -26,7 +26,7 @@ Nein. Die Regeln gelten für jeden Warenkorb, ohne Kundenhistorie oder Kontolimi
 
 ### Funktioniert das in Multisite?
 
-Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln.
+Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln. Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.
 
 ### Welche Versionen und Integrationen werden unterstützt?
 

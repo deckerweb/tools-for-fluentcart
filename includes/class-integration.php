@@ -1,5 +1,11 @@
 <?php
-/** FluentCart adapter for cart constraints. @package ToolsForFluentCart */
+/**
+ * FluentCart adapter for cart constraints.
+ *
+ * @package ToolsForFluentCart
+ * @copyright 2026 David Decker – DECKERWEB
+ * @license GPL-2.0-or-later
+ */
 namespace Deckerweb\ToolsForFluentCart;
 defined( 'ABSPATH' ) || exit;
 
@@ -50,12 +56,23 @@ final class Integration {
 	public static function available(): bool { return self::$active; }
 
 	/**
+	 * Keep dependency guidance on the plugin list and this host's settings page.
+	 *
+	 * @return bool Whether this screen is relevant and the user may manage settings.
+	 */
+	private static function notice_allowed(): bool {
+		if ( ! current_user_can( 'manage_options' ) ) { return false; }
+		$screen = get_current_screen();
+		return $screen && ( in_array( $screen->id, [ 'plugins', 'plugins-network' ], true ) || str_ends_with( $screen->id, '_page_tools-for-fluentcart' ) );
+	}
+
+	/**
 	 * Explain missing or unverified dependencies to authorized administrators.
 	 *
 	 * @return void
 	 */
 	public static function notice(): void {
-		if ( current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
+		if ( self::notice_allowed() ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
 	}
 
 	/**
@@ -64,7 +81,7 @@ final class Integration {
 	 * @return void
 	 */
 	public static function legacy_notice(): void {
-		if ( current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart.', 'tools-for-fluentcart' ) . '</p></div>'; }
+		if ( self::notice_allowed() ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart.', 'tools-for-fluentcart' ) . '</p></div>'; }
 	}
 
 	/**
@@ -217,12 +234,30 @@ final class Integration {
 	public static function line_hint( array $data ): void {
 		$s = Settings::get(); if ( ! $s['enabled'] || $s['single'] ) { return; }
 		$parts = [];
-		if ( $s['min_total'] ) { $parts[] = sprintf( __( 'Minimum cart quantity: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['min_total'] ) ); }
-		if ( $s['min_item'] ) { $parts[] = sprintf( __( 'Minimum per product: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['min_item'] ) ); }
-		if ( $s['max_total'] ) { $parts[] = sprintf( __( 'Maximum cart quantity: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['max_total'] ) ); }
-		if ( $s['max_item'] ) { $parts[] = sprintf( __( 'Maximum per product: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['max_item'] ) ); }
-		if ( $s['step'] > 1 ) { $parts[] = sprintf( __( 'Quantity step per product: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['step'] ) ); }
-		if ( $s['min_value'] ) { $parts[] = sprintf( __( 'Minimum merchandise value: %s.', 'tools-for-fluentcart' ), wp_strip_all_tags( \FluentCart\Api\CurrencySettings::getFormattedPrice( $s['min_value'] ) ) ); }
+		if ( $s['min_total'] ) {
+			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
+			$parts[] = sprintf( __( 'Minimum cart quantity: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['min_total'] ) );
+		}
+		if ( $s['min_item'] ) {
+			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
+			$parts[] = sprintf( __( 'Minimum per product: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['min_item'] ) );
+		}
+		if ( $s['max_total'] ) {
+			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
+			$parts[] = sprintf( __( 'Maximum cart quantity: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['max_total'] ) );
+		}
+		if ( $s['max_item'] ) {
+			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
+			$parts[] = sprintf( __( 'Maximum per product: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['max_item'] ) );
+		}
+		if ( $s['step'] > 1 ) {
+			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
+			$parts[] = sprintf( __( 'Quantity step per product: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['step'] ) );
+		}
+		if ( $s['min_value'] ) {
+			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
+			$parts[] = sprintf( __( 'Minimum merchandise value: %s.', 'tools-for-fluentcart' ), wp_strip_all_tags( \FluentCart\Api\CurrencySettings::getFormattedPrice( $s['min_value'] ) ) );
+		}
 		if ( $parts ) { echo '<small class="tffc-line-rules">' . esc_html( implode( ' ', $parts ) ) . '</small>'; }
 	}
 
@@ -248,7 +283,8 @@ final class Integration {
 			if ( str_contains( $handle, 'fluent-cart' ) || str_contains( $handle, 'fluentcart' ) ) {
 				wp_enqueue_style( 'tffc-shop', plugins_url( 'assets/shop.css', TFFC_FILE ), [], TFFC_VERSION );
 				if ( self::single() ) { wp_add_inline_style( 'tffc-shop', '[data-fluent-cart-product-quantity-container],.fct-product-quantity-container,[data-fluent-cart-cart-list-item-quantity-wrapper],.fct-cart-item-quantity{display:none!important}' ); }
-				wp_print_styles( 'tffc-shop' ); break;
+				// Core prints late enqueued styles in its native footer pipeline.
+				break;
 			}
 		}
 	}

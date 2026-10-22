@@ -26,5 +26,16 @@ admin_check(in_array('tools-for-fluentcart',array_column($GLOBALS['submenu']['op
 admin_check(str_contains(Admin::settings_url(),'/wp-admin/options-general.php?page=tools-for-fluentcart'),'Fallback URL stays inside native admin');
 $hook=get_plugin_page_hookname('tools-for-fluentcart','options-general.php');Admin::assets($hook);
 admin_check(wp_style_is('tffc-admin','enqueued')&&wp_script_is('tffc-admin','enqueued'),'Fallback submenu loads local editor assets');
+$saved_errors=$GLOBALS['wp_settings_errors']??[];
+$GLOBALS['wp_settings_errors']=[];
+add_settings_error('general','settings_updated','Settings saved.','success');
+$GLOBALS['menu']=[['FluentCart','manage_options','fluent-cart']];
+ob_start();Admin::render();$shop_html=ob_get_clean();
+admin_check(substr_count($shop_html,'setting-error-settings_updated')===1,'Shop submenu prints the native save confirmation exactly once');
+admin_check(strpos($shop_html,'</header>')<strpos($shop_html,'setting-error-settings_updated'),'Save confirmation stays outside title and slogan');
+$GLOBALS['menu']=[];
+ob_start();require ABSPATH.'wp-admin/options-head.php';Admin::render();$fallback_html=ob_get_clean();
+admin_check(substr_count($fallback_html,'setting-error-settings_updated')===1,'Settings fallback keeps Core confirmation without duplication');
+$GLOBALS['wp_settings_errors']=$saved_errors;
 $GLOBALS['menu']=$old_menu;$GLOBALS['submenu']=$old_submenu;
 echo 'TOTAL '.$GLOBALS['tffc_admin_checks']." checks\n";

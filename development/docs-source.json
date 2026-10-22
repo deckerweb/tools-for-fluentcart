@@ -10,7 +10,7 @@
       "Site-specific settings, including Multisite.",
       "English source, German informal and formal translations."
     ],
-    "install": "Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location.",
+    "install": "Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location. While the module is paused, saved rules remain visible and read-only; direct save requests cannot change them. The independent uninstall preference remains available.",
     "features": [
       [
         "One item only",
@@ -52,7 +52,7 @@
       ],
       [
         "Does it work in Multisite?",
-        "Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled."
+        "Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled. Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it."
       ],
       [
         "Which versions and integrations are supported?",
@@ -70,8 +70,9 @@
     "changelog": "New: Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps.",
     "author": "Developed by David Decker – DECKERWEB. Part of the Tools series. Cart Rules is the first module.",
     "support": "Questions and ordinary bugs: repository Issues. Confidential reports: Security. Support: https://ko-fi.com/deckerweb, https://buymeacoffee.com/daveshine, https://paypal.me/deckerweb.",
-    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 0.7.0 and deckerweb Updater 2.1.0 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin.",
-    "development_history": "Misc: Development and test versions; not publicly released."
+    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 or later; SPDX: GPL-2.0-or-later. Embedded deckerweb Plugin Library 1.1.0 and deckerweb Updater 2.2.1 are by the same author, GPL-2.0-or-later. Their stable runtime sources are copied unchanged; host adapters and translation catalogs are separate. No FluentCart implementation or premium code is distributed in this plugin.",
+    "development_history": "Misc: Development and test versions; not publicly released.",
+    "multisite_note": "Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it."
   },
   "de": {
     "about": "Praktische Werkzeuge für deinen FluentCart-Shop. Das Modul Cart Rules bietet Ein-Artikel-Warenkörbe, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritte.",
@@ -84,7 +85,7 @@
       "Einstellungen je Website, auch in Multisite.",
       "Englische Originaltexte, deutsche Du- und Sie-Übersetzungen."
     ],
-    "install": "Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü.",
+    "install": "Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü. Während das Modul pausiert ist, bleiben gespeicherte Regeln sichtbar und sind schreibgeschützt; auch direkte Speicheranfragen können sie nicht ändern. Die unabhängige Einstellung zur Datenlöschung bleibt bedienbar.",
     "features": [
       [
         "Genau ein Artikel",
@@ -126,7 +127,7 @@
       ],
       [
         "Funktioniert das in Multisite?",
-        "Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln."
+        "Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln. Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht."
       ],
       [
         "Welche Versionen und Integrationen werden unterstützt?",
@@ -144,7 +145,8 @@
     "changelog": "Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.",
     "author": "Entwicklung und Herausgabe: David Decker – DECKERWEB. Teil der Tools-Serie. Cart Rules ist das erste Modul.",
     "support": "Fragen und normale Fehler: Issues im Repository. Vertrauliche Meldungen: Security. Unterstützung: https://ko-fi.com/deckerweb, https://buymeacoffee.com/daveshine, https://paypal.me/deckerweb.",
-    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 0.7.0 und deckerweb Updater 2.1.0 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.",
-    "development_history": "Sonstiges: Entwicklungs- und Testversionen; nicht öffentlich veröffentlicht."
+    "license": "Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 1.1.0 und deckerweb Updater 2.2.1 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.",
+    "development_history": "Sonstiges: Entwicklungs- und Testversionen; nicht öffentlich veröffentlicht.",
+    "multisite_note": "Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht."
   }
 }

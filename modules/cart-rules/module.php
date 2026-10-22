@@ -1,5 +1,11 @@
 <?php
-/** Cart Rules module entry point. @package ToolsForFluentCart */
+/**
+ * Cart Rules module entry point.
+ *
+ * @package ToolsForFluentCart
+ * @copyright 2026 David Decker – DECKERWEB
+ * @license GPL-2.0-or-later
+ */
 defined( 'ABSPATH' ) || exit;
 require_once TFFC_DIR . 'includes/class-rules.php';
 require_once TFFC_DIR . 'includes/class-settings.php';

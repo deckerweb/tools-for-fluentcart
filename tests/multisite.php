@@ -5,7 +5,7 @@ $GLOBALS['tffc_ms_tests']=0;
 function ms_check($ok,$label){if(!$ok){throw new Exception($label);}++$GLOBALS['tffc_ms_tests'];echo "PASS $label\n";}
 ms_check(is_multisite() && is_plugin_active_for_network('tools-for-fluentcart/tools-for-fluentcart.php'),'Plugin network activated');
 $original=get_current_blog_id();$s=Rules::defaults();$s['enabled']=true;$s['min_total']=6;$s['delete_data']=true;update_option(Settings::OPTION,$s);
-$id=wpmu_create_blog('127.0.0.1:8894','/tffc-fixture/','Fixture',1);ms_check(!is_wp_error($id),'New multisite site created');
+$id=wpmu_create_blog('127.0.0.1:18994','/tffc-fixture/','Fixture',1);ms_check(!is_wp_error($id),'New multisite site created');
 switch_to_blog($id);ms_check(!Settings::get()['enabled'],'New site starts with disabled rules');$s=Rules::defaults();$s['enabled']=true;$s['max_total']=5;update_option(Settings::OPTION,$s);restore_current_blog();
 ms_check(Settings::get()['min_total']===6 && Settings::get()['max_total']===0,'Site settings remain isolated');
 // An independent installed host must preserve shared component settings.

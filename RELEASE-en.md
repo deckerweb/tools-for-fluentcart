@@ -1,7 +1,7 @@
-# Tools for FluentCart 0.9.0
+# Tools for FluentCart 0.9.1
 
-- **New:** Cart Rules with single-item carts, minimum quantities and merchandise value, maximum quantities, and quantity steps.
+- **Improved:** Updated shared Library and updater integration; protected paused rule settings and improved admin notices, save confirmations and changelog dialog reliability.
 
-Install the `tools-for-fluentcart-0.9.0.zip` asset through WordPress. Open **FluentCart → Tools for FluentCart**. Rules start disabled and are configured separately for each website.
+Upload the installable ZIP under Plugins → Add Plugin → Upload Plugin. Open FluentCart → Tools for FluentCart, choose a preset, review the values, save and enable rules. Both older single-item add-ons must be deactivated. Rules are disabled on a fresh installation. Without FluentCart, Cart Rules stays paused and a notice appears inside the admin. Tools settings are then under Settings → Tools for FluentCart. Installing and activating FluentCart restores the shop-menu location. While the module is paused, saved rules remain visible and read-only; direct save requests cannot change them. The independent uninstall preference remains available.
 
-Requires WordPress 7.1.2+ and PHP 8.2+. The Cart Rules adapter supports FluentCart 1.7.x and was tested with 1.7.0. Without supported FluentCart, the module stays paused and settings remain accessible under WordPress Settings.
+**Known upstream limitation:** Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it.

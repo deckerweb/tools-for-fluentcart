@@ -1,5 +1,11 @@
 <?php
-/** Shared updater host adapter and package identity guard. @package ToolsForFluentCart */
+/**
+ * Shared updater host adapter and package identity guard.
+ *
+ * @package ToolsForFluentCart
+ * @copyright 2026 David Decker – DECKERWEB
+ * @license GPL-2.0-or-later
+ */
 namespace Deckerweb\ToolsForFluentCart;
 defined( 'ABSPATH' ) || exit;
 
@@ -14,9 +20,7 @@ final class Update {
 	 */
 	public static function register(): void {
 		if ( ! is_admin() && ! wp_doing_cron() && ! ( defined( 'WP_CLI' ) && WP_CLI ) ) { return; }
-		$class = '\\Deckerweb\\GitHubReleaseUpdater\\V2\\Updater';
-		if ( ! class_exists( $class ) ) { require_once TFFC_DIR . 'includes/deckerweb-github-release-updater-v2.php'; }
-		if ( ! defined( $class . '::SUPPORTS_HOST_TRANSLATIONS' ) ) { return; }
+		$class = require TFFC_DIR . 'includes/deckerweb-github-release-updater-v2.php';
 		$translator = require TFFC_DIR . 'includes/updater-translations.php';
 		$updater = new $class( TFFC_FILE, self::REPOSITORY, 'Tools for FluentCart', __( 'Order rules for your FluentCart shop.', 'tools-for-fluentcart' ), [], [ 'translate' => $translator ] );
 		$updater->register();

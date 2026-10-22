@@ -26,7 +26,7 @@ No. Rules apply to each cart, without customer history or account limits.
 
 ### Does it work in Multisite?
 
-Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled.
+Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled. Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it.
 
 ### Which versions and integrations are supported?
 
