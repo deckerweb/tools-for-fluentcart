@@ -1,33 +1,80 @@
-# Dokumentation
+# Tools for FluentCart: Anleitung für Shopbetreiber
 
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü. Während das Modul pausiert ist, bleiben gespeicherte Regeln sichtbar und sind schreibgeschützt; auch direkte Speicheranfragen können sie nicht ändern. Die unabhängige Einstellung zur Datenlöschung bleibt bedienbar.
+[English](Documentation) · [FAQ](Fragen-nach-Themen)
 
-## Genau ein Artikel
+Ein gezieltes Add-on für deinen FluentCart-Shop: Bestellungen mit Warenkorb-Regeln steuern, Produkte verständlich erklären, die Shopeinrichtung prüfen und Käufe bei Bedarf mit dem Katalogmodus pausieren. Jedes Modul ist optional und wird pro Website eingerichtet.
 
-Genau eine Produktvariante mit Menge 1. Ein neues Produkt ersetzt das bisherige. Vorhandene bearbeitbare Warenkörbe werden beim nächsten Laden auf ihre letzte Position reduziert. Entfernen bleibt möglich.
+## Erste Schritte
 
-## Mindestmengen
+1. Installiere und aktiviere FluentCart ab 1.7.0. Lade anschließend die Tools-for-FluentCart-ZIP unter Plugins → Plugin hinzufügen → Plugin hochladen hoch.
+2. Öffne FluentCart → Tools for FluentCart und beginne mit Warenkorb-Regeln oder einem anderen Modul. Alle neuen Module sind zunächst ausgeschaltet.
+3. Richte das Modul ein, speichere und prüfe Status und Shopansicht als Kunde. Beim Umschalten des Katalogmodus leere die Seitencaches.
+4. Fehlt FluentCart oder wird die Installation nicht unterstützt, erreichst du die Einstellungen unter Einstellungen → Tools for FluentCart. Abhängige Felder sind schreibgeschützt; Änderungen werden auch auf dem Server blockiert.
 
-Eine Mindestgesamtstückzahl und/oder eine Mindestmenge je Produktvariante festlegen. Verschiedene Produkte können gemeinsam die Mindestgesamtmenge erreichen.
+## Warenkorb-Regeln einrichten
 
-## Mindestbestellwert
+Öffne Warenkorb-Regeln, wähle ein Preset, passe die Grenzen an und speichere. Die Zusammenfassung beschreibt gespeicherte Werte, keine ungespeicherten Änderungen. Null schaltet eine Grenze aus; Mengenschritt 1 erlaubt jede ganze Menge. Ein Schritt von 6 erlaubt je Variante 6, 12, 18 usw. Der Mindestwarenwert gilt in Shop-Währung nach Rabatten, ohne Versand und Gebühren. Native Warenkorb-Währungskurse werden in FluentCart 2.x berücksichtigt.
 
-Es gilt die Shop-Währung. Gezählt wird der Warenwert nach Rabatten, ohne Versandkosten und Gebühren. Die Steuerbehandlung folgt den Produktpreisen in FluentCart. Ein Gratisprodukt erfüllt keinen positiven Mindestwert.
+![Warenkorb-Regeln einrichten](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/cart-rules-de.png)
 
-## Höchstmengen
+*Warenkorb-Regeln einrichten — Beispielansicht mit neutralen Shopdaten.*
 
-Die Gesamtstückzahl und/oder die Stückzahl je Produktvariante begrenzen. Kunden können ihren Warenkorb frei anpassen; ungültige Warenkörbe können nicht bestellt werden.
+## Regeln auf ausgewählte Produkte beschränken
 
-## Mengenschritte
+Trage unter Produktauswahl die WordPress-Produkt-IDs durch Kommas getrennt ein. Die gespeicherten Titel helfen bei der Kontrolle. Alle Varianten dieser Produkte zählen mit. Gesamtmenge und Warenwert berücksichtigen nur passende Positionen; andere Produkte erfüllen die Mindestgrenze nicht. Ohne ein ausgewähltes Produkt im Warenkorb greift keine solche Anforderung. Jede Variante zählt weiterhin einzeln. Eine leere Auswahl gilt für den gesamten Warenkorb. Der Ein-Artikel-Modus gilt immer für den ganzen Warenkorb und löscht beim Speichern andere Grenzen sowie die Auswahl.
 
-Jede ausgewählte Produktvariante muss eine durch den Mengenschritt teilbare Menge haben. Ein Schritt von 6 erlaubt 6, 12 oder 18, nicht 1, 7 oder 13. Grenzen werden gemeinsam geprüft, damit widersprüchliche Einstellungen nicht gespeichert werden können.
+## Eine Regel ohne Bestellung ausprobieren
 
-Keine eigenen öffentlichen Hooks oder REST-Endpunkte. Diese Version nutzt FluentCart-Hooks und Modellereignisse sowie die WordPress Settings API. Die FluentCart-Anbindung ist bewusst auf die geprüfte 1.7.x-Schnittstelle begrenzt.
+Verwende Gespeicherte Regeln ausprobieren mit einer Beispiel-Produkt-ID, Menge und dem gesamten Warenwert nach Rabatten. Der Test verwendet gespeicherte Einstellungen in Shop-Währung. Er erzeugt weder Warenkorb noch Bestellung und prüft nicht Lagerbestand, Steuern, Versand oder Zahlung. Ausgeschaltete Regeln oder Produkte außerhalb der Auswahl erzeugen keine Anforderung. Teste anschließend immer auch den echten Shopablauf.
 
-Gespeichert wird eine Website-Option: tffc_cart_rules. Keine Kundendaten, zusätzlichen Datenbanktabellen, Analyse oder Tracking. Keine Cart-Rules-Hintergrundaufgaben. Gemeinsame Library-Einstellungen und Caches haben ihren dokumentierten Website-/Netzwerk-Geltungsbereich. Deaktivierung erhält Einstellungen. Automatische Ein-Artikel-Ersetzungen werden durch Deaktivierung nicht rückgängig gemacht.
+![Eine Regel ohne Bestellung ausprobieren](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/rule-test-de.png)
 
-Der eingebettete deckerweb Updater prüft öffentliche GitHub-Releases im WordPress-Updateablauf. GitHub erhält dabei die Netzwerkadresse der Installation und gewöhnliche HTTP-Metadaten; keine Zugangsdaten oder Kundenwarenkörbe. Der freiwillige gemeinsame Library-Onlinekatalog ist zunächst ausgeschaltet. Nach Aktivierung lädt er freigegebene öffentliche Metadaten von raw.githubusercontent.com. Gestaltung und Übersetzungen werden lokal ausgeliefert.
+*Eine Regel ohne Bestellung ausprobieren — Beispielansicht mit neutralen Shopdaten.*
 
-## Bekannte Einschränkung im Mutter-Plugin
+## Hilfreiche Produkthinweise ergänzen
 
-Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.
+Aktiviere Produkthinweise. Trage einen kurzen Text ein, wähle Produkte oder lasse die Auswahl für alle leer. Wähle Nach dem Produktpreis, Nach der Produktbeschreibung oder Bei der Warenkorbposition. Nach dem Speichern erscheint eine weitere leere Zeile. Bis zu 20 Hinweise sind möglich. Zum Entfernen leerst du den Text und speicherst. Die Stellen nutzen native FluentCart-Ausgabehooks; in eigenen Layouts kannst du [tffc_product_note id="123"] gezielt platzieren. Der Shortcode zeigt alle passenden Hinweise für dieses veröffentlichte Produkt.
+
+![Hilfreiche Produkthinweise ergänzen](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/product-notes-de.png)
+
+*Hilfreiche Produkthinweise ergänzen — Beispielansicht mit neutralen Shopdaten.*
+
+## Die Shopeinrichtung prüfen
+
+Aktiviere die Shop-Prüfung und öffne ihren Reiter für aktuelle Ergebnisse. Erneut prüfen lädt den lokalen Bericht neu. Prüfen bedeutet Handlungsbedarf oder eine nötige manuelle Kontrolle; eine Seite muss deshalb nicht defekt sein. Builder-Inhalte können auch ohne gefundenen nativen Shortcode oder Block korrekt funktionieren. Die Prüfung bestellt nichts, testet keine Zahlungsanbieter und zertifiziert keine Rechtssicherheit.
+
+![Die Shopeinrichtung prüfen](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/store-checks-de.png)
+
+*Die Shopeinrichtung prüfen — Beispielansicht mit neutralen Shopdaten.*
+
+## Den Katalogmodus verwenden
+
+Ergänze optional eine Erklärung mit Kontakt-URL, speichere und aktiviere den Katalogmodus. Prüfe Produktseiten, Shoplisten und einen direkten Checkout-Link. Leere Seiten- und CDN-Caches beim Ein- und Ausschalten. Vorhandene Bestellungen und Produkte werden nicht gelöscht. Kontozugänge und automatische Verlängerungen verwaltet weiterhin FluentCart; das Modul pausiert keine Abos und storniert keine vorhandenen Bestellungen. Zahlungswege anderer Anbieter und zwischengespeicherte oder eigene Kaufwidgets müssen gesondert geprüft werden.
+
+![Den Katalogmodus verwenden](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/catalog-mode-de.png)
+
+*Den Katalogmodus verwenden — Beispielansicht mit neutralen Shopdaten.*
+
+## Einstellungen sicher übertragen
+
+Öffne Einstellungen übertragen → Einstellungen exportieren. Füge die JSON-Daten auf der Zielwebsite ein und öffne die Importvorschau. Prüfe die Werte und bestätige den Import. Nur aufgeführte Tools-Module werden ersetzt; die Module sind anschließend ausgeschaltet, Löschoptionen bleiben erhalten. Produkt-IDs gelten pro Website: vor dem Aktivieren prüfen. Produkte, Bestellungen, Kunden, Zahlungszugangsdaten, Library- und Updater-Einstellungen werden nicht kopiert. Die JSON-Grenze beträgt 256 KB.
+
+![Einstellungen sicher übertragen](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/transfer-de.png)
+
+*Einstellungen sicher übertragen — Beispielansicht mit neutralen Shopdaten.*
+
+## Gezielt zurücksetzen
+
+Öffne Dieses Modul zurücksetzen, bestätige das Kontrollkästchen und führe die Aktion aus. Nur dieses Modul erhält ausgeschaltete Standardwerte. Andere Module und Löschoptionen bleiben erhalten. Deaktivieren erhält alle Einstellungen. Auch Deinstallation erhält sie, sofern die Löschoption des jeweiligen Moduls auf dieser Website nicht aktiviert war. FluentCart-Produkte, Bestellungen, Warenkörbe und Kundendaten werden niemals gelöscht.
+
+## Multisite und Kompatibilität
+
+Tools speichert Einstellungen je Website, auch bei Netzwerkaktivierung. Es entsteht keine netzwerkweite Bestellregel. Neue Websites starten mit ausgeschalteten Standardwerten. Für FluentCart 1.7.0, 2.2.0 und 2.3.0 ist ein Scheduler-Timingfehler beim Erstellen neuer Multisite-Websites bestätigt; die Ursache liegt in FluentCart, nicht im Add-on. Das Add-on verändert das Mutter-Plugin nicht. Teste Abos, Bundles, Zusatzangebote und eigene Shopansichten mit den gewählten Regeln. Echte Zahlungen und sämtliche Pro-Integrationen sind nicht durch eine pauschale Kompatibilitätszusage abgedeckt.
+
+
+## Ergebnis im Shop
+
+![Produkthinweis auf einer nativen Produktseite](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/product-note-result-de.png)
+
+![Katalogansicht ohne Kaufbedienelemente](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/docs/screenshots/catalog-result-de.png)
+

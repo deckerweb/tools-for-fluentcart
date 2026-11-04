@@ -90,6 +90,9 @@ final class Settings {
 			foreach ( [ 'min_total', 'min_item', 'max_total', 'max_item', 'min_value' ] as $key ) { $new[ $key ] = 0; }
 			$new['step'] = 1;
 		}
+		if ( ! StoreTools::valid_ids( $input['product_ids'] ?? [] ) ) { $errors[] = __( 'Enter valid product IDs. Saved settings have been preserved.', 'tools-for-fluentcart' ); }
+		$new['product_ids'] = StoreTools::ids( $input['product_ids'] ?? [] );
+		if ( $new['single'] ) { $new['product_ids'] = []; }
 		$errors = array_merge( $errors, Rules::conflicts( $new ) );
 		if ( $errors ) {
 			add_settings_error( self::OPTION, 'invalid_rules', implode( ' ', array_unique( $errors ) ), 'error' );

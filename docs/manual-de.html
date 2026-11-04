@@ -1,0 +1,44 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tools for FluentCart · Anleitung für Shopbetreiber</title><style>body{font:17px/1.7 system-ui,sans-serif;color:#2e2138;background:#f4f1f7;margin:0}main{max-width:1000px;margin:auto;background:#fff;padding:40px}h1,h2{color:#392047;line-height:1.25}h2{border-top:1px solid #d4c9dd;padding-top:30px;margin-top:48px}a{color:#614181}img{max-width:100%;height:auto;border:1px solid #d4c9dd;border-radius:6px}header{background:#2d1439;color:#fff;padding:28px 40px}header a{color:#fff}footer{padding:28px 0;border-top:1px solid #d4c9dd}@media(max-width:700px){main{padding:20px}}@media print{body{background:#fff}main{padding:0}h2{break-after:avoid}img{max-height:650px;object-fit:contain}header{background:none;color:#2e2138}}</style></head><body><header><strong>Tools for FluentCart</strong> · 1.0.0<br>Ein Add-on für FluentCart · <a href="manual-en.html">English</a></header><main><h1>Tools for FluentCart: Anleitung für Shopbetreiber</h1>
+<p><a href="manual-en.html">English</a> · <a href="FAQ-de.md">FAQ</a></p>
+<p>Ein gezieltes Add-on für deinen FluentCart-Shop: Bestellungen mit Warenkorb-Regeln steuern, Produkte verständlich erklären, die Shopeinrichtung prüfen und Käufe bei Bedarf mit dem Katalogmodus pausieren. Jedes Modul ist optional und wird pro Website eingerichtet.</p>
+<h2>Erste Schritte</h2>
+<ol>
+<li>Installiere und aktiviere FluentCart ab 1.7.0. Lade anschließend die Tools-for-FluentCart-ZIP unter Plugins → Plugin hinzufügen → Plugin hochladen hoch.</li>
+<li>Öffne FluentCart → Tools for FluentCart und beginne mit Warenkorb-Regeln oder einem anderen Modul. Alle neuen Module sind zunächst ausgeschaltet.</li>
+<li>Richte das Modul ein, speichere und prüfe Status und Shopansicht als Kunde. Beim Umschalten des Katalogmodus leere die Seitencaches.</li>
+<li>Fehlt FluentCart oder wird die Installation nicht unterstützt, erreichst du die Einstellungen unter Einstellungen → Tools for FluentCart. Abhängige Felder sind schreibgeschützt; Änderungen werden auch auf dem Server blockiert.</li>
+</ol>
+<h2>Warenkorb-Regeln einrichten</h2>
+<p>Öffne Warenkorb-Regeln, wähle ein Preset, passe die Grenzen an und speichere. Die Zusammenfassung beschreibt gespeicherte Werte, keine ungespeicherten Änderungen. Null schaltet eine Grenze aus; Mengenschritt 1 erlaubt jede ganze Menge. Ein Schritt von 6 erlaubt je Variante 6, 12, 18 usw. Der Mindestwarenwert gilt in Shop-Währung nach Rabatten, ohne Versand und Gebühren. Native Warenkorb-Währungskurse werden in FluentCart 2.x berücksichtigt.</p>
+<p><img src="screenshots/cart-rules-de.png" alt="Warenkorb-Regeln einrichten"></p>
+<p><em>Warenkorb-Regeln einrichten — Beispielansicht mit neutralen Shopdaten.</em></p>
+<h2>Regeln auf ausgewählte Produkte beschränken</h2>
+<p>Trage unter Produktauswahl die WordPress-Produkt-IDs durch Kommas getrennt ein. Die gespeicherten Titel helfen bei der Kontrolle. Alle Varianten dieser Produkte zählen mit. Gesamtmenge und Warenwert berücksichtigen nur passende Positionen; andere Produkte erfüllen die Mindestgrenze nicht. Ohne ein ausgewähltes Produkt im Warenkorb greift keine solche Anforderung. Jede Variante zählt weiterhin einzeln. Eine leere Auswahl gilt für den gesamten Warenkorb. Der Ein-Artikel-Modus gilt immer für den ganzen Warenkorb und löscht beim Speichern andere Grenzen sowie die Auswahl.</p>
+<h2>Eine Regel ohne Bestellung ausprobieren</h2>
+<p>Verwende Gespeicherte Regeln ausprobieren mit einer Beispiel-Produkt-ID, Menge und dem gesamten Warenwert nach Rabatten. Der Test verwendet gespeicherte Einstellungen in Shop-Währung. Er erzeugt weder Warenkorb noch Bestellung und prüft nicht Lagerbestand, Steuern, Versand oder Zahlung. Ausgeschaltete Regeln oder Produkte außerhalb der Auswahl erzeugen keine Anforderung. Teste anschließend immer auch den echten Shopablauf.</p>
+<p><img src="screenshots/rule-test-de.png" alt="Eine Regel ohne Bestellung ausprobieren"></p>
+<p><em>Eine Regel ohne Bestellung ausprobieren — Beispielansicht mit neutralen Shopdaten.</em></p>
+<h2>Hilfreiche Produkthinweise ergänzen</h2>
+<p>Aktiviere Produkthinweise. Trage einen kurzen Text ein, wähle Produkte oder lasse die Auswahl für alle leer. Wähle Nach dem Produktpreis, Nach der Produktbeschreibung oder Bei der Warenkorbposition. Nach dem Speichern erscheint eine weitere leere Zeile. Bis zu 20 Hinweise sind möglich. Zum Entfernen leerst du den Text und speicherst. Die Stellen nutzen native FluentCart-Ausgabehooks; in eigenen Layouts kannst du [tffc_product_note id=&quot;123&quot;] gezielt platzieren. Der Shortcode zeigt alle passenden Hinweise für dieses veröffentlichte Produkt.</p>
+<p><img src="screenshots/product-notes-de.png" alt="Hilfreiche Produkthinweise ergänzen"></p>
+<p><em>Hilfreiche Produkthinweise ergänzen — Beispielansicht mit neutralen Shopdaten.</em></p>
+<h2>Die Shopeinrichtung prüfen</h2>
+<p>Aktiviere die Shop-Prüfung und öffne ihren Reiter für aktuelle Ergebnisse. Erneut prüfen lädt den lokalen Bericht neu. Prüfen bedeutet Handlungsbedarf oder eine nötige manuelle Kontrolle; eine Seite muss deshalb nicht defekt sein. Builder-Inhalte können auch ohne gefundenen nativen Shortcode oder Block korrekt funktionieren. Die Prüfung bestellt nichts, testet keine Zahlungsanbieter und zertifiziert keine Rechtssicherheit.</p>
+<p><img src="screenshots/store-checks-de.png" alt="Die Shopeinrichtung prüfen"></p>
+<p><em>Die Shopeinrichtung prüfen — Beispielansicht mit neutralen Shopdaten.</em></p>
+<h2>Den Katalogmodus verwenden</h2>
+<p>Ergänze optional eine Erklärung mit Kontakt-URL, speichere und aktiviere den Katalogmodus. Prüfe Produktseiten, Shoplisten und einen direkten Checkout-Link. Leere Seiten- und CDN-Caches beim Ein- und Ausschalten. Vorhandene Bestellungen und Produkte werden nicht gelöscht. Kontozugänge und automatische Verlängerungen verwaltet weiterhin FluentCart; das Modul pausiert keine Abos und storniert keine vorhandenen Bestellungen. Zahlungswege anderer Anbieter und zwischengespeicherte oder eigene Kaufwidgets müssen gesondert geprüft werden.</p>
+<p><img src="screenshots/catalog-mode-de.png" alt="Den Katalogmodus verwenden"></p>
+<p><em>Den Katalogmodus verwenden — Beispielansicht mit neutralen Shopdaten.</em></p>
+<h2>Einstellungen sicher übertragen</h2>
+<p>Öffne Einstellungen übertragen → Einstellungen exportieren. Füge die JSON-Daten auf der Zielwebsite ein und öffne die Importvorschau. Prüfe die Werte und bestätige den Import. Nur aufgeführte Tools-Module werden ersetzt; die Module sind anschließend ausgeschaltet, Löschoptionen bleiben erhalten. Produkt-IDs gelten pro Website: vor dem Aktivieren prüfen. Produkte, Bestellungen, Kunden, Zahlungszugangsdaten, Library- und Updater-Einstellungen werden nicht kopiert. Die JSON-Grenze beträgt 256 KB.</p>
+<p><img src="screenshots/transfer-de.png" alt="Einstellungen sicher übertragen"></p>
+<p><em>Einstellungen sicher übertragen — Beispielansicht mit neutralen Shopdaten.</em></p>
+<h2>Gezielt zurücksetzen</h2>
+<p>Öffne Dieses Modul zurücksetzen, bestätige das Kontrollkästchen und führe die Aktion aus. Nur dieses Modul erhält ausgeschaltete Standardwerte. Andere Module und Löschoptionen bleiben erhalten. Deaktivieren erhält alle Einstellungen. Auch Deinstallation erhält sie, sofern die Löschoption des jeweiligen Moduls auf dieser Website nicht aktiviert war. FluentCart-Produkte, Bestellungen, Warenkörbe und Kundendaten werden niemals gelöscht.</p>
+<h2>Multisite und Kompatibilität</h2>
+<p>Tools speichert Einstellungen je Website, auch bei Netzwerkaktivierung. Es entsteht keine netzwerkweite Bestellregel. Neue Websites starten mit ausgeschalteten Standardwerten. Für FluentCart 1.7.0, 2.2.0 und 2.3.0 ist ein Scheduler-Timingfehler beim Erstellen neuer Multisite-Websites bestätigt; die Ursache liegt in FluentCart, nicht im Add-on. Das Add-on verändert das Mutter-Plugin nicht. Teste Abos, Bundles, Zusatzangebote und eigene Shopansichten mit den gewählten Regeln. Echte Zahlungen und sämtliche Pro-Integrationen sind nicht durch eine pauschale Kompatibilitätszusage abgedeckt.</p>
+<h2>Ergebnis im Shop</h2>
+<p><img src="screenshots/product-note-result-de.png" alt="Produkthinweis auf einer nativen Produktseite"></p>
+<p><img src="screenshots/catalog-result-de.png" alt="Katalogansicht ohne Kaufbedienelemente"></p>
+<footer>© 2026 David Decker – DECKERWEB · Plugin: GPL v2 or later / GPL v2 oder höher</footer></main></body></html>

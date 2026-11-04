@@ -2,7 +2,7 @@
 (() => {
     'use strict';
     const form = document.getElementById('tffc-form');
-    if (!form) return;
+    if (form) {
     const preset = document.getElementById('tffc-preset');
     const single = document.getElementById('tffc-single');
     const keys = ['min_total', 'min_item', 'min_value', 'max_total', 'max_item', 'step'];
@@ -22,6 +22,7 @@
     single.addEventListener('change', () => { preset.value = single.checked ? 'single' : 'custom'; sync(); });
     for (const key of keys) document.getElementById(`tffc-${key}`).addEventListener('input', () => { preset.value = 'custom'; });
     sync();
+    }
     const dialog = document.getElementById('tffc-history');
     const link = document.getElementById('tffc-history-link');
     if (!dialog || !link || !window.HTMLDialogElement || dialog.dataset.tffcInitialized) return;

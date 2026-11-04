@@ -32,7 +32,7 @@ interface AuthProvider {
 
 }
 
-namespace Deckerweb\GitHubReleaseUpdater\V2\Runtime_2_2_1;
+namespace Deckerweb\GitHubReleaseUpdater\V2\Runtime_2_3_0;
 use Deckerweb\GitHubReleaseUpdater\V2\AuthProvider;
 
 // Different embedded paths may load the same pinned implementation repeatedly.
@@ -73,10 +73,16 @@ final class EnvironmentAuthProvider implements AuthProvider {
 
 /** Connect one host to GitHub releases; preserve native WordPress authorization and lifecycle. */
 final class Updater {
-	public const IMPLEMENTATION_VERSION = '2.2.1';
+	public const IMPLEMENTATION_VERSION = '2.3.0';
 	public const SUPPORTS_PRIVATE_REPOSITORIES = true;
 	public const SUPPORTS_HOST_TRANSLATIONS = true;
 	public const SUPPORTS_CATALOG_PROVIDER = true;
+    public const SUPPORTS_CATALOG_DIAGNOSTICS = true;
+    public const SUPPORTS_NORMALIZED_PACKAGES = true;
+    /** @var \Closure|null Optional request-local diagnosis for the exact provider target. */
+    private ?\Closure $diagnostic_provider = null;
+    /** @var \WP_Error|null Safe error for the latest release-provider call, never persisted. */
+    private ?\WP_Error $catalog_failure = null;
 	/** @var \Closure|null Explicit public release resolver; false selects direct GitHub mode. */
 	private ?\Closure $release_provider = null;
 	/** @var \Closure|null Public package downloader using fresh approval. */
@@ -148,7 +154,7 @@ final class Updater {
 	 * @param string $name Plugin display name.
 	 * @param string $description Short description for update details.
 	 * @param array  $artwork Optional icons (svg, 1x, 2x, default) and banners (low, high) URL maps.
-	 * @param array  $options Optional private boolean, auth AuthProvider and translate callable(string):string. Optional release_provider and package_provider callables enable an approved public catalog. Public defaults remain compatible.
+	 * @param array  $options Optional private boolean, auth AuthProvider and translate callable(string):string. Optional release_provider and package_provider callables enable an approved public catalog; diagnostic_provider optionally resolves safe target-specific error metadata. Public defaults remain compatible.
 	 * @throws \InvalidArgumentException If the slug or repository URL is invalid.
 	 */
 	public function __construct( string $main_file, string $repository_url, string $name, string $description, array $artwork = array(), array $options = array() ) {
@@ -164,6 +170,13 @@ final class Updater {
 			$this->release_provider = \Closure::fromCallable( $options['release_provider'] );
 			$this->package_provider = \Closure::fromCallable( $options['package_provider'] );
 		}
+
+        if ( isset( $options['diagnostic_provider'] ) ) {
+            if ( $this->private || ! $this->release_provider || ! is_callable( $options['diagnostic_provider'] ) ) {
+                throw new \InvalidArgumentException( \esc_html( $this->text( 'Catalog diagnostics require a public catalog provider.' ) ) );
+            }
+            $this->diagnostic_provider = \Closure::fromCallable( $options['diagnostic_provider'] );
+        }
 
 		$this->auth = $options['auth'] ?? null;
 		$this->file = \plugin_basename( $main_file );
@@ -320,16 +333,18 @@ final class Updater {
 	 * @return array{version:string,package:string,notes:string,published:string}|null
 	 */
 	private function release( bool $fresh = false ): ?array {
+        $this->catalog_failure = null;
 		if ( $this->release_provider ) {
 			try { $release = ( $this->release_provider )( $this->repo, $this->file, $fresh ); }
-			catch ( \Throwable $error ) { return null; }
+			catch ( \Throwable $error ) { $this->catalog_failure = $this->catalog_error( 'catalog', 'content' ); return null; }
+            if ( null === $release ) { $this->catalog_failure = $this->provider_error( 'catalog' ); return null; }
 			if ( false !== $release ) {
 				if ( ! is_array( $release ) || ! is_string( $release['version'] ?? null )
 					|| ! preg_match( '/^[0-9]+\.[0-9]+\.[0-9]+$/D', $release['version'] )
 					|| ! is_string( $release['package'] ?? null ) || ! $this->valid_package_url( $release['package'], $this->repo . '/releases/download/' )
-					|| ! is_string( $release['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $release['sha256'] ) ) { return null; }
+					|| ! is_string( $release['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $release['sha256'] ) ) { $this->catalog_failure = $this->catalog_error( 'catalog', 'content' ); return null; }
 				foreach ( array( 'notes', 'published', 'requires_wp', 'requires_php' ) as $key ) {
-					if ( isset( $release[ $key ] ) && ! is_string( $release[ $key ] ) ) { return null; }
+					if ( isset( $release[ $key ] ) && ! is_string( $release[ $key ] ) ) { $this->catalog_failure = $this->catalog_error( 'catalog', 'content' ); return null; }
 				}
 				return $release + array( 'notes' => '', 'published' => '' );
 			}
@@ -446,6 +461,172 @@ final class Updater {
 	public function clear_cache(): void { \delete_site_transient( $this->cache ); }
 
     /**
+     * Build an error exclusively from fixed host-localizable messages and bounded metadata.
+     * @param string $stage Validated failure stage, or empty for the generic fallback.
+     * @param string $cause Validated reason code, never a foreign message.
+     * @param int $status Optional HTTP status, limited to error responses.
+     * @return \WP_Error Safe native-updater error without URLs, paths or provider details.
+     */
+    private function catalog_error( string $stage = '', string $cause = '', int $status = 0 ): \WP_Error {
+        $stages = array(
+            'catalog' => $this->text( 'Catalog approval' ),
+            'package' => $this->text( 'Package download' ),
+            'checksum' => $this->text( 'Checksum verification' ),
+            'archive' => $this->text( 'Archive verification' ),
+        );
+        $causes = array(
+            'network' => $this->text( 'The update server could not be reached. Try again later.' ),
+            'timeout' => $this->text( 'The update request timed out. Try again later.' ),
+            'dns' => $this->text( 'The update server address could not be resolved.' ),
+            'tls' => $this->text( 'The secure connection to the update server failed.' ),
+            'http' => $this->text( 'The update server returned an unsuccessful HTTP response.' ),
+            'content' => $this->text( 'The update provider did not return valid update data.' ),
+            'checksum_mismatch' => $this->text( 'The package does not match the approved checksum. Installation was stopped.' ),
+            'invalid_package' => $this->text( 'The archive or plugin identity could not be verified. Installation was stopped.' ),
+        );
+        if ( ! isset( $stages[ $stage ], $causes[ $cause ] ) ) {
+            return new \WP_Error( 'ddw_ghru_catalog', $this->text( 'The approved release could not be verified.' ) );
+        }
+        $data = array( 'stage' => $stage, 'cause' => $cause );
+        if ( $status >= 400 && $status <= 599 ) { $data['http_status'] = $status; }
+        /* Translators: 1: fixed update stage label, 2: fixed explanation. */
+        $message = sprintf( $this->text( 'Update stopped at %1$s: %2$s' ), $stages[ $stage ], $causes[ $cause ] );
+        if ( isset( $data['http_status'] ) ) {
+            /* Translators: %d is an HTTP error status, not a server message. */
+            $message .= ' ' . sprintf( $this->text( 'HTTP status: %d.' ), $status );
+        }
+        return new \WP_Error( 'ddw_ghru_catalog', \esc_html( $message ), $data );
+    }
+
+    /**
+     * Read optional request-local diagnosis for exactly this provider target.
+     * @param string $operation Failed catalog or package operation.
+     * @param mixed $error Package provider error when supplied; its text is never displayed.
+     * @return \WP_Error Reconstructed safe error, or the unchanged generic fallback.
+     */
+    private function provider_error( string $operation, $error = null ): \WP_Error {
+        if ( $this->diagnostic_provider ) {
+            try { $error = ( $this->diagnostic_provider )( $this->repo, $this->file, $operation ) ?? $error; }
+            catch ( \Throwable $ignored ) { return $this->catalog_error(); }
+        }
+        if ( ! \is_wp_error( $error ) ) { return $this->catalog_error(); }
+        $data = $error->get_error_data();
+        if ( ! is_array( $data ) || ! is_string( $data['stage'] ?? null ) || ! is_string( $data['cause'] ?? null ) ) { return $this->catalog_error(); }
+        $allowed = 'catalog' === $operation ? array( 'catalog' ) : array( 'package', 'checksum', 'archive' );
+        if ( ! in_array( $data['stage'], $allowed, true ) ) { return $this->catalog_error(); }
+        return $this->catalog_error( $data['stage'], $data['cause'], is_int( $data['http_status'] ?? null ) ? $data['http_status'] : 0 );
+    }
+
+    /**
+     * Compare package content independently of ZIP compression and harmless metadata.
+     * @param string $path Local archive to read without extraction.
+     * @param bool $normalized Reject removable metadata in the returned normalized package.
+     * @return array<string,string>|null Path-to-content-digest map, or null for unsafe/oversized ZIPs.
+     */
+    private function archive_manifest( string $path, bool $normalized = false ): ?array {
+        if ( ! class_exists( '\ZipArchive' ) || ! is_file( $path ) || is_link( $path ) || filesize( $path ) > 20971520 ) { return null; }
+        $zip = new \ZipArchive();
+        if ( true !== $zip->open( $path ) ) { return null; }
+        $result = array(); $seen = array(); $expanded = 0; $name_bytes = 0;
+        try {
+            if ( $zip->numFiles > 3000 ) { return null; }
+            for ( $i = 0; $i < $zip->numFiles; ++$i ) {
+                $stat = $zip->statIndex( $i );
+                if ( ! is_array( $stat ) || ! is_string( $stat['name'] ?? null ) || ! is_int( $stat['size'] ?? null ) || $stat['size'] < 0 ) { return null; }
+                $name = $stat['name']; $expanded += $stat['size']; $name_bytes += strlen( $name );
+                if ( strlen( $name ) > 4096 || $name_bytes > 1048576 ) { return null; }
+                if ( $expanded > 83886080 || preg_match( '~[\x00-\x1f\x7f\\\\]|(^|/)\.{1,2}(/|$)|//|^/~', $name ) ) { return null; }
+                $opsys = 0; $attrs = 0;
+                if ( ! $zip->getExternalAttributesIndex( $i, $opsys, $attrs ) ) { return null; }
+                $kind = ( $attrs >> 16 ) & 0170000;
+                if ( ! in_array( $kind, array( 0, 0100000, 0040000 ), true ) ) { return null; }
+                // Match the Library's existing policy: Finder metadata is never installed.
+                if ( str_starts_with( $name, '__MACOSX/' ) || '.DS_Store' === basename( $name ) ) { if ( $normalized ) { return null; } continue; }
+                if ( ! str_starts_with( $name, $this->slug . '/' ) || isset( $seen[ $name ] ) ) { return null; }
+                $seen[ $name ] = true;
+                if ( str_ends_with( $name, '/' ) ) { continue; }
+                // WP_Filesystem cannot read ZipArchive entry streams in bounded chunks.
+                $input = $zip->getStream( $name );
+                if ( ! is_resource( $input ) ) { return null; }
+                $hash = hash_init( 'sha256' ); $read = 0;
+                try {
+                    while ( ! feof( $input ) ) {
+                        $chunk = fread( $input, min( 65536, $stat['size'] - $read + 1 ) );
+                        if ( false === $chunk || ( '' === $chunk && ! feof( $input ) ) ) { return null; }
+                        $read += strlen( $chunk );
+                        if ( $read > $stat['size'] ) { return null; }
+                        hash_update( $hash, $chunk );
+                    }
+                } finally { fclose( $input ); }
+                if ( $read !== $stat['size'] ) { return null; }
+                $result[ $name ] = hash_final( $hash );
+            }
+            if ( ! isset( $result[ $this->file ] ) ) { return null; }
+            ksort( $result );
+            return $result;
+        } finally { $zip->close(); }
+    }
+
+    /**
+     * Verify the approved original and a provider's possibly normalized ZIP in one operation.
+     * @param array $release Fresh approved release metadata including package URL and SHA-256.
+     * @return string|\WP_Error Verified local path or safe error; provider owns its temporary files.
+     */
+    private function catalog_download( array $release ) {
+        $original = null;
+        /**
+         * Observe only this operation's streamed, successful exact package request.
+         * @param mixed $response Native HTTP response or WP_Error.
+         * @param mixed $args Native HTTP request arguments.
+         * @param mixed $url Requested URL, matched byte-for-byte to the approved package.
+         * @return void Computes a bounded in-memory manifest; no HTTP, extraction or persistence.
+         */
+        $capture = function ( $response, $args, $url ) use ( &$original, $release ): void {
+            if ( $url !== $release['package'] || ! is_array( $args ) || empty( $args['stream'] ) || ! is_string( $args['filename'] ?? null )
+                || \is_wp_error( $response ) || 200 !== \wp_remote_retrieve_response_code( $response ) ) { return; }
+            $path = $args['filename'];
+            clearstatcache( true, $path );
+            if ( ! is_file( $path ) || is_link( $path ) || filesize( $path ) > 20971520 ) { return; }
+            if ( ! hash_equals( $release['sha256'], (string) hash_file( 'sha256', $path ) ) ) { return; }
+            $original = $this->archive_manifest( $path );
+        };
+        /**
+         * Observe normal HTTP transports after completion.
+         * @param mixed $response Native response.
+         * @param mixed $context Core diagnostic context.
+         * @param mixed $transport Core transport name.
+         * @param mixed $args Native request arguments.
+         * @param mixed $url Native request URL.
+         * @return void Leaves the response and transport untouched.
+         */
+        $debug = static function ( $response, $context, $transport, $args, $url ) use ( $capture ): void { $capture( $response, $args, $url ); };
+        /**
+         * Also support completed HTTP short-circuits, including local caches and test transports.
+         * @param mixed $response Earlier pre_http_request result.
+         * @param mixed $args Native request arguments.
+         * @param mixed $url Native request URL.
+         * @return mixed Unchanged result; never initiates or overrides a request.
+         */
+        $pre = static function ( $response, $args, $url ) use ( $capture ) { if ( false !== $response ) { $capture( $response, $args, $url ); } return $response; };
+        \add_action( 'http_api_debug', $debug, PHP_INT_MAX, 5 );
+        \add_filter( 'pre_http_request', $pre, PHP_INT_MAX, 3 );
+        try {
+            try { $file = ( $this->package_provider )( $this->repo, $this->file, $release['package'] ); }
+            catch ( \Throwable $ignored ) { return $this->catalog_error( 'package', 'content' ); }
+            if ( \is_wp_error( $file ) ) { return $this->provider_error( 'package', $file ); }
+            if ( ! is_string( $file ) || ! is_file( $file ) || is_link( $file ) ) { return $this->catalog_error( 'archive', 'invalid_package' ); }
+            clearstatcache( true, $file );
+            // Providers returning the unmodified, approved bytes retain the original contract.
+            if ( hash_equals( $release['sha256'], (string) hash_file( 'sha256', $file ) ) ) { return $file; }
+            if ( null !== $original && $original === $this->archive_manifest( $file, true ) ) { return $file; }
+            return $this->catalog_error( 'checksum', 'checksum_mismatch' );
+        } finally {
+            \remove_action( 'http_api_debug', $debug, PHP_INT_MAX );
+            \remove_filter( 'pre_http_request', $pre, PHP_INT_MAX );
+        }
+    }
+
+    /**
      * Remove this release's and legacy metadata caches for one exact repository.
      *
      * Hosts may call this during uninstall without creating an updater instance or
@@ -503,14 +684,13 @@ final class Updater {
 		if ( ! $this->private && $this->release_provider ) {
 			if ( false !== $reply || ! is_array( $hook_extra ) || ! $this->is_update_context( $upgrader, $hook_extra ) ) { return $reply; }
 			$release = $this->release( true );
-			if ( ! $release ) { return new \WP_Error( 'ddw_ghru_catalog', $this->text( 'The approved release could not be verified.' ) ); }
-			if ( isset( $release['sha256'] ) ) {
-				if ( $package !== $release['package'] ) { return new \WP_Error( 'ddw_ghru_catalog', $this->text( 'The approved release changed. Refresh updates first.' ) ); }
-				try { $file = ( $this->package_provider )( $this->repo, $this->file, $package ); }
-				catch ( \Throwable $error ) { $file = false; }
-				if ( is_string( $file ) && is_file( $file ) && ! is_link( $file ) && hash_equals( $release['sha256'], (string) hash_file( 'sha256', $file ) ) ) { return $file; }
-				return new \WP_Error( 'ddw_ghru_catalog', $this->text( 'The approved release could not be verified.' ) );
-			}
+            if ( ! $release ) { return $this->catalog_failure ?? $this->catalog_error(); }
+            if ( isset( $release['sha256'] ) ) {
+                if ( $package !== $release['package'] ) {
+                    return new \WP_Error( 'ddw_ghru_catalog', $this->text( 'The approved release changed. Refresh updates first.' ), array( 'stage' => 'catalog', 'cause' => 'release_changed' ) );
+                }
+                return $this->catalog_download( $release );
+            }
 			return $reply;
 		}
 
@@ -656,11 +836,11 @@ namespace Deckerweb\GitHubReleaseUpdater\V2;
 // Legacy hosts retain their published API. Never replace an existing class or
 // migrate another host's hooks, credentials, options or running updater instance.
 if ( ! class_exists( EnvironmentAuthProvider::class, false ) ) {
-    class_alias( Runtime_2_2_1\EnvironmentAuthProvider::class, EnvironmentAuthProvider::class );
+    class_alias( Runtime_2_3_0\EnvironmentAuthProvider::class, EnvironmentAuthProvider::class );
 }
 if ( ! class_exists( Updater::class, false ) ) {
-    class_alias( Runtime_2_2_1\Updater::class, Updater::class );
+    class_alias( Runtime_2_3_0\Updater::class, Updater::class );
 }
 
 // Use require, not require_once: its return value is stable on every include.
-return Runtime_2_2_1\Updater::class;
+return Runtime_2_3_0\Updater::class;

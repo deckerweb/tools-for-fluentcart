@@ -93,15 +93,19 @@ final class Admin {
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) { return; }
 		$s = Settings::get();
+		if ( StoreTools::tab() !== 'cart-rules' ) { StoreTools::render(); return; }
 		$paused = ! Integration::available();
 		$presets = [ 'custom' => __( 'Custom rules', 'tools-for-fluentcart' ), 'single' => __( 'One item only', 'tools-for-fluentcart' ), 'minimum' => __( 'Minimum quantity', 'tools-for-fluentcart' ), 'value' => __( 'Minimum order value', 'tools-for-fluentcart' ), 'maximum' => __( 'Quantity limits', 'tools-for-fluentcart' ), 'steps' => __( 'Quantity steps', 'tools-for-fluentcart' ) ];
 		echo '<div class="wrap tffc-admin"><header class="tffc-header"><img class="tffc-mark" src="' . esc_url( plugins_url( 'assets/brand/icon.svg', TFFC_FILE ) ) . '" width="64" height="64" alt=""><div><h1>Tools for FluentCart</h1><p>' . esc_html__( 'Fine-tune your store.', 'tools-for-fluentcart' ) . '</p></div></header>';
+		StoreTools::navigation();
 		// WordPress moves standard notices after this marker, outside the complete header.
 		echo '<div id="tffc-notices" class="tffc-notices"><hr class="wp-header-end">';
 		// Core handles these messages under Settings, but not under FluentCart.
 		if ( 'fluent-cart' === self::parent_slug() ) { settings_errors(); }
 		echo '</div>';
 		echo '<form action="options.php" method="post" id="tffc-form">'; settings_fields( 'tffc' );
+		StoreTools::status( 'cart-rules', $s['enabled'] );
+		StoreTools::summary( $s );
 		echo '<fieldset id="tffc-rule-fields"' . disabled( $paused, true, false ) . '>';
 		echo '<section class="tffc-card"><h2>' . esc_html__( 'Cart Rules', 'tools-for-fluentcart' ) . '</h2>';
 		self::checkbox( 'enabled', __( 'Enable cart rules', 'tools-for-fluentcart' ), $s['enabled'] );
@@ -125,11 +129,14 @@ final class Admin {
 			echo '<div><label for="tffc-' . esc_attr( $key ) . '">' . esc_html( $label ) . '</label><input id="tffc-' . esc_attr( $key ) . '" name="tffc_cart_rules[' . esc_attr( $key ) . ']" type="number" min="' . ( 'step' === $key ? '1' : '0' ) . '" step="' . ( 'min_value' === $key ? '0.01' : '1' ) . '" value="' . esc_attr( $value ) . '" ' . ( 'min_value' !== $key ? 'max="100000"' : 'max="99999999.99"' ) . '></div>';
 		}
 		echo '</div><p>' . esc_html__( 'Zero disables a limit. A quantity step of 1 allows any whole quantity; a step of 6 allows 6, 12, 18 and so on for each product variation.', 'tools-for-fluentcart' ) . '</p><p>' . esc_html__( 'Order value uses the shop currency and merchandise amounts after discounts, excluding shipping and fees. Tax treatment follows FluentCart product pricing. Customers may build their cart freely; checkout explains and blocks unmet rules.', 'tools-for-fluentcart' ) . '</p></section>';
+		echo '<section class="tffc-card"><h2>' . esc_html__( 'Product selection', 'tools-for-fluentcart' ) . '</h2>';
+		StoreTools::product_field( 'tffc_cart_rules[product_ids]', $s['product_ids'] );
+		echo '<p>' . esc_html__( 'Leave empty for the whole cart. Otherwise quantity and value limits count only selected products and all their variations. They apply only when a selected product is present. One-item mode always applies to the whole cart.', 'tools-for-fluentcart' ) . '</p></section>';
 		echo '</fieldset>';
 		echo '<section class="tffc-card"><h2>' . esc_html__( 'Data and compatibility', 'tools-for-fluentcart' ) . '</h2><p>' . esc_html__( 'Product variations count separately. A bundle counts as one cart row. Locked payment carts are preserved and checked at checkout. Test subscriptions, bundles and order bumps with your chosen rules before live use.', 'tools-for-fluentcart' ) . '</p>';
 		self::checkbox( 'delete_data', __( 'Delete this website’s Cart Rules settings when uninstalling', 'tools-for-fluentcart' ), $s['delete_data'] );
 		echo '<p>' . esc_html__( 'Off by default. Uninstalling in a network checks this choice separately for each website. FluentCart orders, products and carts are never deleted.', 'tools-for-fluentcart' ) . '</p></section>';
-		submit_button(); echo '</form>'; self::footer(); echo '</div>';
+		submit_button(); echo '</form>'; StoreTools::tester(); StoreTools::reset_form( 'cart-rules' ); self::footer(); echo '</div>';
 	}
 
 	/**
@@ -149,11 +156,11 @@ final class Admin {
 	 *
 	 * @return void
 	 */
-	private static function footer(): void {
+	public static function footer(): void {
 		$de = str_starts_with( determine_locale(), 'de' );
 		$changelog = $de ? 'docs/changelog-de.txt' : 'docs/changelog.txt';
 		$docs = 'https://github.com/deckerweb/tools-for-fluentcart/wiki/' . ( $de ? 'Dokumentation' : 'Documentation' );
-		echo '<footer class="tffc-footer"><div><img class="tffc-footer-icon" src="' . esc_url( plugins_url( 'assets/brand/icon.svg', TFFC_FILE ) ) . '" width="52" height="52" alt=""><strong>Tools for FluentCart</strong> <span>' . esc_html( TFFC_VERSION ) . '</span> · <a id="tffc-history-link" href="' . esc_url( plugins_url( $changelog, TFFC_FILE ) ) . '">' . esc_html__( 'Changelog', 'tools-for-fluentcart' ) . '</a> · <a href="' . esc_url( $docs ) . '">' . esc_html__( 'Documentation', 'tools-for-fluentcart' ) . '</a><p>' . esc_html__( 'Fine-tune your store.', 'tools-for-fluentcart' ) . '</p></div><div>© 2026 <a href="https://github.com/deckerweb">David Decker – DECKERWEB</a> · <a href="https://github.com/deckerweb/tools-for-fluentcart">' . esc_html__( 'Plugin website', 'tools-for-fluentcart' ) . '</a></div></footer>';
+		echo '<footer class="tffc-footer"><div><strong>Tools for FluentCart</strong> <span>' . esc_html( TFFC_VERSION ) . '</span> · <a id="tffc-history-link" href="' . esc_url( plugins_url( $changelog, TFFC_FILE ) ) . '">' . esc_html__( 'Changelog', 'tools-for-fluentcart' ) . '</a> · <a href="' . esc_url( $docs ) . '">' . esc_html__( 'Documentation', 'tools-for-fluentcart' ) . '</a><p>' . esc_html__( 'Fine-tune your store.', 'tools-for-fluentcart' ) . '</p></div><div>© 2026 <a href="' . esc_url( 'https://deckerwebplugins.com/' . ( $de ? 'de/' : 'en/' ) ) . '">David Decker – DECKERWEB</a> · <a href="' . esc_url( 'https://deckerwebplugins.com/' . ( $de ? 'de' : 'en' ) . '/plugins/tools-for-fluentcart/' ) . '">' . esc_html__( 'Plugin website', 'tools-for-fluentcart' ) . '</a></div></footer>';
 		echo '<dialog id="tffc-history" hidden aria-labelledby="tffc-history-title"><header><h2 id="tffc-history-title">' . esc_html__( 'Changelog', 'tools-for-fluentcart' ) . '</h2><form method="dialog"><button type="submit" id="tffc-history-close" autofocus>' . esc_html__( 'Close', 'tools-for-fluentcart' ) . '</button></form></header>';
 		$history = require TFFC_DIR . 'includes/history.php';
 		$categories = [ 'New' => __( 'New:', 'tools-for-fluentcart' ), 'Improved' => __( 'Improved:', 'tools-for-fluentcart' ), 'Fixed' => __( 'Fixed:', 'tools-for-fluentcart' ), 'Misc' => __( 'Misc:', 'tools-for-fluentcart' ) ];

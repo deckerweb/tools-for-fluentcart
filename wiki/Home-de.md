@@ -1,19 +1,19 @@
 # Tools for FluentCart
 
-![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-de.png?v=20261007-centered)
+![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-de.png)
 
 **Dein Shop. Fein abgestimmt.**
 
-Praktische Werkzeuge für deinen FluentCart-Shop. Das Modul Cart Rules bietet Ein-Artikel-Warenkörbe, Mindestmengen und Mindestwarenwert, Höchstmengen und Mengenschritte.
+Ein gezieltes Add-on für deinen FluentCart-Shop: Bestellungen mit Warenkorb-Regeln steuern, Produkte verständlich erklären, die Shopeinrichtung prüfen und Käufe bei Bedarf mit dem Katalogmodus pausieren. Jedes Modul ist optional und wird pro Website eingerichtet.
 
-- Cart Rules ist das erste Modul der Tools-Serie.
-- Fünf Presets mit anpassbaren Werten.
-- Gesamtmengen und Mengen je Produkt im eigenen Modus kombinieren.
-- Ein-Artikel-Modus ersetzt das bisherige Produkt und blendet die Mengenauswahl aus.
-- Checkout-Prüfung anhand serverseitiger Warenkorbdaten.
-- Einstellungen je Website, auch in Multisite.
-- Englische Originaltexte, deutsche Du- und Sie-Übersetzungen.
+## English
 
-[English](Home)
+- [Getting started](README#installation)
+- [User guide](Documentation)
+- [FAQ by topic](FAQ-by-topic)
 
-[Readme](README-de) · [Dokumentation](Dokumentation) · [Fragen nach Themen](Fragen-nach-Themen) · [Änderungsverlauf](Aenderungsverlauf)
+## Deutsch
+
+- [Erste Schritte](README-de#installation)
+- [Anleitung](Dokumentation)
+- [Fragen nach Themen](Fragen-nach-Themen)

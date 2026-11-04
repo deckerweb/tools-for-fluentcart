@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Tools for FluentCart 0.9.1\nLanguage: \nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+msgstr "Project-Id-Version: Tools for FluentCart 1.0.0\nLanguage: \nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: includes/class-rules.php
 #, php-format
@@ -11,8 +11,16 @@ msgstr ""
 msgid "%1$s requires at least %2$s units."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "(shop currency)"
+msgstr ""
+
 #: includes/class-rules.php
 msgid "A minimum quantity cannot exceed its maximum quantity."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Active on this website."
 msgstr ""
 
 #: includes/class-rules.php
@@ -25,15 +33,39 @@ msgstr ""
 msgid "Add products worth %s more to reach the minimum order value."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "After product content"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "After the product price"
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Allow one product with quantity one"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Applies to the whole cart."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Apply import"
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "Archive verification"
 msgstr ""
 
 #: includes/class-integration.php
 msgid "Before ordering"
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-store-tools.php
+msgid "Beside the cart item"
+msgstr ""
+
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Cart Rules"
 msgstr ""
 
@@ -45,8 +77,40 @@ msgstr ""
 msgid "Cart Rules with single-item carts, minimum quantities and order value, quantity limits and steps."
 msgstr ""
 
+#: includes/class-integration.php
+msgid "Cart limits apply to selected products only. Checkout shows any remaining requirements."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Cart page"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Catalog Mode"
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "Catalog approval"
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "Catalog diagnostics require a public catalog provider."
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Changelog"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Check sample"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Checkout page"
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "Checksum verification"
 msgstr ""
 
 #: includes/class-rules.php
@@ -54,8 +118,20 @@ msgstr ""
 msgid "Choose a quantity in multiples of %2$s for %1$s."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Choose an action and confirm it."
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Close"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Contact URL (optional)"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Contact the shop"
 msgstr ""
 
 #: includes/updater-translations.php
@@ -70,8 +146,20 @@ msgstr ""
 msgid "Could not prepare the GitHub release package."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Current store checks"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Custom layouts can use [tffc_product_note id=\"123\"]. The shortcode outputs matching notes for that product, irrespective of their automatic display position."
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Custom rules"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Customer account page"
 msgstr ""
 
 #: includes/class-admin.php
@@ -80,6 +168,10 @@ msgstr ""
 
 #: includes/class-integration.php
 msgid "Deactivate the earlier FluentCart Cart Rules and single-item add-ons before using Tools for FluentCart."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Delete this module’s settings on this website when uninstalling"
 msgstr ""
 
 #: includes/class-admin.php
@@ -94,28 +186,52 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Display position"
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Documentation"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Edit module settings"
 msgstr ""
 
 #: includes/class-admin.php
 msgid "Enable cart rules"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Enable this module on this website"
+msgstr ""
+
 #: includes/class-settings.php
 msgid "Enter a nonnegative order value with no more than two decimal places."
+msgstr ""
+
+#: includes/class-settings.php includes/class-store-tools.php
+msgid "Enter valid product IDs. Saved settings have been preserved."
 msgstr ""
 
 #: includes/class-settings.php
 msgid "Enter whole quantities between 0 and 100000. The quantity step must be at least 1."
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-store-tools.php
+msgid "Export settings"
+msgstr ""
+
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Fine-tune your store."
 msgstr ""
 
 #: includes/class-admin.php
 msgid "Fixed:"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "FluentCart 1.7.0, 2.2.0 and 2.3.0 can report scheduler errors when a new Multisite website is created. The cause is in FluentCart; this add-on does not modify the parent plugin."
 msgstr ""
 
 #: includes/updater-translations.php
@@ -124,6 +240,15 @@ msgstr ""
 
 #: includes/updater-translations.php
 msgid "GitHub release does not contain the plugin main file."
+msgstr ""
+
+#: includes/updater-translations.php
+#, php-format
+msgid "HTTP status: %d."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Import preview"
 msgstr ""
 
 #: includes/class-admin.php
@@ -142,6 +267,14 @@ msgstr ""
 msgid "Invalid authentication provider."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Invalid module settings. Nothing was imported."
+msgstr ""
+
+#: includes/class-admin.php
+msgid "Leave empty for the whole cart. Otherwise quantity and value limits count only selected products and all their variations. They apply only when a selected product is present. One-item mode always applies to the whole cart."
+msgstr ""
+
 #: includes/updater-translations.php
 msgid "Manage installed plugins"
 msgstr ""
@@ -156,11 +289,11 @@ msgstr ""
 msgid "Maximum per product: %s."
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Maximum total units"
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Maximum units per product"
 msgstr ""
 
@@ -169,7 +302,7 @@ msgstr ""
 msgid "Minimum cart quantity: %s."
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Minimum merchandise value"
 msgstr ""
 
@@ -182,6 +315,10 @@ msgstr ""
 msgid "Minimum order value"
 msgstr ""
 
+#: includes/history.php
+msgid "Minimum order values respect the native cart currency quote in FluentCart 2.x."
+msgstr ""
+
 #: includes/class-integration.php
 #, php-format
 msgid "Minimum per product: %s."
@@ -191,11 +328,11 @@ msgstr ""
 msgid "Minimum quantity"
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Minimum total units"
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Minimum units per product"
 msgstr ""
 
@@ -207,6 +344,18 @@ msgstr ""
 msgid "New:"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "No native shortcode or FluentCart block found. Check custom builder content manually."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Note text"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "OK"
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Off by default. Uninstalling in a network checks this choice separately for each website. FluentCart orders, products and carts are never deleted."
 msgstr ""
@@ -215,8 +364,36 @@ msgstr ""
 msgid "One item only"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "One product, quantity one. Adding another replaces it."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "One sample product variation, in shop currency after discounts. Uses saved rules and creates no cart or order. It does not check stock, tax, shipping or payment."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Only Tools settings are replaced. Modules will be switched off; enable them after review. Product IDs belong to the source website: check them before enabling. Deletion preferences stay unchanged."
+msgstr ""
+
 #: includes/class-rules.php
 msgid "Only one product with quantity one can be ordered."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Only selected products count toward the limits."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Only this add-on’s settings are exported. No products, orders, customers, payment credentials or Library preferences are included."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Open FluentCart products"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Open settings or page"
 msgstr ""
 
 #: includes/class-update.php
@@ -228,7 +405,27 @@ msgid "Order value uses the shop currency and merchandise amounts after discount
 msgstr ""
 
 #: includes/updater-translations.php
+msgid "Package download"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Page missing or not published."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Paste exported JSON (maximum 256 KB)"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Paused: FluentCart is missing or the required interfaces are unavailable."
+msgstr ""
+
+#: includes/updater-translations.php
 msgid "Permission denied."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Plain product information, not legal notices. Empty product selection applies to all products. Empty notes are not saved. Up to 20 notes; one additional empty row appears after saving."
 msgstr ""
 
 #: includes/class-rules.php
@@ -243,16 +440,68 @@ msgstr ""
 msgid "Plugin website"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Preview import"
+msgstr ""
+
 #: includes/updater-translations.php
 msgid "Private mode must be boolean."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Product ID"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Product IDs, separated by commas; empty means all products"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Product Notes"
+msgstr ""
+
+#: includes/history.php
+msgid "Product Notes, Store Checks and Catalog Mode; selected-product rules, saved summaries, sample tests, settings transfer and individual module reset."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Product not found on this website"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Product note"
+msgstr ""
+
+#: includes/class-admin.php
+msgid "Product selection"
 msgstr ""
 
 #: includes/class-admin.php
 msgid "Product variations count separately. A bundle counts as one cart row. Locked payment carts are preserved and checked at checkout. Test subscriptions, bundles and order bumps with your chosen rules before live use."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Products and prices stay visible. New storefront purchases and checkout are blocked for everyone, including administrators. Existing orders, renewals and account access remain with FluentCart. Clear page caches when switching this mode."
+msgstr ""
+
 #: includes/updater-translations.php
 msgid "Public catalog callbacks require both providers and cannot be used in private mode."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Public catalog message (optional)"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Published page with FluentCart content found."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Purchases are intentionally paused."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Quantity"
 msgstr ""
 
 #: includes/class-admin.php
@@ -263,7 +512,7 @@ msgstr ""
 msgid "Quantity limits"
 msgstr ""
 
-#: includes/class-admin.php
+#: includes/class-admin.php includes/class-store-tools.php
 msgid "Quantity step per product"
 msgstr ""
 
@@ -276,8 +525,48 @@ msgstr ""
 msgid "Quantity steps"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Replace the listed module settings"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Reset this module"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Restore defaults for this module only. Other modules and deletion preferences stay unchanged."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Review"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Review installed plugins"
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Rules start disabled. Configure them here, then enable them for this website. Other websites keep their own settings."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Run a local check on this page. It reads page assignments and Tools settings without changing your shop or contacting external services. This is not a legal, security or payment certification."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Run checks again"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Sample product"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Saved limits checked for contradictions."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Saved rule summary"
 msgstr ""
 
 #: includes/updater-translations.php
@@ -292,8 +581,24 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "Shop page"
+msgstr ""
+
 #: includes/class-admin.php
 msgid "Start with a preset"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Store Checks"
+msgstr ""
+
+#: includes/history.php
+msgid "Supports FluentCart 1.7.0 and later through native interfaces; refreshed graphics and illustrated guides."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Switched off. Saved settings are retained."
 msgstr ""
 
 #: includes/updater-translations.php
@@ -302,6 +607,18 @@ msgstr ""
 
 #: includes/updater-translations.php
 msgid "The approved release could not be verified."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The archive or plugin identity could not be verified. Installation was stopped."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "The module is paused. Saved settings have not been changed."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The package does not match the approved checksum. Installation was stopped."
 msgstr ""
 
 #: includes/updater-translations.php
@@ -320,16 +637,81 @@ msgstr ""
 msgid "The quantity step leaves no purchasable quantity within the configured limits."
 msgstr ""
 
+#: includes/class-store-tools.php
+msgid "The sample meets the saved rules, or no rule applies."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The secure connection to the update server failed."
+msgstr ""
+
 #: includes/class-update.php
 msgid "The update package does not match this plugin or the offered compatible version."
 msgstr ""
 
+#: includes/updater-translations.php
+msgid "The update provider did not return valid update data."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The update request timed out. Try again later."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The update server address could not be resolved."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The update server could not be reached. Try again later."
+msgstr ""
+
+#: includes/updater-translations.php
+msgid "The update server returned an unsuccessful HTTP response."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "This is not a supported Tools for FluentCart settings document."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "This shop is currently a catalog. Online purchases are paused."
+msgstr ""
+
 #: includes/class-integration.php
-msgid "Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin."
+msgid "Tools for FluentCart requires an active FluentCart installation, version 1.7.0 or later, with the supported cart interfaces. The Cart Rules module is paused until then; plugin settings remain available in the admin."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Tools modules"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Total merchandise value"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Transfer settings"
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Try the saved rules"
+msgstr ""
+
+#: includes/updater-translations.php
+#, php-format
+msgid "Update stopped at %1$s: %2$s"
 msgstr ""
 
 #: includes/history.php
 msgid "Updated shared Library and updater integration; protected paused rule settings and improved admin notices, save confirmations and changelog dialog reliability."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "Use the parent product ID from the FluentCart product editor URL, not a variation ID."
+msgstr ""
+
+#: includes/class-store-tools.php
+msgid "You are not allowed to manage these settings."
 msgstr ""
 
 #: includes/class-rules.php

@@ -4,4 +4,4 @@
 
 Sicherheitslücken vertraulich über Security → Report a vulnerability im Plugin-Repository melden. Plugin-, FluentCart-, WordPress- und PHP-Versionen, Schritte zur Reproduktion und Auswirkungen angeben, ohne Passwörter oder Kundendaten. Normale Fehler gehören in Issues. Sicherheitsdetails nicht in öffentlichen Issues veröffentlichen.
 
-Gemeinsame Komponenten: Library 1.1.0; Updater 2.2.1.
+Gemeinsame Komponenten: Library 1.2.0; Updater 2.3.0.

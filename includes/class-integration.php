@@ -26,8 +26,8 @@ final class Integration {
 	 * @return void
 	 */
 	public static function boot(): void {
-		// Integration is verified against 1.7.x. Unknown minor versions require a new adapter audit.
-		if ( ! defined( 'FLUENTCART_VERSION' ) || version_compare( FLUENTCART_VERSION, '1.7.0', '<' ) || version_compare( FLUENTCART_VERSION, '1.8.0', '>=' ) || ! class_exists( '\FluentCart\App\Models\Cart' ) ) {
+		// Support newer releases by their cart interfaces, without a fixed upper version cap.
+		if ( ! self::supported() ) {
 			add_action( 'admin_notices', [ self::class, 'notice' ] );
 			add_action( 'network_admin_notices', [ self::class, 'notice' ] ); return;
 		}
@@ -46,6 +46,69 @@ final class Integration {
 		add_action( 'wp_enqueue_scripts', [ self::class, 'assets' ] );
 		add_action( 'wp_ajax_fluent_cart_cart_update', [ self::class, 'prepare_ajax' ], -100 );
 		add_action( 'wp_ajax_nopriv_fluent_cart_cart_update', [ self::class, 'prepare_ajax' ], -100 );
+	}
+
+	/**
+	 * Check the minimum version and the native interfaces used by Cart Rules.
+	 *
+	 * @return bool Whether this FluentCart installation supplies the required APIs.
+	 */
+	private static function supported(): bool {
+		return defined( 'FLUENTCART_VERSION' )
+			&& version_compare( FLUENTCART_VERSION, '1.7.0', '>=' )
+			&& class_exists( '\FluentCart\App\Models\Cart' )
+			&& method_exists( '\FluentCart\App\Models\Cart', 'isLocked' )
+			&& method_exists( '\FluentCart\App\Models\Cart', 'reValidateCoupons' )
+			&& is_callable( [ '\FluentCart\App\Helpers\CartHelper', 'getCart' ] )
+			&& is_callable( [ '\FluentCart\Api\CurrencySettings', 'getFormattedPrice' ] );
+	}
+
+	/**
+	 * Read a validated native exchange-rate snapshot when supported by FluentCart.
+	 *
+	 * @param object|null $cart Native cart, or null for a context-free line hint.
+	 * @return array<string,mixed>|null Locked quote, or null for legacy/base currency.
+	 */
+	private static function quote( $cart ): ?array {
+		$class = '\FluentCart\App\Modules\MultiCurrency\Services\CartCurrency';
+		if ( ! $cart instanceof \FluentCart\App\Models\Cart || ! is_callable( [ $class, 'lock' ] ) ) { return null; }
+		return $class::lock( $cart );
+	}
+
+	/**
+	 * Express the stored shop-currency minimum in the cart's locked currency.
+	 *
+	 * @param object|null $cart Native cart or null.
+	 * @param array<string,mixed> $settings Stored site rules, never modified in storage.
+	 * @return array<string,mixed> Request-local rule values for this cart.
+	 */
+	private static function cart_settings( $cart, array $settings ): array {
+		$quote = self::quote( $cart );
+		$converter = '\FluentCart\App\Modules\MultiCurrency\Services\PriceConverter';
+		if ( $quote && $settings['min_value'] > 0 && is_callable( [ $converter, 'toQuote' ] ) ) {
+			// A limit is an amount, not a product price: do not apply charm pricing.
+			$settings['min_value'] = $converter::toQuote( $settings['min_value'], $quote );
+		}
+		return $settings;
+	}
+
+	/**
+	 * Evaluate authoritative rows and retain the currency for customer messages.
+	 *
+	 * @param object $cart Native current cart.
+	 * @param array<string,mixed> $settings Stored site rules.
+	 * @return array<int,array<string,mixed>> Violations with explicit monetary currency.
+	 */
+	private static function violations( $cart, array $settings ): array {
+		$errors = Rules::violations( $cart->cart_data, self::cart_settings( $cart, $settings ) );
+		$quote = self::quote( $cart );
+		if ( $quote ) {
+			foreach ( $errors as &$error ) {
+				if ( 'min_value' === $error['code'] ) { $error['currency'] = $quote['currency']; }
+			}
+			unset( $error );
+		}
+		return $errors;
 	}
 
 	/**
@@ -72,7 +135,7 @@ final class Integration {
 	 * @return void
 	 */
 	public static function notice(): void {
-		if ( self::notice_allowed() ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Tools for FluentCart requires an active FluentCart 1.7.x installation. The Cart Rules module is paused until then; plugin settings remain available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
+		if ( self::notice_allowed() ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Tools for FluentCart requires an active FluentCart installation, version 1.7.0 or later, with the supported cart interfaces. The Cart Rules module is paused until then; plugin settings remain available in the admin.', 'tools-for-fluentcart' ) . '</p></div>'; }
 	}
 
 	/**
@@ -205,7 +268,7 @@ final class Integration {
 		// Re-query for authoritative data after coupon recalculation; never use submitted cart_hash.
 		$fresh = \FluentCart\App\Models\Cart::query()->where( 'cart_hash', $cart->cart_hash )->first();
 		if ( ! $fresh ) { return new \WP_Error( 'tffc_missing_cart', __( 'Please refresh your cart and try again.', 'tools-for-fluentcart' ) ); }
-		$errors = Rules::violations( $fresh->cart_data, $s );
+		$errors = self::violations( $fresh, $s );
 		return $errors ? new \WP_Error( 'tffc_rules', implode( ' ', array_map( [ Rules::class, 'message' ], $errors ) ) ) : $validation;
 	}
 
@@ -218,7 +281,7 @@ final class Integration {
 	public static function hints( array $data ): void {
 		$cart = $data['cart'] ?? null;
 		if ( ! $cart ) { return; }
-		$errors = Rules::violations( $cart->cart_data, Settings::get() );
+		$errors = self::violations( $cart, Settings::get() );
 		if ( ! $errors ) { return; }
 		echo '<aside class="tffc-guidance" aria-live="polite"><strong>' . esc_html__( 'Before ordering', 'tools-for-fluentcart' ) . '</strong><ul>';
 		foreach ( $errors as $error ) { echo '<li>' . esc_html( Rules::message( $error ) ) . '</li>'; }
@@ -234,6 +297,10 @@ final class Integration {
 	public static function line_hint( array $data ): void {
 		$s = Settings::get(); if ( ! $s['enabled'] || $s['single'] ) { return; }
 		$parts = [];
+		if ( ! empty( $s['product_ids'] ) ) {
+			echo '<small class="tffc-line-rules">' . esc_html__( 'Cart limits apply to selected products only. Checkout shows any remaining requirements.', 'tools-for-fluentcart' ) . '</small>';
+			return;
+		}
 		if ( $s['min_total'] ) {
 			/* translators: %s: Formatted quantity or merchandise amount in the shop currency. */
 			$parts[] = sprintf( __( 'Minimum cart quantity: %s.', 'tools-for-fluentcart' ), number_format_i18n( $s['min_total'] ) );

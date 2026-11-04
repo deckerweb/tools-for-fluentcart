@@ -1,11 +1,5 @@
 <?php
-/**
- * Resolve shared updater messages in the host textdomain.
- *
- * @package ToolsForFluentCart
- * @copyright 2026 David Decker – DECKERWEB
- * @license GPL-2.0-or-later
- */
+/** Copy into the host adapter and replace the tools-for-fluentcart textdomain with its literal domain. */
 defined( 'ABSPATH' ) || exit;
 /**
  * Resolve an updater source string in the host textdomain.
@@ -51,6 +45,38 @@ return static function ( string $message ): string {
             return __( 'The approved release could not be verified.', 'tools-for-fluentcart' );
         case 'The approved release changed. Refresh updates first.':
             return __( 'The approved release changed. Refresh updates first.', 'tools-for-fluentcart' );
+        case 'Catalog diagnostics require a public catalog provider.':
+            return __( 'Catalog diagnostics require a public catalog provider.', 'tools-for-fluentcart' );
+        case 'Catalog approval':
+            return __( 'Catalog approval', 'tools-for-fluentcart' );
+        case 'Package download':
+            return __( 'Package download', 'tools-for-fluentcart' );
+        case 'Checksum verification':
+            return __( 'Checksum verification', 'tools-for-fluentcart' );
+        case 'Archive verification':
+            return __( 'Archive verification', 'tools-for-fluentcart' );
+        case 'The update server could not be reached. Try again later.':
+            return __( 'The update server could not be reached. Try again later.', 'tools-for-fluentcart' );
+        case 'The update request timed out. Try again later.':
+            return __( 'The update request timed out. Try again later.', 'tools-for-fluentcart' );
+        case 'The update server address could not be resolved.':
+            return __( 'The update server address could not be resolved.', 'tools-for-fluentcart' );
+        case 'The secure connection to the update server failed.':
+            return __( 'The secure connection to the update server failed.', 'tools-for-fluentcart' );
+        case 'The update server returned an unsuccessful HTTP response.':
+            return __( 'The update server returned an unsuccessful HTTP response.', 'tools-for-fluentcart' );
+        case 'The update provider did not return valid update data.':
+            return __( 'The update provider did not return valid update data.', 'tools-for-fluentcart' );
+        case 'The package does not match the approved checksum. Installation was stopped.':
+            return __( 'The package does not match the approved checksum. Installation was stopped.', 'tools-for-fluentcart' );
+        case 'The archive or plugin identity could not be verified. Installation was stopped.':
+            return __( 'The archive or plugin identity could not be verified. Installation was stopped.', 'tools-for-fluentcart' );
+        case 'Update stopped at %1$s: %2$s':
+            /* translators: 1: update stage, 2: fixed explanation. */
+            return __( 'Update stopped at %1$s: %2$s', 'tools-for-fluentcart' );
+        case 'HTTP status: %d.':
+            /* translators: %d: HTTP error status. */
+            return __( 'HTTP status: %d.', 'tools-for-fluentcart' );
         default:
             return $message;
     }

@@ -17,7 +17,7 @@ final class Rules {
 	 * @return array<string,mixed> Complete stored settings schema.
 	 */
 	public static function defaults(): array {
-		return [ 'enabled' => false, 'single' => false, 'min_total' => 0, 'min_item' => 0, 'min_value' => 0, 'max_total' => 0, 'max_item' => 0, 'step' => 1, 'delete_data' => false ];
+		return [ 'enabled' => false, 'single' => false, 'min_total' => 0, 'min_item' => 0, 'min_value' => 0, 'max_total' => 0, 'max_item' => 0, 'step' => 1, 'delete_data' => false, 'product_ids' => [] ];
 	}
 
 	/**
@@ -56,6 +56,10 @@ final class Rules {
 	 */
 	public static function violations( array $items, array $settings ): array {
 		if ( ! $settings['enabled'] || ! $items ) { return []; }
+		if ( ! $settings['single'] && ! empty( $settings['product_ids'] ) ) {
+			$items = array_values( array_filter( $items, static fn( $item ) => in_array( (int) ( $item['post_id'] ?? 0 ), $settings['product_ids'], true ) ) );
+			if ( ! $items ) { return []; }
+		}
 		$total = 0; $value = 0; $errors = [];
 		foreach ( $items as $item ) {
 			$q = (int) ( $item['quantity'] ?? 0 );
@@ -115,7 +119,7 @@ final class Rules {
 				return sprintf( __( 'Choose a quantity in multiples of %2$s for %1$s.', 'tools-for-fluentcart' ), $title, $n );
 			case 'min_value':
 				/* translators: %s: formatted monetary amount remaining. */
-				return sprintf( __( 'Add products worth %s more to reach the minimum order value.', 'tools-for-fluentcart' ), wp_strip_all_tags( \FluentCart\Api\CurrencySettings::getFormattedPrice( $error['remaining'] ) ) );
+				return sprintf( __( 'Add products worth %s more to reach the minimum order value.', 'tools-for-fluentcart' ), wp_strip_all_tags( \FluentCart\Api\CurrencySettings::getFormattedPrice( $error['remaining'], $error['currency'] ?? null ) ) );
 			default: return __( 'Please check the quantities in your cart.', 'tools-for-fluentcart' );
 		}
 	}

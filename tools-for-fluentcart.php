@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Tools for FluentCart
- * Plugin URI: https://github.com/deckerweb/tools-for-fluentcart
- * Description: Practical tools for FluentCart. Cart Rules adds quantity limits, minimum order values and single-item carts.
- * Version: 0.9.1
+ * Plugin URI: https://deckerwebplugins.com/en/plugins/tools-for-fluentcart/
+ * Description: An add-on for FluentCart: cart rules, product notes, store checks and catalog mode.
+ * Version: 1.0.0
  * Requires at least: 7.1.2
  * Requires PHP: 8.2
  * Author: David Decker – DECKERWEB
- * Author URI: https://github.com/deckerweb
+ * Author URI: https://deckerwebplugins.com/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: tools-for-fluentcart
@@ -19,7 +19,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 defined( 'ABSPATH' ) || exit;
-define( 'TFFC_VERSION', '0.9.1' );
+define( 'TFFC_VERSION', '1.0.0' );
 define( 'TFFC_FILE', __FILE__ );
 define( 'TFFC_DIR', __DIR__ . '/' );
 require_once TFFC_DIR . 'includes/deckerweb-plugin-library/bootstrap.php';

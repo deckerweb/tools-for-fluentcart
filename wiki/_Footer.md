@@ -6,3 +6,5 @@
 
 © 2026 David Decker – DECKERWEB.  
 Plugin: [GPL v2 or later / GPL v2 oder höher](https://www.gnu.org/licenses/gpl-2.0.html).
+
+[Website EN](https://deckerwebplugins.com/en/plugins/tools-for-fluentcart/) · [Website DE](https://deckerwebplugins.com/de/plugins/tools-for-fluentcart/)

@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tools for FluentCart · Shop owner’s guide</title><style>body{font:17px/1.7 system-ui,sans-serif;color:#2e2138;background:#f4f1f7;margin:0}main{max-width:1000px;margin:auto;background:#fff;padding:40px}h1,h2{color:#392047;line-height:1.25}h2{border-top:1px solid #d4c9dd;padding-top:30px;margin-top:48px}a{color:#614181}img{max-width:100%;height:auto;border:1px solid #d4c9dd;border-radius:6px}header{background:#2d1439;color:#fff;padding:28px 40px}header a{color:#fff}footer{padding:28px 0;border-top:1px solid #d4c9dd}@media(max-width:700px){main{padding:20px}}@media print{body{background:#fff}main{padding:0}h2{break-after:avoid}img{max-height:650px;object-fit:contain}header{background:none;color:#2e2138}}</style></head><body><header><strong>Tools for FluentCart</strong> · 1.0.0<br>An add-on for FluentCart · <a href="manual-de.html">Deutsch</a></header><main><h1>Tools for FluentCart: shop owner’s guide</h1>
+<p><a href="manual-de.html">Deutsch</a> · <a href="FAQ.md">FAQ</a></p>
+<p>Fine-tune your FluentCart shop with a focused add-on: guide orders with Cart Rules, explain products with Product Notes, review store setup and pause purchases with Catalog Mode. Each module is optional and configured separately for each website.</p>
+<h2>Getting started</h2>
+<ol>
+<li>Install and activate FluentCart 1.7.0 or later, then upload the Tools for FluentCart ZIP under Plugins → Add Plugin → Upload Plugin.</li>
+<li>Open FluentCart → Tools for FluentCart. Start with Cart Rules or another module. All new modules start switched off.</li>
+<li>Configure and save the module, inspect its status and test the storefront as a customer. For Catalog Mode, clear your page caches when switching.</li>
+<li>If FluentCart is missing or unsupported, settings remain accessible under Settings → Tools for FluentCart. Dependent fields are read-only and server-side changes are blocked.</li>
+</ol>
+<h2>Set up Cart Rules</h2>
+<p>Open Cart Rules, choose a preset, adjust the limits and save. The saved summary describes the stored configuration, not unsaved changes. Zero disables a limit; quantity step 1 permits every whole quantity. A step of 6 permits 6, 12, 18 and so on for each variation. Minimum merchandise value uses shop currency after discounts, without shipping or fees. Native cart currency quotes are respected in FluentCart 2.x.</p>
+<p><img src="screenshots/cart-rules-en.png" alt="Set up Cart Rules"></p>
+<p><em>Set up Cart Rules — Example with neutral shop data.</em></p>
+<h2>Limit the rule to selected products</h2>
+<p>Enter comma-separated WordPress product IDs in Product selection. The saved titles help verify the selection. All variations of those products count. Total quantity and merchandise value count only matching rows; unrelated products cannot fulfill the minimum. A cart without matching products has no selected-product requirement. Each variation still counts separately. Leave the selection empty for the whole cart. One-item mode always covers the whole cart and clears other limits and the selection when saved.</p>
+<h2>Try a rule without ordering</h2>
+<p>Use Try the saved rules with one sample product ID, quantity and total merchandise value after discounts. The test uses saved settings in shop currency. It creates no cart or order and does not test stock, tax, shipping or payment. Disabled rules or products outside the selection create no requirement. Always test the actual storefront afterward.</p>
+<p><img src="screenshots/rule-test-en.png" alt="Try a rule without ordering"></p>
+<p><em>Try a rule without ordering — Example with neutral shop data.</em></p>
+<h2>Add helpful product notes</h2>
+<p>Enable Product Notes. Enter a short note, choose products or leave the selection empty for all, then choose After the product price, After product content or Beside the cart item. Save; another empty row becomes available. Up to 20 notes are supported. Clear a note’s text and save to remove it. Positions use native FluentCart rendering hooks; custom layouts can place [tffc_product_note id=&quot;123&quot;] explicitly. The shortcode displays all matching notes for that published product.</p>
+<p><img src="screenshots/product-notes-en.png" alt="Add helpful product notes"></p>
+<p><em>Add helpful product notes — Example with neutral shop data.</em></p>
+<h2>Check your store setup</h2>
+<p>Enable Store Checks and open its tab to read current results. Run checks again refreshes the local report. Review means action or a manual check is needed; it is not always a broken page. Builder-generated content may be valid even when no native shortcode or block is present. The check does not place orders, test gateways or certify legal compliance.</p>
+<p><img src="screenshots/store-checks-en.png" alt="Check your store setup"></p>
+<p><em>Check your store setup — Example with neutral shop data.</em></p>
+<h2>Use Catalog Mode</h2>
+<p>Add an optional explanation and contact URL, save and enable Catalog Mode. Test product pages, shop listings and a direct checkout link. Clear page and CDN caches both when enabling and disabling the mode. Existing orders and products are not deleted. Account access and automatic renewals remain managed by FluentCart; this module is not a subscription pause or an existing-order cancellation tool. Third-party payment endpoints and cached/custom purchase widgets need their own checks.</p>
+<p><img src="screenshots/catalog-mode-en.png" alt="Use Catalog Mode"></p>
+<p><em>Use Catalog Mode — Example with neutral shop data.</em></p>
+<h2>Move settings safely</h2>
+<p>Open Transfer settings → Export settings. Paste the JSON into the destination website and choose Preview import. Review the values and confirm the import. Only listed Tools modules are replaced; modules are switched off after import and deletion preferences remain unchanged. Product IDs are website-specific: review them before enabling. Products, orders, customers, payment credentials, Library and updater settings are not copied. JSON is limited to 256 KB.</p>
+<p><img src="screenshots/transfer-en.png" alt="Move settings safely"></p>
+<p><em>Move settings safely — Example with neutral shop data.</em></p>
+<h2>Reset only what you intend</h2>
+<p>Open Reset this module, confirm the checkbox and apply. Only that module returns to disabled defaults. Other modules and deletion preferences remain unchanged. Deactivation preserves all settings. Uninstall preserves each module unless its per-website deletion option was enabled. FluentCart products, orders, carts and customer records are never deleted.</p>
+<h2>Multisite and compatibility</h2>
+<p>Tools stores independent settings on each website, including network activation. No network-wide order policy is created. Newly created websites start with disabled defaults. FluentCart 1.7.0, 2.2.0 and 2.3.0 have a confirmed upstream scheduler timing issue when creating a new Multisite website; the cause is in FluentCart, not this add-on. The add-on does not patch the parent plugin. Test subscriptions, bundles, order bumps and custom storefronts with the chosen rules. Real paid transactions and every Pro integration are not covered by a blanket compatibility promise.</p>
+<h2>Storefront result</h2>
+<p><img src="screenshots/product-note-result-en.png" alt="Product note on a native product page"></p>
+<p><img src="screenshots/catalog-result-en.png" alt="Catalog view without purchase controls"></p>
+<footer>© 2026 David Decker – DECKERWEB · Plugin: GPL v2 or later / GPL v2 oder höher</footer></main></body></html>

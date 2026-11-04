@@ -1,19 +1,19 @@
 # Tools for FluentCart
 
-![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-en.png?v=20261007-centered)
+![Tools for FluentCart](https://raw.githubusercontent.com/deckerweb/tools-for-fluentcart/main/assets-github/banner-github-en.png)
 
 **Fine-tune your store.**
 
-Practical tools for your FluentCart shop. The Cart Rules module provides single-item carts, minimum quantities and merchandise value, maximum quantities, and quantity steps.
+Fine-tune your FluentCart shop with a focused add-on: guide orders with Cart Rules, explain products with Product Notes, review store setup and pause purchases with Catalog Mode. Each module is optional and configured separately for each website.
 
-- Cart Rules is the first module in the Tools series.
-- Five presets with adjustable values.
-- Combine total and per-product quantity rules in custom mode.
-- Single-item mode replaces the previous product and hides quantity controls.
-- Checkout validation uses server-side cart data.
-- Site-specific settings, including Multisite.
-- English source, German informal and formal translations.
+## English
 
-[Deutsch](Home-de)
+- [Getting started](README#installation)
+- [User guide](Documentation)
+- [FAQ by topic](FAQ-by-topic)
 
-[Readme](README) · [Documentation](Documentation) · [FAQ by topic](FAQ-by-topic) · [Changelog](Changelog)
+## Deutsch
+
+- [Erste Schritte](README-de#installation)
+- [Anleitung](Dokumentation)
+- [Fragen nach Themen](Fragen-nach-Themen)

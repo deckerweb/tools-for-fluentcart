@@ -2,37 +2,65 @@
 
 [English](FAQ.md)
 
-## Einrichtung und Alltag
+## Einstieg und Alltag
 
-### Wann greifen die Regeln?
+### Ersetzt das Plugin FluentCart?
 
-Der Ein-Artikel-Modus passt bearbeitbare Warenkörbe automatisch an. Alle anderen Regeln werden beim Checkout geprüft. Hinweise erscheinen in den Standardansichten von Warenkorb und Checkout.
+Nein. Es ist ein Add-on für eine aktive FluentCart-Installation. Produkte, Warenkörbe, Kunden, Bestellungen und Zahlungen verwaltet FluentCart. Tools ergänzt optionale Shophelfer.
 
-### Kann ich Presets kombinieren?
+### Mit welchem Modul beginne ich?
 
-Presets füllen die Felder als Ausgangspunkt aus. Im Modus für eigene Regeln lassen sich Grenzen kombinieren. Der Ein-Artikel-Modus ist eigenständig und setzt andere Grenzen beim Speichern zurück.
+Für Bestellgrenzen mit Warenkorb-Regeln, für erklärende Produkttexte mit Produkthinweisen und für Seitenzuordnungen mit der Shop-Prüfung. Der Katalogmodus hält Produkte sichtbar und pausiert neue Onlinekäufe.
 
-## Produkte und Grenzen
+### Kann ich Regeln auf bestimmte Produkte beschränken?
+
+Ja. Eigene Mengen- und Wertgrenzen können ausgewählte Hauptprodukte und alle ihre Varianten zählen. Andere Positionen tragen nicht dazu bei. Der Ein-Artikel-Modus gilt immer für den ganzen Warenkorb. Produkt-IDs gehören zur jeweiligen Website.
+
+### Ändern sich vorhandene Regeln beim Update?
+
+Bestehende Warenkorb-Regeln bleiben erhalten. Neue Module sind ausgeschaltet. Eine leere Produktauswahl erhält den bisherigen Geltungsbereich für den ganzen Warenkorb. Importierte Module bleiben bewusst bis zur Kontrolle ausgeschaltet.
+
+## Shopansichten und Grenzen
+
+### Was sperrt der Katalogmodus?
+
+Native Warenkorbkäufe und Checkout, einschließlich direkter Checkout-Links. Native Kaufbereiche werden bei unterstütztem Renderer entfernt; für ältere Ansichten gibt es einen begrenzten CSS-Fallback. Daten bleiben erhalten. Eigene Layouts, Caches und externe Zahlungswege gesondert prüfen.
+
+### Was passiert ohne FluentCart?
+
+Das Plugin bleibt im Admin aktiv; seine Einstellungen liegen dann unter WordPress-Einstellungen. Abhängige Module pausieren und erhalten ihre Werte. Regel- und Moduländerungen werden auf dem Server blockiert; Export und Löschoptionen bleiben verfügbar.
+
+### Funktioniert es in Multisite?
+
+Die Einstellungen gelten getrennt je Website. FluentCart 1.7.0, 2.2.0 und 2.3.0 haben beim Anlegen neuer Websites einen Scheduler-Fehler. Tools dokumentiert ihn und verändert den FluentCart-Code nicht.
+
+### Sind die Produkthinweise rechtliche Checkout-Hinweise?
+
+Nein. Sie sind für normale Produktinformationen gedacht. Tools liefert keine Rechtstexte, keine Zertifizierung und keinen Ersatz für spezialisierte Checkout-Rechtslösungen.
+
+### Kann ein Hinweis HTML oder Shortcodes enthalten?
+
+Nein. Hinweise sind einfacher Text mit Zeilenumbrüchen. Den dafür vorgesehenen Produkthinweis-Shortcode kannst du in eigenen Layouts platzieren.
+
+### Warum meldet die Shop-Prüfung bei einer funktionierenden Builder-Seite Prüfen?
+
+Die Prüfung erkennt native Shortcodes und FluentCart-Blöcke im Seiteninhalt. Builder oder Templates können die Ausgabe andernorts erzeugen. Öffne die Seite und kontrolliere den Ablauf manuell.
+
+### Prüft der Beispieltest Zahlungen?
+
+Nein. Er prüft eine Beispielposition gegen gespeicherte Regeln, ohne echten Warenkorb, Bestellung, Bestandsprüfung oder Zahlung.
+
+## Daten und Verwaltung
+
+### Gibt es Bestelllimits pro Kunde?
+
+Nein. Warenkorb-Regeln prüfen den aktuellen Warenkorb, keine früheren Bestellungen oder Kundenhistorien.
 
 ### Was zählt als Produkt?
 
-Jede Produktvariante zählt einzeln. Ein Bundle zählt als eine Warenkorbposition; seine Bestandteile werden nicht einzeln begrenzt.
+Jede Variante ist eine eigene Warenkorbposition. Ein Bundle zählt als eine Position; enthaltene Komponenten werden nicht einzeln begrenzt.
 
-### Begrenzt das Bestellungen pro Kunde?
+### Was verlässt meine Website?
 
-Nein. Die Regeln gelten für jeden Warenkorb, ohne Kundenhistorie oder Kontolimits.
-
-## Verwaltung und Kompatibilität
-
-### Funktioniert das in Multisite?
-
-Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln. Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.
-
-### Welche Versionen und Integrationen werden unterstützt?
-
-Dieses Plugin ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen. Tools kann ohne FluentCart aktiviert werden; das Modul bleibt bis zur Aktivierung einer unterstützten Version pausiert.
-
-### Was passiert bei der Deinstallation?
-
-Einstellungen bleiben standardmäßig erhalten. Jede Website kann das Löschen ihrer Cart-Rules-Einstellungen erlauben. Temporäre Updater- und Library-Caches werden im jeweiligen Geltungsbereich bereinigt; Library-Daten erst beim letzten Host. FluentCart-Produkte, Bestellungen und Warenkörbe werden niemals gelöscht.
+Die neuen Module stellen keine externen Anfragen. Der GitHub-Updater prüft dieses Repository; die gemeinsame Library hat einen eigenen optionalen Onlinekatalog und Installationsablauf. Diese Verbindungen sind unter Daten und Datenschutz beschrieben. Tools exportiert keine Bestell- oder Kundendaten.
 

@@ -1,67 +1,70 @@
 === Tools for FluentCart ===
-Contributors: deckerweb
-Tags: fluentcart, cart, order, quantity
+Contributors: daveshine
+Tags: fluentcart, cart, catalog, shop
 Requires at least: 7.1.2
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.9.1
-License: GPL v2 or later
+Stable tag: 1.0.0
+License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Warenkorb-Regeln für FluentCart: einzelne Artikel, Mindestmengen und Bestellwerte, Mengenlimits und Mengenschritte.
+Optionale Shophelfer für FluentCart: Warenkorb-Regeln, Produkthinweise, Shop-Prüfung und Katalogmodus.
 
 == Description ==
+Ein gezieltes Add-on für deinen FluentCart-Shop: Bestellungen mit Warenkorb-Regeln steuern, Produkte verständlich erklären, die Shopeinrichtung prüfen und Käufe bei Bedarf mit dem Katalogmodus pausieren. Jedes Modul ist optional und wird pro Website eingerichtet.
 
-* Cart Rules ist das erste Modul der Tools-Serie.
-* Fünf Presets mit anpassbaren Werten.
-* Gesamtmengen und Mengen je Produkt im eigenen Modus kombinieren.
-* Ein-Artikel-Modus ersetzt das bisherige Produkt und blendet die Mengenauswahl aus.
-* Checkout-Prüfung anhand serverseitiger Warenkorbdaten.
-* Einstellungen je Website, auch in Multisite.
-* Englische Originaltexte, deutsche Du- und Sie-Übersetzungen.
-
-Der eingebettete deckerweb Updater prüft öffentliche GitHub-Releases im WordPress-Updateablauf. GitHub erhält dabei die Netzwerkadresse der Installation und gewöhnliche HTTP-Metadaten; keine Zugangsdaten oder Kundenwarenkörbe. Der freiwillige gemeinsame Library-Onlinekatalog ist zunächst ausgeschaltet. Nach Aktivierung lädt er freigegebene öffentliche Metadaten von raw.githubusercontent.com. Gestaltung und Übersetzungen werden lokal ausgeliefert.
+* Genau ein Artikel, Mengenlimits, Mengenschritte und Mindestwarenwert.
+* Eigene Regeln für alle Produkte oder ausgewählte Produkte samt Varianten.
+* Kurze Produkthinweise nach Preisen, Beschreibungen oder bei Warenkorbpositionen.
+* Lokale Prüfung von Shopseiten und widersprüchlichen Regeln.
+* Katalogmodus: Produkte und Preise zeigen, neue Käufe pausieren.
+* Gespeicherte Regeln im Überblick, Beispieltest, Modulstatus, Einstellungsübertragung und gezieltes Zurücksetzen.
 
 == Installation ==
-
-Die installierbare ZIP-Datei unter Plugins → Plugin hinzufügen → Plugin hochladen installieren. FluentCart → Tools for FluentCart öffnen, ein Preset wählen, Werte prüfen, speichern und Regeln aktivieren. Beide älteren Ein-Artikel-Add-ons müssen deaktiviert sein. Bei einer Neuinstallation sind die Regeln ausgeschaltet. Ohne FluentCart bleibt Cart Rules pausiert und ein Hinweis erscheint im Admin. Die Tools-Einstellungen sind dann unter Einstellungen → Tools for FluentCart erreichbar. Sobald FluentCart installiert und aktiviert ist, stehen sie im Shop-Menü. Während das Modul pausiert ist, bleiben gespeicherte Regeln sichtbar und sind schreibgeschützt; auch direkte Speicheranfragen können sie nicht ändern. Die unabhängige Einstellung zur Datenlöschung bleibt bedienbar.
+1. Installiere und aktiviere FluentCart ab 1.7.0. Lade anschließend die Tools-for-FluentCart-ZIP unter Plugins → Plugin hinzufügen → Plugin hochladen hoch.
+2. Öffne FluentCart → Tools for FluentCart und beginne mit Warenkorb-Regeln oder einem anderen Modul. Alle neuen Module sind zunächst ausgeschaltet.
+3. Richte das Modul ein, speichere und prüfe Status und Shopansicht als Kunde. Beim Umschalten des Katalogmodus leere die Seitencaches.
+4. Fehlt FluentCart oder wird die Installation nicht unterstützt, erreichst du die Einstellungen unter Einstellungen → Tools for FluentCart. Abhängige Felder sind schreibgeschützt; Änderungen werden auch auf dem Server blockiert.
 
 == Frequently Asked Questions ==
+= Ersetzt das Plugin FluentCart? =
+Nein. Es ist ein Add-on für eine aktive FluentCart-Installation. Produkte, Warenkörbe, Kunden, Bestellungen und Zahlungen verwaltet FluentCart. Tools ergänzt optionale Shophelfer.
 
-= Wann greifen die Regeln? =
-Der Ein-Artikel-Modus passt bearbeitbare Warenkörbe automatisch an. Alle anderen Regeln werden beim Checkout geprüft. Hinweise erscheinen in den Standardansichten von Warenkorb und Checkout.
+= Mit welchem Modul beginne ich? =
+Für Bestellgrenzen mit Warenkorb-Regeln, für erklärende Produkttexte mit Produkthinweisen und für Seitenzuordnungen mit der Shop-Prüfung. Der Katalogmodus hält Produkte sichtbar und pausiert neue Onlinekäufe.
 
-= Kann ich Presets kombinieren? =
-Presets füllen die Felder als Ausgangspunkt aus. Im Modus für eigene Regeln lassen sich Grenzen kombinieren. Der Ein-Artikel-Modus ist eigenständig und setzt andere Grenzen beim Speichern zurück.
+= Kann ich Regeln auf bestimmte Produkte beschränken? =
+Ja. Eigene Mengen- und Wertgrenzen können ausgewählte Hauptprodukte und alle ihre Varianten zählen. Andere Positionen tragen nicht dazu bei. Der Ein-Artikel-Modus gilt immer für den ganzen Warenkorb. Produkt-IDs gehören zur jeweiligen Website.
 
-= Was zählt als Produkt? =
-Jede Produktvariante zählt einzeln. Ein Bundle zählt als eine Warenkorbposition; seine Bestandteile werden nicht einzeln begrenzt.
+= Ändern sich vorhandene Regeln beim Update? =
+Bestehende Warenkorb-Regeln bleiben erhalten. Neue Module sind ausgeschaltet. Eine leere Produktauswahl erhält den bisherigen Geltungsbereich für den ganzen Warenkorb. Importierte Module bleiben bewusst bis zur Kontrolle ausgeschaltet.
 
-= Begrenzt das Bestellungen pro Kunde? =
-Nein. Die Regeln gelten für jeden Warenkorb, ohne Kundenhistorie oder Kontolimits.
+= Was sperrt der Katalogmodus? =
+Native Warenkorbkäufe und Checkout, einschließlich direkter Checkout-Links. Native Kaufbereiche werden bei unterstütztem Renderer entfernt; für ältere Ansichten gibt es einen begrenzten CSS-Fallback. Daten bleiben erhalten. Eigene Layouts, Caches und externe Zahlungswege gesondert prüfen.
 
-= Funktioniert das in Multisite? =
-Jede Website hat eigene Einstellungen. Netzwerkaktivierung erzeugt keine gemeinsame Bestellregel. Neue Websites starten mit ausgeschalteten Regeln. Bekannte Einschränkung in FluentCart 1.7.0: Beim Anlegen einer neuen Website in einem Multisite-Netzwerk kann der FluentCart-eigene Scheduler Datenbankfehler melden, weil die benötigten Tabellen zu diesem Zeitpunkt noch nicht vorhanden sind. Die Ursache liegt im Mutter-Plugin FluentCart 1.7.0. Tools for FluentCart weist auf diese Einschränkung hin; das Add-on verändert FluentCart dafür nicht.
+= Was passiert ohne FluentCart? =
+Das Plugin bleibt im Admin aktiv; seine Einstellungen liegen dann unter WordPress-Einstellungen. Abhängige Module pausieren und erhalten ihre Werte. Regel- und Moduländerungen werden auf dem Server blockiert; Export und Löschoptionen bleiben verfügbar.
 
-= Welche Versionen und Integrationen werden unterstützt? =
-Dieses Plugin ist für WordPress ab 7.1.2, PHP ab 8.2 und FluentCart 1.7.x vorgesehen. Bei anderen FluentCart-Minorversionen bleibt die Anbindung inaktiv. Abos, Zusatzangebote, Bundles, eigene Shopansichten und weitere Warenkorb-Add-ons vor dem Live-Einsatz testen. Tools kann ohne FluentCart aktiviert werden; das Modul bleibt bis zur Aktivierung einer unterstützten Version pausiert.
+= Funktioniert es in Multisite? =
+Die Einstellungen gelten getrennt je Website. FluentCart 1.7.0, 2.2.0 und 2.3.0 haben beim Anlegen neuer Websites einen Scheduler-Fehler. Tools dokumentiert ihn und verändert den FluentCart-Code nicht.
 
-= Was passiert bei der Deinstallation? =
-Einstellungen bleiben standardmäßig erhalten. Jede Website kann das Löschen ihrer Cart-Rules-Einstellungen erlauben. Temporäre Updater- und Library-Caches werden im jeweiligen Geltungsbereich bereinigt; Library-Daten erst beim letzten Host. FluentCart-Produkte, Bestellungen und Warenkörbe werden niemals gelöscht.
-
-Vollständige Fragen nach Themen: docs/FAQ-de.md
+Vollständige FAQ: https://github.com/deckerweb/tools-for-fluentcart/wiki/Fragen-nach-Themen
 
 == Changelog ==
+= 1.0.0 =
+
+* Neu: Produkthinweise, Shop-Prüfung und Katalogmodus; Regeln für ausgewählte Produkte, gespeicherte Zusammenfassungen, Beispieltests, Einstellungsübertragung und gezieltes Zurücksetzen je Modul.
+* Verbessert: Unterstützung für FluentCart ab 1.7.0 anhand nativer Schnittstellen; aktualisierte Grafiken und bebilderte Anleitungen.
+* Behoben: Mindestbestellwerte berücksichtigen den nativen Warenkorb-Währungskurs in FluentCart 2.x.
 
 = 0.9.1 · 2026-10-22 =
-* Verbessert: Gemeinsame Library und Update-Anbindung aktualisiert; pausierte Regelfelder geschützt sowie Admin-Hinweise, Speicherbestätigungen und Änderungsverlauf-Dialog verbessert.
+
+- **Verbessert: Gemeinsame Library und Update-Anbindung aktualisiert; pausierte Regelfelder geschützt sowie Admin-Hinweise, Speicherbestätigungen und Änderungsverlauf-Dialog verbessert.
 
 = 0.9.0 · 2026-10-07 =
-* Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.
+
+- Neu: Cart Rules mit Ein-Artikel-Warenkörben, Mindestmengen und Mindestbestellwert, Höchstmengen und Mengenschritten.
 
 = 0.1.0–0.8.0 =
+
 * Sonstiges: Entwicklungs- und Testversionen; nicht öffentlich veröffentlicht.
-
-== License ==
-
-Copyright © 2026 David Decker – DECKERWEB. GPL v2 oder höher; SPDX: GPL-2.0-or-later. Eingebettete deckerweb Plugin Library 1.1.0 und deckerweb Updater 2.2.1 stammen vom selben Autor und stehen unter GPL-2.0-or-later. Ihre stabilen Laufzeitquellen sind unverändert übernommen; Host-Anbindung und Sprachkataloge liegen getrennt vor. Dieses Plugin liefert weder FluentCart-Implementierung noch Premium-Code aus.

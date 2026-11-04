@@ -19,5 +19,7 @@ final class Modules {
 	 */
 	public static function boot(): void {
 		require_once TFFC_DIR . 'modules/cart-rules/module.php';
+		require_once TFFC_DIR . 'includes/class-store-tools.php';
+		StoreTools::boot();
 	}
 }

@@ -906,5 +906,77 @@
   "Another component interrupted the request. If Git Updater is active, temporarily deactivate it and retry.": {
     "de_DE": "Eine andere Komponente hat die Anfrage unterbrochen. Falls Git Updater aktiv ist, deaktiviere ihn vorübergehend und wiederhole den Vorgang.",
     "de_DE_formal": "Eine andere Komponente hat die Anfrage unterbrochen. Falls Git Updater aktiv ist, deaktivieren Sie ihn vorübergehend und wiederholen Sie den Vorgang."
+  },
+  "Plugin status": {
+    "de_DE": "Plugin-Status",
+    "de_DE_formal": "Plugin-Status"
+  },
+  "Not installed": {
+    "de_DE": "Nicht installiert",
+    "de_DE_formal": "Nicht installiert"
+  },
+  "Inactive": {
+    "de_DE": "Inaktiv",
+    "de_DE_formal": "Inaktiv"
+  },
+  "Invalid status filter.": {
+    "de_DE": "Ungültiger Statusfilter.",
+    "de_DE_formal": "Ungültiger Statusfilter."
+  },
+  "%1$s of %2$s plugins": {
+    "de_DE": "%1$s von %2$s Plugins",
+    "de_DE_formal": "%1$s von %2$s Plugins"
+  },
+  "Package download": {
+    "de_DE": "Paketdownload",
+    "de_DE_formal": "Paketdownload"
+  },
+  "Catalog verification": {
+    "de_DE": "Katalogprüfung",
+    "de_DE_formal": "Katalogprüfung"
+  },
+  "Connection failed. Please try again later.": {
+    "de_DE": "Die Verbindung ist fehlgeschlagen. Bitte später erneut versuchen.",
+    "de_DE_formal": "Die Verbindung ist fehlgeschlagen. Bitte später erneut versuchen."
+  },
+  "The connection timed out. Please try again later.": {
+    "de_DE": "Die Zeit für die Verbindung wurde überschritten. Bitte später erneut versuchen.",
+    "de_DE_formal": "Die Zeit für die Verbindung wurde überschritten. Bitte später erneut versuchen."
+  },
+  "The server address could not be resolved.": {
+    "de_DE": "Die Serveradresse konnte nicht aufgelöst werden.",
+    "de_DE_formal": "Die Serveradresse konnte nicht aufgelöst werden."
+  },
+  "The secure connection could not be verified.": {
+    "de_DE": "Die sichere Verbindung konnte nicht bestätigt werden.",
+    "de_DE_formal": "Die sichere Verbindung konnte nicht bestätigt werden."
+  },
+  "The server returned HTTP %d. Please try again later.": {
+    "de_DE": "Der Server hat HTTP %d zurückgegeben. Bitte später erneut versuchen.",
+    "de_DE_formal": "Der Server hat HTTP %d zurückgegeben. Bitte später erneut versuchen."
+  },
+  "The catalog response is invalid, incompatible or too large.": {
+    "de_DE": "Die Katalogantwort ist ungültig, inkompatibel oder zu groß.",
+    "de_DE_formal": "Die Katalogantwort ist ungültig, inkompatibel oder zu groß."
+  },
+  "Stage: %1$s. %2$s": {
+    "de_DE": "Fehlerstufe: %1$s. %2$s",
+    "de_DE_formal": "Fehlerstufe: %1$s. %2$s"
+  },
+  "Checksum verification": {
+    "de_DE": "Prüfsummenprüfung",
+    "de_DE_formal": "Prüfsummenprüfung"
+  },
+  "Archive verification": {
+    "de_DE": "Archivprüfung",
+    "de_DE_formal": "Archivprüfung"
+  },
+  "The package checksum does not match the approved release. Installation was stopped.": {
+    "de_DE": "Die Paketprüfsumme stimmt nicht mit der freigegebenen Version überein. Die Installation wurde gestoppt.",
+    "de_DE_formal": "Die Paketprüfsumme stimmt nicht mit der freigegebenen Version überein. Die Installation wurde gestoppt."
+  },
+  "The package did not pass the archive or plugin identity checks. Installation was stopped.": {
+    "de_DE": "Das Paket hat die Archiv- oder Plugin-Identitätsprüfung nicht bestanden. Die Installation wurde gestoppt.",
+    "de_DE_formal": "Das Paket hat die Archiv- oder Plugin-Identitätsprüfung nicht bestanden. Die Installation wurde gestoppt."
   }
 }

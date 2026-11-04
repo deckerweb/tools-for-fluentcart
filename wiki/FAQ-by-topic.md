@@ -4,35 +4,63 @@
 
 ## Setup and everyday use
 
-### When are the rules enforced?
+### Does this replace FluentCart?
 
-Single-item mode adjusts editable carts automatically. All other rules are checked at checkout. Rule guidance appears in the standard cart and checkout views.
+No. This is an add-on for an active FluentCart installation. FluentCart owns products, carts, customers, orders and payments. Tools adds optional shop helpers.
 
-### Can I combine presets?
+### Which module should I start with?
 
-Presets fill the fields as a starting point. Use custom rules to combine limits. Single-item mode is exclusive and clears the other limits on save.
+For purchase limits use Cart Rules. For explanatory product text use Product Notes. For checking page assignments use Store Checks. Use Catalog Mode when products should remain visible but new online purchases should stop.
 
-## Products and limits
+### Can I restrict rules to some products?
 
-### What counts as a product?
+Yes. Custom quantity and value limits can count selected parent products and all their variations. Other cart rows do not contribute. One-item mode is always cart-wide. Product IDs are specific to each website.
 
-Each product variation counts separately. A bundle counts as one cart row; its components are not individually limited.
+### Will my current rules change after updating?
 
-### Does this limit orders per customer?
+Existing Cart Rules settings are retained. New modules start disabled. An empty product selection retains the previous cart-wide scope. Imports deliberately switch imported modules off until reviewed.
 
-No. Rules apply to each cart, without customer history or account limits.
+## Storefront and limits
 
-## Administration and compatibility
+### What does Catalog Mode block?
+
+It blocks native storefront cart purchases and checkout, including direct checkout links. Native purchase regions are hidden when the renderer supports this; older views have a scoped CSS fallback. Data is retained. Check custom layouts, caches and external payment flows separately.
+
+### What happens without FluentCart?
+
+The plugin remains active in the admin, with its settings under WordPress Settings. Dependent modules pause and preserve saved settings. Rule and module changes are blocked on the server; export and uninstall preferences remain available.
 
 ### Does it work in Multisite?
 
-Settings belong to each website. Network activation introduces no shared order rule. New websites start with rules disabled. Known upstream limitation in FluentCart 1.7.0: When creating a new website in a Multisite network, the FluentCart scheduler can report database errors because the required tables are not yet available. This issue originates in the parent plugin FluentCart 1.7.0. Tools for FluentCart documents the limitation and does not modify FluentCart to address it.
+Settings are separate per website. FluentCart 1.7.0, 2.2.0 and 2.3.0 have an upstream scheduler issue during new website creation. Tools documents that issue and does not change FluentCart code.
 
-### Which versions and integrations are supported?
+### Are these legal checkout notices?
 
-This release requires WordPress 7.1.2+, PHP 8.2+ and FluentCart 1.7.x. Other FluentCart minor versions leave the adapter inactive. Test subscriptions, order bumps, bundles, custom storefronts and other cart-changing add-ons before production use. Tools can be activated without FluentCart; the module stays paused until a supported version is active.
+No. Product Notes is for ordinary product information. Tools does not provide legal texts, compliance certification or a replacement for specialist checkout-compliance software.
 
-### What happens on uninstall?
+### Can I enter HTML or shortcodes into a note?
 
-Settings are retained by default. Each website can opt to delete only its Cart Rules settings. Temporary updater and final-host Library caches are cleaned according to their scopes. FluentCart products, orders and carts are never deleted.
+No. Notes are plain text, with line breaks. Use the dedicated product-note shortcode in a custom layout if you need to choose the position there.
+
+### Why does a store check say Review for a working builder page?
+
+Store Checks can recognize native shortcodes and FluentCart blocks in page content. A builder or template may produce the page elsewhere. Open the page and verify that flow manually.
+
+### Does a sample test verify payments?
+
+No. It checks one sample row against saved rules only, without a real cart, order, stock check or payment.
+
+## Data and administration
+
+### Are there per-customer purchase limits?
+
+No. Cart Rules evaluates the current cart, not previous orders or customer history.
+
+### What counts as one product?
+
+Each variation is a separate cart row. A bundle counts as one row; nested components are not independently limited.
+
+### What leaves my website?
+
+The new modules make no external requests. The GitHub updater checks this repository; the shared Library has its own optional online catalog and installation behavior. These connections are described in Data and privacy. No order or customer data is exported by Tools.
 

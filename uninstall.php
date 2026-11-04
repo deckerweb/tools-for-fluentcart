@@ -10,7 +10,7 @@ defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 $tffc_updater = require __DIR__ . '/includes/deckerweb-github-release-updater-v2.php';
 $tffc_updater::clear_repository_cache( 'https://github.com/deckerweb/tools-for-fluentcart' );
 require_once __DIR__ . '/includes/deckerweb-plugin-library/lifecycle.php';
-deckerweb_library_uninstall_v2( __DIR__ . '/tools-for-fluentcart.php' );
+deckerweb_library_uninstall_v3( __DIR__ . '/tools-for-fluentcart.php' );
 
 /**
  * Delete only this site's own option if its administrator opted in.
@@ -18,6 +18,10 @@ deckerweb_library_uninstall_v2( __DIR__ . '/tools-for-fluentcart.php' );
  * @return void
  */
 function tffc_uninstall_site(): void {
+	foreach ( [ 'tffc_product_notes', 'tffc_catalog_mode', 'tffc_store_checks' ] as $option ) {
+		$module = get_option( $option, [] );
+		if ( ! empty( $module['delete_data'] ) ) { delete_option( $option ); }
+	}
 	$settings = get_option( 'tffc_cart_rules', [] );
 	if ( is_array( $settings ) && ! empty( $settings['delete_data'] ) ) { delete_option( 'tffc_cart_rules' ); }
 }

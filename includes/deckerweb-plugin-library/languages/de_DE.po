@@ -1,5 +1,8 @@
 msgid ""
-msgstr "Project-Id-Version: deckerweb Library 1.1.0\nLanguage: de_DE\nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+msgstr "Project-Id-Version: deckerweb Library 1.2.0\nLanguage: de_DE\nContent-Type: text/plain; charset=UTF-8\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%1$s of %2$s plugins"
+msgstr "%1$s von %2$s Plugins"
 
 msgid "%s is installed but inactive. Activate it first."
 msgstr "%s ist installiert, aber inaktiv. Bitte zuerst aktivieren."
@@ -67,6 +70,9 @@ msgstr "Das Archiv enthält zu viele Dateien."
 msgid "Archive symlinks are not permitted."
 msgstr "Symbolische Verknüpfungen sind im Archiv nicht erlaubt."
 
+msgid "Archive verification"
+msgstr "Archivprüfung"
+
 msgid "As of "
 msgstr "Stand: "
 
@@ -109,6 +115,9 @@ msgstr "Katalog-URL"
 msgid "Catalog refreshed."
 msgstr "Katalog aktualisiert."
 
+msgid "Catalog verification"
+msgstr "Katalogprüfung"
+
 msgid "Changelog"
 msgstr "Änderungsverlauf"
 
@@ -118,6 +127,9 @@ msgstr "Status prüfen"
 msgid "Checking status…"
 msgstr "Status wird geprüft…"
 
+msgid "Checksum verification"
+msgstr "Prüfsummenprüfung"
+
 msgid "Close"
 msgstr "Schließen"
 
@@ -126,6 +138,9 @@ msgstr "Commerce"
 
 msgid "Compatible additions only"
 msgstr "Nur passende Ergänzungen"
+
+msgid "Connection failed. Please try again later."
+msgstr "Die Verbindung ist fehlgeschlagen. Bitte später erneut versuchen."
 
 msgid "Content"
 msgstr "Inhalte"
@@ -210,6 +225,9 @@ msgstr "Katalog ausblenden"
 
 msgid "Improved"
 msgstr "Verbessert"
+
+msgid "Inactive"
+msgstr "Inaktiv"
 
 msgid "Install and activate this plugin in the network admin."
 msgstr "Dieses Plugin bitte im Netzwerk-Admin installieren und aktivieren."
@@ -301,6 +319,9 @@ msgstr "Ungültige Anzahl der GitHub-Sterne."
 msgid "Invalid stars date."
 msgstr "Ungültiges Datum der GitHub-Sterne."
 
+msgid "Invalid status filter."
+msgstr "Ungültiger Statusfilter."
+
 msgid "Jan"
 msgstr "Jan"
 
@@ -391,6 +412,9 @@ msgstr "Neu"
 msgid "No approved plugins match this selection."
 msgstr "Keine freigegebenen Plugins passen zu dieser Auswahl."
 
+msgid "Not installed"
+msgstr "Nicht installiert"
+
 msgid "Not installed. You can try again."
 msgstr "Nicht installiert. Ein erneuter Versuch ist möglich."
 
@@ -430,6 +454,9 @@ msgstr "PHP-ZIP-Unterstützung wird benötigt."
 msgid "POST required."
 msgstr "Eine POST-Anfrage ist erforderlich."
 
+msgid "Package download"
+msgstr "Paketdownload"
+
 msgid "Permission denied."
 msgstr "Keine Berechtigung."
 
@@ -447,6 +474,9 @@ msgstr "Das Plugin ist nicht installiert."
 
 msgid "Plugin series"
 msgstr "Plugin-Serien"
+
+msgid "Plugin status"
+msgstr "Plugin-Status"
 
 msgid "Product website"
 msgstr "Produktwebsite"
@@ -547,6 +577,9 @@ msgstr "Sortieren nach"
 msgid "Source: GitHub"
 msgstr "Quelle: GitHub"
 
+msgid "Stage: %1$s. %2$s"
+msgstr "Fehlerstufe: %1$s. %2$s"
+
 msgid "Standard"
 msgstr "Standard"
 
@@ -586,6 +619,12 @@ msgstr "Der Katalog ist deaktiviert."
 msgid "The catalog is hidden."
 msgstr "Der Katalog ist ausgeblendet."
 
+msgid "The catalog response is invalid, incompatible or too large."
+msgstr "Die Katalogantwort ist ungültig, inkompatibel oder zu groß."
+
+msgid "The connection timed out. Please try again later."
+msgstr "Die Zeit für die Verbindung wurde überschritten. Bitte später erneut versuchen."
+
 msgid "The deckerweb catalog could not load. Check platform requirements and the complete Library integration in the host plugin."
 msgstr "Der deckerweb-Katalog konnte nicht geladen werden. Bitte PHP-/WordPress-Anforderungen und die vollständige Library-Einbindung im Host-Plugin prüfen."
 
@@ -598,6 +637,12 @@ msgstr "Der Online-Katalog ist nicht erreichbar. Angezeigt wird der gespeicherte
 msgid "The online catalog source is not trusted."
 msgstr "Die Online-Katalogquelle ist nicht vertrauenswürdig."
 
+msgid "The package checksum does not match the approved release. Installation was stopped."
+msgstr "Die Paketprüfsumme stimmt nicht mit der freigegebenen Version überein. Die Installation wurde gestoppt."
+
+msgid "The package did not pass the archive or plugin identity checks. Installation was stopped."
+msgstr "Das Paket hat die Archiv- oder Plugin-Identitätsprüfung nicht bestanden. Die Installation wurde gestoppt."
+
 msgid "The release checksum does not match. Installation stopped."
 msgstr "Die Prüfsumme des Releases stimmt nicht überein. Installation gestoppt."
 
@@ -606,6 +651,15 @@ msgstr "Die Anfrage konnte nicht abgeschlossen werden. Vor einem erneuten Versuc
 
 msgid "The requirements below describe the offered release."
 msgstr "Die folgenden Voraussetzungen beziehen sich auf den angebotenen Release."
+
+msgid "The secure connection could not be verified."
+msgstr "Die sichere Verbindung konnte nicht bestätigt werden."
+
+msgid "The server address could not be resolved."
+msgstr "Die Serveradresse konnte nicht aufgelöst werden."
+
+msgid "The server returned HTTP %d. Please try again later."
+msgstr "Der Server hat HTTP %d zurückgegeben. Bitte später erneut versuchen."
 
 msgid "The update has not been confirmed. You can try again."
 msgstr "Die Aktualisierung wurde nicht bestätigt. Du kannst es erneut versuchen."

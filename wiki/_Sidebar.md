@@ -5,7 +5,7 @@
 - [User guide](Documentation)
 - [FAQ by topic](FAQ-by-topic)
 - [Changelog](Changelog)
-- [Help and security](https://github.com/deckerweb/tools-for-fluentcart/blob/main/SECURITY.md)
+- [Help and security](https://github.com/deckerweb/tools-for-fluentcart/security/policy)
 
 ## Deutsch
 
@@ -14,4 +14,4 @@
 - [Anleitung](Dokumentation)
 - [Fragen nach Themen](Fragen-nach-Themen)
 - [Änderungsverlauf](Aenderungsverlauf)
-- [Hilfe und Sicherheit](https://github.com/deckerweb/tools-for-fluentcart/blob/main/SECURITY-de.md)
+- [Hilfe und Sicherheit](https://github.com/deckerweb/tools-for-fluentcart/security/policy)
